@@ -7,10 +7,10 @@
 
     public class AI
     {
-        private static readonly int sr_MaxDepth = 4;    // Bigger value will make the computer stronger but slower (will think longer of every move)
+        private static readonly int sr_MaxDepth = 6;    // Bigger value will make the computer stronger but slower (will think longer of every move)
                                                         // Lower value will make the computer weaker but faster
         private static readonly bool v_MakeMove = true;
-        private static readonly int sr_CornerValue = 10, sr_SideValue = 8, sr_SimpleSquareValue = 5, sr_FullBoardValue = 100000;
+        private static readonly int sr_CornerValue = 17, sr_SideValue = 10, sr_SimpleSquareValue = 5, sr_FullBoardValue = 100000;
         private Square[,] m_FinalBoard;
         private Player m_AI;
         private Square.eSquareColor m_Color;

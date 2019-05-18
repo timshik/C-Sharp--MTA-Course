@@ -88,38 +88,39 @@
             choose = Console.ReadLine();
             choose = choose.ToUpper();
 
-            if (choose.Equals(sr_QuitGameKey))
+            while (true)
             {
-                io_KeepPlaying = !true;
-                square = new Square();
-            }
-            else
-            {
-                while (true)
+                if (choose.Length != 2)
                 {
-                    if (choose.Length != 2)
+                    if (choose.Equals(sr_QuitGameKey.ToString()))
                     {
-                        ShowError(Strings.error_enter_invalid_cord);
+                        io_KeepPlaying = !true;
+                        square = new Square();
+                        break;
                     }
                     else
                     {
-                        column = choose.ElementAt(0);
-                        row = choose.ElementAt(1) - '0' - 1;
-                        if (Utilities.CheckIfRowRight(row) && Utilities.CheckIfColumnRight(column))
-                        {
-                            io_KeepPlaying = true;
-                            square = new Square(column, row);
-                            break;
-                        }
-                        else
-                        {
-                            ShowError(Strings.error_enter_invalid_cord);
-                        }
+                        ShowError(Strings.error_enter_invalid_cord);
                     }
-
-                    choose = Console.ReadLine();
-                    choose = choose.ToUpper();
                 }
+                else
+                {
+                    column = choose.ElementAt(0);
+                    row = choose.ElementAt(1) - '0' - 1;
+                    if (Utilities.CheckIfRowRight(row) && Utilities.CheckIfColumnRight(column))
+                    {
+                        io_KeepPlaying = true;
+                        square = new Square(column, row);
+                        break;
+                    }
+                    else
+                    {
+                        ShowError(Strings.error_enter_invalid_cord);
+                    }
+                }
+
+                choose = Console.ReadLine();
+                choose = choose.ToUpper();
             }
 
             return square;
@@ -173,8 +174,8 @@
         public static void PrintPointStatus(int i_CounterBlack, int i_CounterWhite)
         {
             n_Player.Player blackPlayer, whitePlayer;
-            
-            if(n_Game.Game.GetPlayer(0).PlayerColor == Square.eSquareColor.Black)
+
+            if (n_Game.Game.GetPlayer(0).PlayerColor == Square.eSquareColor.Black)
             {
                 blackPlayer = n_Game.Game.GetPlayer(0);
                 whitePlayer = n_Game.Game.GetPlayer(1);
