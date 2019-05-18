@@ -69,7 +69,7 @@
         private void InitializeGame()
         {
             m_Players[0] = new Player(UI.GetPlayerName(), Square.eSquareColor.White);
-            ////m_Players[0].Computer = true; // - make second player computer
+            m_Players[0].Computer = true; // - make second player computer
             WhoWillThePlayerPlayWith = (ePlayAgainst)UI.GetChoicePlayAgainst();
         }
 
@@ -83,26 +83,32 @@
         public void StartPlaying()
         {
             SetBoard();
-            bool v_isAvailableMoves;
+            bool isAvailableMoves, disableNoMoveErrorTwice = !true;
+
 
             do
             {
-                v_isAvailableMoves = !true;
+                isAvailableMoves = !true;
                 for (int i = 0; i < 2; i++)
                 {
                     if (m_Players[i].CanMakeMove(m_GameBoard))
                     {
                         m_GameBoard.SquareBoard = m_Players[i].Play(m_GameBoard.SquareBoard);
-                        v_isAvailableMoves = true;
+                        isAvailableMoves = true;
                         m_GameBoard.PrintBoard();
+                        disableNoMoveErrorTwice = !true;
                     }
                     else
                     {
-                        UI.ShowError(string.Format(Strings.player_dont_have_available_moves, m_Players[i].NameOfUser));
+                        if(!disableNoMoveErrorTwice)
+                        {
+                            UI.ShowError(string.Format(Strings.player_dont_have_available_moves, m_Players[i].NameOfUser));
+                            disableNoMoveErrorTwice = true;
+                        }
                     }
                 }
             }
-            while (v_isAvailableMoves);
+            while (isAvailableMoves);
 
             DeclareWinner(CheckWhoWon());
         }
