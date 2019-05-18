@@ -69,7 +69,6 @@
         private void InitializeGame()
         {
             m_Players[0] = new Player(UI.GetPlayerName(), Square.eSquareColor.White);
-            m_Players[0].Computer = true; // - make second player computer
             WhoWillThePlayerPlayWith = (ePlayAgainst)UI.GetChoicePlayAgainst();
         }
 
@@ -133,30 +132,27 @@
             }
 
             string winnerName;
+            int playerNumber = 0;
+
             if (counterBlack > counterWhite)
             {
-                if(m_Players[0].PlayerColor == Square.eSquareColor.Black)
-                {
-                    winnerName = m_Players[0].NameOfUser;
-                }
-                else
-                {
-                    winnerName = m_Players[1].NameOfUser;
-                }
+                playerNumber = m_Players[0].PlayerColor == Square.eSquareColor.Black ? 0 : 1;
             }
             else if (counterBlack < counterWhite)
             {
-                if (m_Players[0].PlayerColor == Square.eSquareColor.Black)
-                {
-                    winnerName = m_Players[1].NameOfUser;
-                }
-                else
-                {
-                    winnerName = m_Players[0].NameOfUser;
-                }
+                playerNumber = m_Players[0].PlayerColor == Square.eSquareColor.Black ? 1 : 0;
             }
             else
             { 
+                playerNumber = -1;
+            }
+
+            if(playerNumber != -1)
+            {
+                winnerName = m_Players[playerNumber].NameOfUser;
+            }
+            else
+            {
                 winnerName = Strings.draw; // there is chance for draw?
             }
 
