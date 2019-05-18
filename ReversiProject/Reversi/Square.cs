@@ -44,82 +44,85 @@
         public bool CheckIfSquareIsValidAndMakeMove(Game.eWhichPlayer i_WhichPlayer, bool i_ItIsPlayersMove, Square[,] i_Board)
         {
             bool validation = !true;
-            int checkerCounter = 0;
-            int jumpColumn = 0, jumpRow = 0;
-            Square.eSquareColor PlayersColor = i_WhichPlayer == Game.eWhichPlayer.First ? Square.eSquareColor.White : Square.eSquareColor.Black;
-
-            while (checkerCounter < 8)
+            if (i_Board[Row,Column - UI.sr_FirstLetter].Color == eSquareColor.Empty)
             {
-                switch (checkerCounter)
+                int checkerCounter = 0;
+                int jumpColumn = 0, jumpRow = 0;
+                Square.eSquareColor PlayersColor = i_WhichPlayer == Game.eWhichPlayer.First ? Square.eSquareColor.White : Square.eSquareColor.Black;
+
+                while (checkerCounter < 8)
                 {
-                    case 0:
-                        jumpColumn = 1;
-                        jumpRow = 0;
-                        break;
-                    case 1:
-                        jumpColumn = -1;
-                        jumpRow = 0;
-                        break;
-                    case 2:
-                        jumpColumn = -1;
-                        jumpRow = 1;
-                        break;
-                    case 3:
-                        jumpColumn = 1;
-                        jumpRow = -1;
-                        break;
-                    case 4:
-                        jumpColumn = 0;
-                        jumpRow = 1;
-                        break;
-                    case 5:
-                        jumpColumn = 0;
-                        jumpRow = -1;
-                        break;
-                    case 6:
-                        jumpColumn = -1;
-                        jumpRow = -1;
-                        break;
-                    case 7:
-                        jumpColumn = 1;
-                        jumpRow = 1;
-                        break;
-                }
-
-                int i = Row + jumpRow;
-                int j = (Column - UI.sr_FirstLetter) + jumpColumn;
-
-                if (i < 0 || i >= Game.m_MatrixSize || j < 0 || j >= Game.m_MatrixSize || !isItOppositeColor(i_Board[i, j], i_WhichPlayer))
-                {
-                    checkerCounter++;
-                    continue;
-                }
-
-                i += jumpRow;
-                j += jumpColumn;
-
-                for (; (i < i_Board.GetLength(0) && i >= 0) && (j < i_Board.GetLength(1) && j >= 0); i += jumpRow, j += jumpColumn)
-                {
-                    if (!isItOppositeColor(i_Board[i, j], i_WhichPlayer))
+                    switch (checkerCounter)
                     {
-                        if (i_Board[i, j].Color == PlayersColor)
+                        case 0:
+                            jumpColumn = 1;
+                            jumpRow = 0;
+                            break;
+                        case 1:
+                            jumpColumn = -1;
+                            jumpRow = 0;
+                            break;
+                        case 2:
+                            jumpColumn = -1;
+                            jumpRow = 1;
+                            break;
+                        case 3:
+                            jumpColumn = 1;
+                            jumpRow = -1;
+                            break;
+                        case 4:
+                            jumpColumn = 0;
+                            jumpRow = 1;
+                            break;
+                        case 5:
+                            jumpColumn = 0;
+                            jumpRow = -1;
+                            break;
+                        case 6:
+                            jumpColumn = -1;
+                            jumpRow = -1;
+                            break;
+                        case 7:
+                            jumpColumn = 1;
+                            jumpRow = 1;
+                            break;
+                    }
+
+                    int i = Row + jumpRow;
+                    int j = (Column - UI.sr_FirstLetter) + jumpColumn;
+
+                    if (i < 0 || i >= Game.m_MatrixSize || j < 0 || j >= Game.m_MatrixSize || !isItOppositeColor(i_Board[i, j], i_WhichPlayer))
+                    {
+                        checkerCounter++;
+                        continue;
+                    }
+
+                    i += jumpRow;
+                    j += jumpColumn;
+
+                    for (; (i < i_Board.GetLength(0) && i >= 0) && (j < i_Board.GetLength(1) && j >= 0); i += jumpRow, j += jumpColumn)
+                    {
+                        if (!isItOppositeColor(i_Board[i, j], i_WhichPlayer))
                         {
-                            if (i_ItIsPlayersMove)
+                            if (i_Board[i, j].Color == PlayersColor)
                             {
-                                Color = (Square.eSquareColor)i_WhichPlayer;
-                                Game.GetPlayer((int)(i_WhichPlayer - 1)).MakeMove(i_Board, this, i_Board[i, j], jumpColumn, jumpRow);
+                                if (i_ItIsPlayersMove)
+                                {
+                                    Color = (Square.eSquareColor)i_WhichPlayer;
+                                    Game.GetPlayer((int)(i_WhichPlayer - 1)).MakeMove(i_Board, this, i_Board[i, j], jumpColumn, jumpRow);
+                                }
+
+                                validation = true; 
                             }
 
-                            validation = true; 
+                            break;
                         }
-
-                        break;
                     }
+
+                    checkerCounter++;
                 }
 
-                checkerCounter++;
             }
-
             return validation;
         }
 

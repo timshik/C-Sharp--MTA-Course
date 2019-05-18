@@ -1,0 +1,10 @@
+==========================Exercise Checking Report==========================
+Exercise No...........: 2
+First Student Details.: 204062574 - Ido Hayun
+Second Student Details: 313419814 - Tim Buchbinder
+Delivery Date.........: <Date of the exercise delivery>
+Delivered In Delay....: No
+Delay Reason..........: 
+Visual Studio Version.: 17
+Comments..............: In AI algorithm changing depth value make computer calculation slower/faster
+=======================End Exercise Checking Report=========================
