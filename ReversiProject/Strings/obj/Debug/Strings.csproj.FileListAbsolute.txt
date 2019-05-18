@@ -1,0 +1,8 @@
+C:\Users\Ido PC\source\repos\Project31\Strings\bin\Debug\Strings.dll
+C:\Users\Ido PC\source\repos\Project31\Strings\bin\Debug\Strings.pdb
+C:\Users\Ido PC\source\repos\Project31\Strings\obj\Debug\Strings.csprojAssemblyReference.cache
+C:\Users\Ido PC\source\repos\Project31\Strings\obj\Debug\Reversi.Strings.resources
+C:\Users\Ido PC\source\repos\Project31\Strings\obj\Debug\Strings.csproj.GenerateResource.cache
+C:\Users\Ido PC\source\repos\Project31\Strings\obj\Debug\Strings.csproj.CoreCompileInputs.cache
+C:\Users\Ido PC\source\repos\Project31\Strings\obj\Debug\Strings.dll
+C:\Users\Ido PC\source\repos\Project31\Strings\obj\Debug\Strings.pdb

@@ -1,0 +1,11 @@
+C:\Users\Ido PC\source\repos\Project31\Reversi\bin\Debug\Reversi.exe.config
+C:\Users\Ido PC\source\repos\Project31\Reversi\bin\Debug\Reversi.exe
+C:\Users\Ido PC\source\repos\Project31\Reversi\bin\Debug\Reversi.pdb
+C:\Users\Ido PC\source\repos\Project31\Reversi\bin\Debug\Ex02.ConsoleUtils.dll
+C:\Users\Ido PC\source\repos\Project31\Reversi\bin\Debug\Strings.dll
+C:\Users\Ido PC\source\repos\Project31\Reversi\bin\Debug\Strings.pdb
+C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.csprojAssemblyReference.cache
+C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.csproj.CoreCompileInputs.cache
+C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.csproj.CopyComplete
+C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.exe
+C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.pdb
