@@ -9,10 +9,18 @@ namespace Garage
 {
     public class VehicleProperties
     {
-        BaseVehicle m_Vehicle;
-        string m_OwnerName, m_PhoneNumber;
-        eStateOfService m_Status;
         public static readonly List<string> sr_StateListOptions = new List<string>();
+        private BaseVehicle m_Vehicle;
+        private string m_OwnerName, m_PhoneNumber;
+        private eStateOfService m_Status;
+
+        public VehicleProperties(BaseVehicle i_Vehicle, string i_OwnerName, string i_PhoneNumber, eStateOfService i_Status)
+        {
+            this.m_Vehicle = i_Vehicle;
+            this.m_OwnerName = i_OwnerName;
+            this.m_PhoneNumber = i_PhoneNumber;
+            this.m_Status = i_Status;
+        }
 
         public static void SetListOfOptions()
         {

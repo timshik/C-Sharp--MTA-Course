@@ -36,11 +36,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\GarageLogic\App.config">
-      <Link>App.config</Link>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="BaseVehicle.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="CreateNewVehicle.cs" />
@@ -56,6 +51,9 @@
     <Compile Include="FuelVehicle.cs" />
     <Compile Include="VehicleProperties.cs" />
     <Compile Include="Wheel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App1.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strings\Strings.csproj">

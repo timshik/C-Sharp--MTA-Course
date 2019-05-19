@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using n_Wheel;
+using n_Strings;
 
 namespace Garage
 {
-    abstract public class BaseVehicle
+    public abstract class BaseVehicle
     {
-        string m_ModelName, m_PlateNumber;
-        protected float m_PercentOfRemainingEnergy;
-        Wheel[] m_Wheels;
+        private string m_ModelName, m_PlateNumber;
+        private protected float m_PercentOfRemainingEnergy;
+        private Wheel[] m_Wheels;
         
         public BaseVehicle(int i_NumberOfWheels, string i_ModelName,
             string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer)
@@ -48,6 +49,17 @@ namespace Garage
         {
             get { return m_PlateNumber; }
             set { m_PlateNumber = value; }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder vehicleDetails = new StringBuilder();
+            vehicleDetails.AppendFormat(Strings.plate_number, m_PlateNumber);
+            vehicleDetails.AppendFormat(Strings.model_name, m_ModelName);
+            vehicleDetails.AppendFormat(Strings.remaning_energy, m_PercentOfRemainingEnergy);
+            vehicleDetails.AppendFormat(m_Wheels[0].ToString());
+
+            return vehicleDetails.ToString();
         }
     }
 }

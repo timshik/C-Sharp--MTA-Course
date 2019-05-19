@@ -1,26 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using n_Strings;
-using Garage;
-using n_Vehicle;
-using n_Wheel;
-
-namespace Ex03.ConsoleUI
+﻿namespace Ex03.ConsoleUI
 {
+    using System;
+    using System.Collections.Generic;
+    using Garage;
+    using n_Strings;
+    using n_Vehicle;
+
     public class ConsoleUI
     {
+        private static readonly List<string> sr_FirstMenuStringArray = new List<string>();
+        private static readonly List<string> sr_BooleanOptions = new List<string>();
         private static readonly int sr_MaxSelectableChoice = 8;
-        GarageManager m_Garage;
-        private static readonly List<string> sr_FirstMenuStringArray;
-        private static readonly List<string> sr_BooleanOptions;
+        private GarageManager m_Garage = new GarageManager();
 
-        public void WelcomeToTheGarage(GarageManager i_Garage)
+        public static void Main()
+        {
+            ConsoleUI UI = new ConsoleUI();
+            UI.WelcomeToTheGarage();
+        }
+
+        public void WelcomeToTheGarage()
         {
             initializationEnums();
-            m_Garage = i_Garage;
             printMessage(Strings.welcome_massage);
             do
             {
@@ -47,6 +48,9 @@ namespace Ex03.ConsoleUI
             sr_FirstMenuStringArray.Add(Strings.menu_options_8);
             sr_BooleanOptions.Add(Strings.true_option);
             sr_BooleanOptions.Add(Strings.false_option);
+            VehicleProperties.SetListOfOptions();
+            DoorNumber.SetListOfOptions();
+            FuelVehicle.SetEnergeyTypeList();
         }
 
         private void printMessage(string i_Message)
@@ -111,11 +115,17 @@ namespace Ex03.ConsoleUI
                     ShowVehiclesByPlateUI();
                     break;
                 case 8:
-                    ExitProgram();
+                    exitProgram();
                     break;
                 default:
                     break;
             }
+        }
+
+        private void exitProgram()
+        {
+            printMessage(Strings.exit_program_message);
+            Environment.Exit(1);
         }
 
         public bool AnotherAction()
@@ -140,42 +150,56 @@ namespace Ex03.ConsoleUI
 
         private void addNewVehicleUI()
         {
-            string plateNumber, modelName, wheelManufacturer;
+            string plateNumber, modelName, wheelManufacturer, ownerName, phoneNumber;
+            VehicleProperties vehicle;
+            VehicleProperties.eStateOfService newStatus;
 
             printMessage(Strings.enter_plate_number);
-            plateNumber = Console.ReadLine();
+            plateNumber = getStringFromUser();
             try
             {
-                m_Garage.GetVehicleByPlateNumber(plateNumber);
-                printMessage(Strings.choose_type_of_vehicle);
-                ShowOptions(VehicleManager.VehicleList);
-                VehicleManager.eVehicleTypes type = (VehicleManager.eVehicleTypes)(getUserChoice(1, VehicleManager.VehicleList.Count) - 1);
-                modelName = getStringFromUser();
-                wheelManufacturer = getStringFromUser();
-                switch (type)
-                {
-                    case VehicleManager.eVehicleTypes.Truck:
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewTruck(modelName, plateNumber, TruckDeliveryMaterials(), TruckCapacityLevel(), wheelManufacturer));
-                        break;
-                    case VehicleManager.eVehicleTypes.Motorcycle:
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewMotorcycle(modelName, plateNumber, getEngineCapacity(), getLicenseType(), wheelManufacturer));
-                        break;
-                    case VehicleManager.eVehicleTypes.Car:
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewCar(plateNumber, getNumberOfDoors(), getCarColor(), modelName, wheelManufacturer));
-                        break;
-                    case VehicleManager.eVehicleTypes.ElectricCar:
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricCar(modelName, plateNumber, wheelManufacturer, getCarColor(), getNumberOfDoors()));
-                        break;
-                    case VehicleManager.eVehicleTypes.ElectricMotorcycle:
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricMotorcycle(modelName, plateNumber, wheelManufacturer, getLicenseType(), getEngineCapacity()));
-                        break;
-                    default:
-                        break;
-                }
+                vehicle = m_Garage.GetVehicleByPlateNumber(plateNumber);
+                printMessage(Strings.change_status_options);
+                ShowOptions(VehicleProperties.sr_StateListOptions);
+                newStatus = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
+                vehicle.Status = newStatus;
             }
             catch (ArgumentException i_PlateError)
             {
                 showError(i_PlateError.Message);
+                printMessage(Strings.choose_type_of_vehicle);
+                ShowOptions(VehicleManager.VehicleList);
+                VehicleManager.eVehicleTypes type = (VehicleManager.eVehicleTypes)(getUserChoice(1, VehicleManager.VehicleList.Count) - 1);
+                printMessage(Strings.enter_model_name);
+                modelName = getStringFromUser();
+                printMessage(Strings.enter_wheel_manufacturer);
+                wheelManufacturer = getStringFromUser();
+                printMessage(Strings.enter_owner_name);
+                ownerName = getStringFromUser();
+                printMessage(Strings.enter_phone_number);
+                phoneNumber = getStringFromUser();
+                ShowOptions(VehicleProperties.sr_StateListOptions);
+                newStatus = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
+                switch (type)
+                {
+                    case VehicleManager.eVehicleTypes.Truck:
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewTruck(modelName, plateNumber, TruckDeliveryMaterials(), TruckCapacityLevel(), wheelManufacturer), ownerName, phoneNumber, newStatus);
+                        break;
+                    case VehicleManager.eVehicleTypes.Motorcycle:
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewMotorcycle(modelName, plateNumber, getEngineCapacity(), getLicenseType(), wheelManufacturer), ownerName, phoneNumber, newStatus);
+                        break;
+                    case VehicleManager.eVehicleTypes.Car:
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewCar(plateNumber, getNumberOfDoors(), getCarColor(), modelName, wheelManufacturer), ownerName, phoneNumber, newStatus);
+                        break;
+                    case VehicleManager.eVehicleTypes.ElectricCar:
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricCar(modelName, plateNumber, wheelManufacturer, getCarColor(), getNumberOfDoors()), ownerName, phoneNumber, newStatus);
+                        break;
+                    case VehicleManager.eVehicleTypes.ElectricMotorcycle:
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricMotorcycle(modelName, plateNumber, wheelManufacturer, getLicenseType(), getEngineCapacity()), ownerName, phoneNumber, newStatus);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -231,6 +255,7 @@ namespace Ex03.ConsoleUI
             ShowOptions(sr_BooleanOptions);
             return getUserChoice(1, 2) == 1 ? true : !true;
         }
+
         public LicenseType.eLicenseType getLicenseType()
         {
             int usersChoice;
@@ -241,17 +266,19 @@ namespace Ex03.ConsoleUI
             licenseType = (LicenseType.eLicenseType)(usersChoice - 1);
             return licenseType;
         }
+
         public int getEngineCapacity()
         {
             printMessage(Strings.engine_capacity_massage);
             return getIntegerFromUser();
         }
+
         public void FuelVehicleUI()
         {
             string plateNumber;
             FuelVehicle.eEnergyType energyType;
             float amountOfFuelToAdd;
-            BaseVehicle VehicleToFuel ;
+            BaseVehicle VehicleToFuel;
 
             printMessage(Strings.enter_plate_number);
             plateNumber = getStringFromUser();
@@ -259,21 +286,21 @@ namespace Ex03.ConsoleUI
             {
                 VehicleToFuel = m_Garage.GetVehicleByPlateNumber(plateNumber).Vehicle;
                 ShowOptions(FuelVehicle.sr_EnergyTypeList);
-                energyType = (FuelVehicle.eEnergyType)(getUserChoice(1, FuelVehicle.sr_EnergyTypeList.Count) -1);
-                Console.WriteLine(Strings.ammount_fuel_massage);
+                energyType = (FuelVehicle.eEnergyType)(getUserChoice(1, FuelVehicle.sr_EnergyTypeList.Count) - 1);
+                Console.WriteLine(Strings.amount_fuel_massage);
                 amountOfFuelToAdd = getFloatFromUser();
                 m_Garage.FuelVehicle(VehicleToFuel, energyType, amountOfFuelToAdd);
-
             }
             catch (ArgumentException i_PlateError)
             {
                 showError(i_PlateError.Message);
             }
         }
+
         public void ChargeElectricVehicleUI()
         {
             string plateNumber;
-            
+
             float amountOfElectricInMinutesToAdd;
             BaseVehicle VehicleToCharge;
 
@@ -285,15 +312,16 @@ namespace Ex03.ConsoleUI
                 Console.WriteLine(Strings.amount_fuel_massage);
                 amountOfElectricInMinutesToAdd = getFloatFromUser();
                 m_Garage.ChargeElectricVehicle(VehicleToCharge, amountOfElectricInMinutesToAdd);
-
             }
             catch (ArgumentException i_PlateError)
             {
                 showError(i_PlateError.Message);
             }
-
         }
-        public void ShowVehiclesByPlateUI() { }
+
+        public void ShowVehiclesByPlateUI()
+        {
+        }
 
         public void ChangePropertiesUI()
         {
@@ -305,8 +333,8 @@ namespace Ex03.ConsoleUI
             try
             {
                 vehicle = m_Garage.GetVehicleByPlateNumber(plateNumber);
-                printMessage(string.Format(Strings.change_status_options,VehicleProperties.sr_StateListOptions[(int)vehicle.Status]));
-                newType = (VehicleProperties.eStateOfService) getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
+                printMessage(string.Format(Strings.change_status_options, VehicleProperties.sr_StateListOptions[(int)vehicle.Status]));
+                newType = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
                 vehicle.Status = newType;
             }
             catch (ArgumentException i_PlateError)
@@ -334,6 +362,14 @@ namespace Ex03.ConsoleUI
                 showError(i_PlateError.Message);
             }
         }
-        public void ShowPlatesOfAllVehiclesUI() { }
+
+        public void ShowPlatesOfAllVehiclesUI()
+        {
+            foreach (VehicleProperties vehicle in m_Garage.Vehicles)
+            {
+                printMessage(vehicle.Vehicle.ToString());
+                printMessage("===========================\n");
+            }
+        }
     }
 }

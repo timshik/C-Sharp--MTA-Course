@@ -1,0 +1,11 @@
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.csprojAssemblyReference.cache
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.csproj.CoreCompileInputs.cache
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\bin\Debug\Ex03.ConsoleUI.exe
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\bin\Debug\Ex03.ConsoleUI.pdb
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\bin\Debug\Garage.dll
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\bin\Debug\Strings.dll
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\bin\Debug\Garage.pdb
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\bin\Debug\Strings.pdb
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.csproj.CopyComplete
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.exe
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.ConsoleUI\obj\Debug\Ex03.ConsoleUI.pdb

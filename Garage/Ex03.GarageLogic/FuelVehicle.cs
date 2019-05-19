@@ -1,23 +1,18 @@
 ﻿namespace n_Vehicle
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
-    using n_Wheel;
     using Garage;
     using n_Strings;
 
-    abstract public class FuelVehicle : BaseVehicle
+    public abstract class FuelVehicle : BaseVehicle
     {
-        eEnergyType m_Type;
-        float m_FuelLevel;
-        readonly float r_MaxFuelLevel;
+        private readonly float r_MaxFuelLevel;
         public static readonly List<string> sr_EnergyTypeList = new List<string>();
+        private eEnergyType m_Type;
+        private float m_FuelLevel;
 
-        public FuelVehicle(int i_NumberOfWheels, float i_MaxFuelLevel, string i_ModelName,
-            string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer, eEnergyType i_Type)
+        public FuelVehicle(int i_NumberOfWheels, float i_MaxFuelLevel, string i_ModelName, string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer, eEnergyType i_Type)
             : base(i_NumberOfWheels, i_ModelName, i_PlateNumber, i_MaxWheelPressure, i_WheelManufacturer)
         {
             m_Type = i_Type;
@@ -31,7 +26,6 @@
             sr_EnergyTypeList.Add(Strings.octan_95);
             sr_EnergyTypeList.Add(Strings.octan_96);
             sr_EnergyTypeList.Add(Strings.octan_98);
-
         }
 
         public enum eEnergyType
@@ -40,7 +34,6 @@
             Octan95,
             Octan96,
             Octan98,
-
         }
 
         private void calculatePercentOfRemainingEnergy()
@@ -61,8 +54,9 @@
             {
                 if (m_FuelLevel + value > r_MaxFuelLevel)
                 {
-                    // trhow exception
+                    //// throw exception
                 }
+
                 m_FuelLevel += value;
                 calculatePercentOfRemainingEnergy();
             }
@@ -71,6 +65,17 @@
         public float MaxEnergyLevel // ONLY GET, cannot change max fuel level - readonly!
         {
             get { return r_MaxFuelLevel; }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder vehicleDetails = new StringBuilder();
+
+            vehicleDetails.Append(base.ToString());
+            vehicleDetails.AppendFormat(Strings.fuel_type, sr_EnergyTypeList[(int)m_Type]);
+            vehicleDetails.AppendFormat(Strings.current_fuel_level, m_FuelLevel);
+
+            return vehicleDetails.ToString();
         }
     }
 }

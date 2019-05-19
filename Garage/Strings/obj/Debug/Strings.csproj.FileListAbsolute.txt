@@ -1,0 +1,7 @@
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\bin\Debug\Strings.dll
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\bin\Debug\Strings.pdb
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\n_Strings.Strings.resources
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.csproj.GenerateResource.cache
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.csproj.CoreCompileInputs.cache
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.dll
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.pdb

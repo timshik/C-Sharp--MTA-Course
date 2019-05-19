@@ -275,4 +275,83 @@
   <data name="paid_title" xml:space="preserve">
     <value>Paid</value>
   </data>
+  <data name="battery_level" xml:space="preserve">
+    <value>Battery level: {0}
+</value>
+  </data>
+  <data name="car_color" xml:space="preserve">
+    <value>Car color: {0}
+</value>
+  </data>
+  <data name="current_fuel_level" xml:space="preserve">
+    <value>Fuel level: {0}
+</value>
+  </data>
+  <data name="door_number" xml:space="preserve">
+    <value>Door number: {0}
+</value>
+  </data>
+  <data name="electric_vehicle_battery" xml:space="preserve">
+    <value>Electric vehicle</value>
+  </data>
+  <data name="engine_capacity" xml:space="preserve">
+    <value>Engine capacity: {0} cc
+</value>
+  </data>
+  <data name="exit_program_message" xml:space="preserve">
+    <value>Thank you for using out application, hope to see you soon!</value>
+  </data>
+  <data name="fuel_type" xml:space="preserve">
+    <value>Fuel type: {0}
+</value>
+  </data>
+  <data name="hazardous_materials" xml:space="preserve">
+    <value>Transporting hazardous materials? {0}
+</value>
+  </data>
+  <data name="license_type" xml:space="preserve">
+    <value>License type: {0}\n</value>
+  </data>
+  <data name="model_name" xml:space="preserve">
+    <value>Model name: {0}
+</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="plate_number" xml:space="preserve">
+    <value>Plate number: {0}
+</value>
+  </data>
+  <data name="remaning_energy" xml:space="preserve">
+    <value>Percentage of remaining energy: {0}
+</value>
+  </data>
+  <data name="trunk_capacity" xml:space="preserve">
+    <value>Trunk capacity: {0}
+</value>
+  </data>
+  <data name="wheel_current_pressure" xml:space="preserve">
+    <value>Wheel current pressure: {0}
+</value>
+  </data>
+  <data name="wheel_manufacturer" xml:space="preserve">
+    <value>Wheel manufacturer: {0}
+</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="enter_model_name" xml:space="preserve">
+    <value>Enter model name:</value>
+  </data>
+  <data name="enter_owner_name" xml:space="preserve">
+    <value>Enter owner name:</value>
+  </data>
+  <data name="enter_phone_number" xml:space="preserve">
+    <value>Enter phone number:</value>
+  </data>
+  <data name="enter_wheel_manufacturer" xml:space="preserve">
+    <value>Enter wheel manufacturer name:</value>
+  </data>
 </root>

@@ -10,6 +10,7 @@ namespace Garage
     public class LicenseType
     {
         public static readonly List<string> sr_LicenseType = new List<string>();
+
         public enum eLicenseType
         {
             A,

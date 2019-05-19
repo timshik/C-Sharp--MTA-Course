@@ -10,6 +10,7 @@ namespace Garage
     public class DoorNumber
     {
         public static readonly List<string> sr_DoorsOptions = new List<string>();
+
         public enum eNumberOfDoors
         {
             TwoDoors = 2,

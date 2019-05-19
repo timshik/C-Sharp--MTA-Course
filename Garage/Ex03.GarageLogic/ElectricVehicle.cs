@@ -1,18 +1,14 @@
 ﻿namespace Garage
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
-    using System.Threading.Tasks;
+    using n_Strings;
 
-    abstract public class ElectricVehicle : BaseVehicle
+    public abstract class ElectricVehicle : BaseVehicle
     {
-        float m_RemainingBatteryTime = 0;
-        float m_MaxBatteryTime;
+        private float m_RemainingBatteryTime = 0;
+        private float m_MaxBatteryTime;
 
-        public ElectricVehicle(int i_NumberOfWheels, string i_ModelName,
-            string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer, float i_MaxBatteryTime)
+        public ElectricVehicle(int i_NumberOfWheels, string i_ModelName, string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer, float i_MaxBatteryTime)
             : base(i_NumberOfWheels, i_ModelName, i_PlateNumber, i_MaxWheelPressure, i_WheelManufacturer)
         {
             m_MaxBatteryTime = i_MaxBatteryTime;
@@ -35,14 +31,27 @@
             get { return m_RemainingBatteryTime; }
             set { m_RemainingBatteryTime = value; }
         }
+
         public void ChargeBattery(float i_AmmountofElectricToCharge)
         {
             if (m_RemainingBatteryTime + i_AmmountofElectricToCharge > m_MaxBatteryTime)
             {
-                //Throw exception
+                //// TODO : Throw exception
             }
+
             m_RemainingBatteryTime += i_AmmountofElectricToCharge;
             calculatePercentOfRemainingEnergy();
+        }
+
+        public override string ToString()
+        {
+            StringBuilder vehicleDetails = new StringBuilder();
+
+            vehicleDetails.Append(base.ToString());
+            vehicleDetails.AppendLine(Strings.electric_vehicle_battery);
+            vehicleDetails.AppendFormat(Strings.battery_level, m_RemainingBatteryTime);
+
+            return vehicleDetails.ToString();
         }
     }
 }
