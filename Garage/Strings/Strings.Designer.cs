@@ -61,11 +61,38 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How much fuel would you like to fuel.
+        /// </summary>
+        public static string amount_fuel_massage {
+            get {
+                return ResourceManager.GetString("amount_fuel_massage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the amount you want to fill the tires:.
+        /// </summary>
+        public static string amount_to_fill_tire {
+            get {
+                return ResourceManager.GetString("amount_to_fill_tire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Good bye my friend .
         /// </summary>
         public static string breakup_massage {
             get {
                 return ResourceManager.GetString("breakup_massage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current status is {0}, Please choose new status for car.
+        /// </summary>
+        public static string change_status_options {
+            get {
+                return ResourceManager.GetString("change_status_options", resourceCulture);
             }
         }
         
@@ -79,6 +106,33 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please choose your car color.
+        /// </summary>
+        public static string choose_car_color {
+            get {
+                return ResourceManager.GetString("choose_car_color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please choose door number for your car.
+        /// </summary>
+        public static string choose_door_number {
+            get {
+                return ResourceManager.GetString("choose_door_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose vehicle type:.
+        /// </summary>
+        public static string choose_type_of_vehicle {
+            get {
+                return ResourceManager.GetString("choose_type_of_vehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Would you like to do another action
         ///1) yes 
         ///2) no.
@@ -86,6 +140,78 @@ namespace n_Strings {
         public static string continue_massage {
             get {
                 return ResourceManager.GetString("continue_massage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter engine capacity.
+        /// </summary>
+        public static string engine_capacity_massage {
+            get {
+                return ResourceManager.GetString("engine_capacity_massage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For adding new vehicle to the garage please enter plate number:.
+        /// </summary>
+        public static string enter_plate_number {
+            get {
+                return ResourceManager.GetString("enter_plate_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string false_option {
+            get {
+                return ResourceManager.GetString("false_option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Five doors.
+        /// </summary>
+        public static string five_doors {
+            get {
+                return ResourceManager.GetString("five_doors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fixed.
+        /// </summary>
+        public static string fixed_title {
+            get {
+                return ResourceManager.GetString("fixed_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four doors.
+        /// </summary>
+        public static string four_doors {
+            get {
+                return ResourceManager.GetString("four_doors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter License number.
+        /// </summary>
+        public static string get_license_massage {
+            get {
+                return ResourceManager.GetString("get_license_massage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InRapair.
+        /// </summary>
+        public static string inrepair_title {
+            get {
+                return ResourceManager.GetString("inrepair_title", resourceCulture);
             }
         }
         
@@ -104,6 +230,51 @@ namespace n_Strings {
         public static string invalid_menu_choice {
             get {
                 return ResourceManager.GetString("invalid_menu_choice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A.
+        /// </summary>
+        public static string license_a {
+            get {
+                return ResourceManager.GetString("license_a", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A1.
+        /// </summary>
+        public static string license_a1 {
+            get {
+                return ResourceManager.GetString("license_a1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A2.
+        /// </summary>
+        public static string license_a2 {
+            get {
+                return ResourceManager.GetString("license_a2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to B.
+        /// </summary>
+        public static string license_b {
+            get {
+                return ResourceManager.GetString("license_b", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}) {1}.
+        /// </summary>
+        public static string menu_format {
+            get {
+                return ResourceManager.GetString("menu_format", resourceCulture);
             }
         }
         
@@ -180,6 +351,96 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Octan 95.
+        /// </summary>
+        public static string octan_95 {
+            get {
+                return ResourceManager.GetString("octan_95", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Octan 96.
+        /// </summary>
+        public static string octan_96 {
+            get {
+                return ResourceManager.GetString("octan_96", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Octan 98.
+        /// </summary>
+        public static string octan_98 {
+            get {
+                return ResourceManager.GetString("octan_98", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid.
+        /// </summary>
+        public static string paid_title {
+            get {
+                return ResourceManager.GetString("paid_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry but the plate {0} didn&apos;t find in our system! Create new vehicle:.
+        /// </summary>
+        public static string plate_didnt_found {
+            get {
+                return ResourceManager.GetString("plate_didnt_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The vehicle with plate number {0} is already found in system, Move vehicle to status repair.
+        /// </summary>
+        public static string plate_found {
+            get {
+                return ResourceManager.GetString("plate_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soler.
+        /// </summary>
+        public static string soler {
+            get {
+                return ResourceManager.GetString("soler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Third doors.
+        /// </summary>
+        public static string three_doors {
+            get {
+                return ResourceManager.GetString("three_doors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Black.
+        /// </summary>
+        public static string title_black {
+            get {
+                return ResourceManager.GetString("title_black", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blue.
+        /// </summary>
+        public static string title_blue {
+            get {
+                return ResourceManager.GetString("title_blue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Car.
         /// </summary>
         public static string title_car {
@@ -207,6 +468,15 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gray.
+        /// </summary>
+        public static string title_gray {
+            get {
+                return ResourceManager.GetString("title_gray", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Motorcycle.
         /// </summary>
         public static string title_motorcycle {
@@ -216,11 +486,38 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Red.
+        /// </summary>
+        public static string title_red {
+            get {
+                return ResourceManager.GetString("title_red", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Truck.
         /// </summary>
         public static string title_truck {
             get {
                 return ResourceManager.GetString("title_truck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string true_option {
+            get {
+                return ResourceManager.GetString("true_option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two doors.
+        /// </summary>
+        public static string two_doors {
+            get {
+                return ResourceManager.GetString("two_doors", resourceCulture);
             }
         }
         

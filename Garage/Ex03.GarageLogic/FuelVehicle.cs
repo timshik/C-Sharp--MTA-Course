@@ -7,12 +7,14 @@
     using System.Threading.Tasks;
     using n_Wheel;
     using Garage;
+    using n_Strings;
 
     abstract public class FuelVehicle : BaseVehicle
     {
         eEnergyType m_Type;
         float m_FuelLevel;
         readonly float r_MaxFuelLevel;
+        public static readonly List<string> sr_EnergyTypeList = new List<string>();
 
         public FuelVehicle(int i_NumberOfWheels, float i_MaxFuelLevel, string i_ModelName,
             string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer, eEnergyType i_Type)
@@ -21,6 +23,15 @@
             m_Type = i_Type;
             r_MaxFuelLevel = i_MaxFuelLevel;
             m_FuelLevel = i_MaxFuelLevel;
+        }
+
+        public static void SetEnergeyTypeList()
+        {
+            sr_EnergyTypeList.Add(Strings.soler);
+            sr_EnergyTypeList.Add(Strings.octan_95);
+            sr_EnergyTypeList.Add(Strings.octan_96);
+            sr_EnergyTypeList.Add(Strings.octan_98);
+
         }
 
         public enum eEnergyType

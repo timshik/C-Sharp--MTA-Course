@@ -52,6 +52,10 @@
       <Project>{63f17112-e218-49eb-926e-b2fee1537ff8}</Project>
       <Name>GarageLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Strings\Strings.csproj">
+      <Project>{dcb6efea-3951-402e-a6f1-62a94c2a1445}</Project>
+      <Name>Strings</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

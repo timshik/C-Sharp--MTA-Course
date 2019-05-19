@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using n_Vehicle;
+using n_Strings;
 
 namespace Garage
 {
@@ -11,12 +12,25 @@ namespace Garage
     {
         List<VehicleProperties> m_Vehicles = new List<VehicleProperties>();
         public void AddNewVehicle(BaseVehicle i_Vehicle) { }
-        private BaseVehicle getVehicleByPlateNumber(string i_PlateNumber) { }
-        public void FuelVehicle(string i_PlateNumber, FuelVehicle.eEnergyType i_FuelType, int i_Amount) { }
-        public void ChargeElectricVehicle(string i_PlateNumber, int i_Amount) { }
+        public VehicleProperties GetVehicleByPlateNumber(string i_PlateNumber)
+        {
+            foreach (VehicleProperties vehicle in m_Vehicles)
+            {
+                if(vehicle.Vehicle.PlateNumber.Equals(i_PlateNumber))
+                {
+                    return vehicle;
+                    //vehicle.Status = VehicleProperties.eStateOfService.InRepair;//לבדוק האם הרכב כבר בתיקון או שולם 
+                }
+            }
+
+            throw new ArgumentException(string.Format(Strings.plate_found, i_PlateNumber));
+        }
+
+        public void FuelVehicle(BaseVehicle i_Vehicle, FuelVehicle.eEnergyType i_FuelType, float i_Amount) { }
+        public void ChargeElectricVehicle(BaseVehicle i_Vehicle, float i_Amount) { }
         public void ShowVehiclesByPlate() { }
         public void ChangeProperties(string i_PlateNumber, VehicleProperties.eStateOfService i_NewState) { }
-        public void InflatingWheel(string i_PlateNumber) { }
+        public void InflatingWheel(BaseVehicle i_Vehicle, float i_Amount) { }
         public void ShowPlatesOfAllVehicles() { }
     }
 }

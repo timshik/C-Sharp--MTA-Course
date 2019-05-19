@@ -12,23 +12,22 @@ namespace n_Car
     public class Car : FuelVehicle
     {
         public static readonly int sr_NumberOfWheels = 4, sr_FullTunkLevel = 55, sr_MaxPressure = 31;
-        eCarColor m_CarColor;
-        eNumberOfDoors m_NumberOfDoors;
+        CarColor.eCarColor m_CarColor;
+        DoorNumber.eNumberOfDoors m_NumberOfDoors;
 
-        public Car(string i_PlateNumber, float i_MaxEnergeyLevel, float i_FuelLevel, eEnergyType i_Type,
-        eNumberOfDoors i_NumberOfDoors, eCarColor i_CarColor, string i_ModelName, string i_WheelManufacturer) 
-            : base(sr_NumberOfWheels, i_MaxEnergeyLevel, i_ModelName, i_PlateNumber, sr_MaxPressure, i_WheelManufacturer, i_Type)
+        public Car(string i_PlateNumber, DoorNumber.eNumberOfDoors i_NumberOfDoors, CarColor.eCarColor i_CarColor, string i_ModelName, string i_WheelManufacturer) 
+            : base(sr_NumberOfWheels, sr_FullTunkLevel, i_ModelName, i_PlateNumber, sr_MaxPressure, i_WheelManufacturer, eEnergyType.Octan95)
         {
             m_NumberOfDoors = i_NumberOfDoors;
             m_CarColor = i_CarColor;
         }
 
-        public eNumberOfDoors NumberOfDoors
+        public DoorNumber.eNumberOfDoors NumberOfDoors
         {
             get { return m_NumberOfDoors; }
             set { m_NumberOfDoors = value; }
         }
-        public eCarColor CarColor
+        public CarColor.eCarColor CarColor
         {
             get { return m_CarColor; }
             set { m_CarColor =value; }
