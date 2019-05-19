@@ -14,7 +14,6 @@ C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Revers
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Reversi.pdb
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Strings.dll
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Strings.pdb
-C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.csprojAssemblyReference.cache
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.csproj.CoreCompileInputs.cache
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.csproj.CopyComplete
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.exe
