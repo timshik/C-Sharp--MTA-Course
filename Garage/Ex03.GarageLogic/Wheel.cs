@@ -23,7 +23,7 @@ namespace n_Wheel
         {
             if(m_CurrentPressure + i_UnitToFill > r_MaxPressure)
             {
-                m_CurrentPressure = r_MaxPressure;
+                //throw exception
             }
             else
             {
