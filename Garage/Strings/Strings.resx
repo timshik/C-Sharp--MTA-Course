@@ -294,7 +294,7 @@
   <data name="electric_vehicle_battery" xml:space="preserve">
     <value>Electric vehicle</value>
   </data>
-  <data name="engine_capacity" xml:space="preserve">
+  <data name="show_engine_capacity" xml:space="preserve">
     <value>Engine capacity: {0} cc
 </value>
   </data>
@@ -353,6 +353,12 @@
   </data>
   <data name="enter_wheel_manufacturer" xml:space="preserve">
     <value>Enter wheel manufacturer name:</value>
+  </data>
+  <data name="choose_status_of_vehicle" xml:space="preserve">
+    <value>Choose the status for new vehicle</value>
+  </data>
+  <data name="line_brake" xml:space="preserve">
+    <value>===============================</value>
   </data>
   <data name="owner_name" xml:space="preserve">
     <value>Owner name: {0}

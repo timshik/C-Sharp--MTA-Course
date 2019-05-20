@@ -5,4 +5,3 @@ C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.csproj
 C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.csproj.CoreCompileInputs.cache
 C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.dll
 C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.pdb
-C:\Users\Ido PC\source\repos\GitProjects\Garage\Strings\obj\Debug\Strings.csprojAssemblyReference.cache

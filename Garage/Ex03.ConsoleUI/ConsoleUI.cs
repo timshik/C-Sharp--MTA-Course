@@ -10,7 +10,6 @@
     {
         private static readonly List<string> sr_FirstMenuStringArray = new List<string>();
         private static readonly List<string> sr_BooleanOptions = new List<string>();
-        private static readonly int sr_MaxSelectableChoice = 8;
         private GarageManager m_Garage = new GarageManager();
 
         public static void Main()
@@ -25,8 +24,7 @@
             printMessage(Strings.welcome_massage);
             do
             {
-                ShowOptions(sr_FirstMenuStringArray);
-                DoAction(getUserChoice(1, sr_MaxSelectableChoice));
+                DoAction(getOptionFromUser<int>("", sr_FirstMenuStringArray, 0));
             }
             while (AnotherAction());
         }
@@ -180,12 +178,10 @@
                         if (type == VehicleManager.eVehicleTypes.Car)
                         {
                             m_Garage.AddNewVehicle(VehicleManager.CreateNewCar(plateNumber, doorNumber, carColor, modelName, wheelManufacturer), ownerName, phoneNumber, newStatus);
-                        }
-                        else
-                        {
-                            m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricCar(modelName, plateNumber, wheelManufacturer, carColor, doorNumber), ownerName, phoneNumber, newStatus);
+                            break;
                         }
 
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricCar(modelName, plateNumber, wheelManufacturer, carColor, doorNumber), ownerName, phoneNumber, newStatus);
                         break;
                     case VehicleManager.eVehicleTypes.Motorcycle:
                     case VehicleManager.eVehicleTypes.ElectricMotorcycle:
@@ -194,12 +190,10 @@
                         if (type == VehicleManager.eVehicleTypes.Motorcycle)
                         {
                             m_Garage.AddNewVehicle(VehicleManager.CreateNewMotorcycle(modelName, plateNumber, engineCapacity, licenseType, wheelManufacturer), ownerName, phoneNumber, newStatus);
-                        }
-                        else
-                        {
-                            m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricMotorcycle(modelName, plateNumber, wheelManufacturer, licenseType, engineCapacity), ownerName, phoneNumber, newStatus);
+                            break;
                         }
 
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricMotorcycle(modelName, plateNumber, wheelManufacturer, licenseType, engineCapacity), ownerName, phoneNumber, newStatus);
                         break;
                     default:
                         break;

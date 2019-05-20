@@ -202,16 +202,6 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Engine capacity: {0} cc
-        ///.
-        /// </summary>
-        public static string engine_capacity {
-            get {
-                return ResourceManager.GetString("engine_capacity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter engine capacity.
         /// </summary>
         public static string engine_capacity_massage {
@@ -629,6 +619,16 @@ namespace n_Strings {
         public static string set_truck_capacity_level {
             get {
                 return ResourceManager.GetString("set_truck_capacity_level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Engine capacity: {0} cc
+        ///.
+        /// </summary>
+        public static string show_engine_capacity {
+            get {
+                return ResourceManager.GetString("show_engine_capacity", resourceCulture);
             }
         }
         

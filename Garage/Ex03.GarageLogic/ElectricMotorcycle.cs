@@ -40,7 +40,7 @@
 
             vehicleDetails.Append(base.ToString());
             vehicleDetails.AppendFormat(Strings.license_type, Garage.LicenseType.sr_LicenseType[(int)m_LicenseType]);
-            vehicleDetails.AppendFormat(Strings.engine_capacity, m_EngineCapacity);
+            vehicleDetails.AppendFormat(Strings.show_engine_capacity, m_EngineCapacity);
 
             return vehicleDetails.ToString();
         }
