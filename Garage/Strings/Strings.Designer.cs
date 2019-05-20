@@ -144,6 +144,15 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose the status for new vehicle.
+        /// </summary>
+        public static string choose_status_of_vehicle {
+            get {
+                return ResourceManager.GetString("choose_status_of_vehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose vehicle type:.
         /// </summary>
         public static string choose_type_of_vehicle {
@@ -403,6 +412,15 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ===============================.
+        /// </summary>
+        public static string line_brake {
+            get {
+                return ResourceManager.GetString("line_brake", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0}) {1}.
         /// </summary>
         public static string menu_format {
@@ -530,6 +548,26 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Owner name: {0}
+        ///.
+        /// </summary>
+        public static string owner_name {
+            get {
+                return ResourceManager.GetString("owner_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owner phone number: {0}
+        ///.
+        /// </summary>
+        public static string owner_phone_number {
+            get {
+                return ResourceManager.GetString("owner_phone_number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Paid.
         /// </summary>
         public static string paid_title {
@@ -573,6 +611,24 @@ namespace n_Strings {
         public static string remaning_energy {
             get {
                 return ResourceManager.GetString("remaning_energy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the capacity level of engine (cc).
+        /// </summary>
+        public static string set_engine_capacity {
+            get {
+                return ResourceManager.GetString("set_engine_capacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the capacity level of turck&apos;s trunk.
+        /// </summary>
+        public static string set_truck_capacity_level {
+            get {
+                return ResourceManager.GetString("set_truck_capacity_level", resourceCulture);
             }
         }
         
@@ -704,6 +760,16 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vehicle status: {0}
+        ///.
+        /// </summary>
+        public static string vehicle_status {
+            get {
+                return ResourceManager.GetString("vehicle_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome to the best Garage in the city.
         /// </summary>
         public static string welcome_massage {
@@ -729,6 +795,15 @@ namespace n_Strings {
         public static string wheel_manufacturer {
             get {
                 return ResourceManager.GetString("wheel_manufacturer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Will transporting hazardous materials?.
+        /// </summary>
+        public static string will_delivery_materials {
+            get {
+                return ResourceManager.GetString("will_delivery_materials", resourceCulture);
             }
         }
         

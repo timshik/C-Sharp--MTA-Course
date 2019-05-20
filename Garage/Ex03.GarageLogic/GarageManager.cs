@@ -14,14 +14,14 @@ namespace Garage
 
         public void AddNewVehicle(BaseVehicle i_Vehicle, string i_OwnerName, string i_PhoneNumber, VehicleProperties.eStateOfService i_Status)
         {
-            m_Vehicles.Add(new VehicleProperties(i_Vehicle,i_OwnerName,i_PhoneNumber,i_Status));   
+            m_Vehicles.Add(new VehicleProperties(i_Vehicle, i_OwnerName, i_PhoneNumber, i_Status));
         }
 
         public VehicleProperties GetVehicleByPlateNumber(string i_PlateNumber)
         {
             foreach (VehicleProperties vehicle in m_Vehicles)
             {
-                if(vehicle.Vehicle.PlateNumber.Equals(i_PlateNumber))
+                if (vehicle.Vehicle.PlateNumber.Equals(i_PlateNumber))
                 {
                     return vehicle;
                     //// vehicle.Status = VehicleProperties.eStateOfService.InRepair;//לבדוק האם הרכב כבר בתיקון או שולם 

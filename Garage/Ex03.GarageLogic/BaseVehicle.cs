@@ -11,11 +11,10 @@ namespace Garage
     public abstract class BaseVehicle
     {
         private string m_ModelName, m_PlateNumber;
-        private protected float m_PercentOfRemainingEnergy;
+        protected float m_PercentOfRemainingEnergy;
         private Wheel[] m_Wheels;
         
-        public BaseVehicle(int i_NumberOfWheels, string i_ModelName,
-            string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer)
+        public BaseVehicle(int i_NumberOfWheels, string i_ModelName, string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer)
         {
             m_Wheels = new Wheel[i_NumberOfWheels];
             m_ModelName = i_ModelName;
@@ -29,8 +28,8 @@ namespace Garage
 
         public float PercentOfRemainingEnergy
         {
-            set { m_PercentOfRemainingEnergy = value; }
             get { return m_PercentOfRemainingEnergy; }
+            set { m_PercentOfRemainingEnergy = value; }
         }
 
         public Wheel[] Wheels

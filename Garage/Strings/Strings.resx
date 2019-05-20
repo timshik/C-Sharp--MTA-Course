@@ -354,4 +354,25 @@
   <data name="enter_wheel_manufacturer" xml:space="preserve">
     <value>Enter wheel manufacturer name:</value>
   </data>
+  <data name="owner_name" xml:space="preserve">
+    <value>Owner name: {0}
+</value>
+  </data>
+  <data name="owner_phone_number" xml:space="preserve">
+    <value>Owner phone number: {0}
+</value>
+  </data>
+  <data name="set_engine_capacity" xml:space="preserve">
+    <value>Set the capacity level of engine (cc)</value>
+  </data>
+  <data name="set_truck_capacity_level" xml:space="preserve">
+    <value>Set the capacity level of turck's trunk</value>
+  </data>
+  <data name="vehicle_status" xml:space="preserve">
+    <value>Vehicle status: {0}
+</value>
+  </data>
+  <data name="will_delivery_materials" xml:space="preserve">
+    <value>Will transporting hazardous materials?</value>
+  </data>
 </root>

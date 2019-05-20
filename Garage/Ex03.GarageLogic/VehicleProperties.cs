@@ -59,5 +59,16 @@ namespace Garage
             get { return m_Status; }
             set { m_Status = value; }
         }
+
+        public override string ToString()
+        {
+            StringBuilder vehicleDetails = new StringBuilder();
+            vehicleDetails.AppendLine(m_Vehicle.ToString());
+            vehicleDetails.AppendFormat(Strings.owner_name, m_OwnerName);
+            vehicleDetails.AppendFormat(Strings.owner_phone_number, m_PhoneNumber);
+            vehicleDetails.AppendFormat(Strings.vehicle_status, sr_StateListOptions[(int)m_Status]);
+
+            return vehicleDetails.ToString();
+        }
     }
 }
