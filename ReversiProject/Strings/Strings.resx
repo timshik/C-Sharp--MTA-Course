@@ -166,10 +166,10 @@
     <value>Do you want to play again? press Y/N</value>
   </data>
   <data name="play_against_option_computer" xml:space="preserve">
-    <value>1) Play vs computer</value>
+    <value>2) Play vs computer</value>
   </data>
   <data name="play_against_option_player" xml:space="preserve">
-    <value>2)  Play vs another player</value>
+    <value>3) Play vs another player</value>
   </data>
   <data name="winner_declaration" xml:space="preserve">
     <value>The winner is {0} !</value>
@@ -178,7 +178,7 @@
     <value>Thank you for playing, Hope to see you soon!</value>
   </data>
   <data name="choose_color" xml:space="preserve">
-    <value>Please choose your color:
+    <value>Please choose color for first player:
 1) White
 2) Black</value>
   </data>
@@ -190,5 +190,14 @@
   </data>
   <data name="player_score" xml:space="preserve">
     <value>{0}'s Score: {1}</value>
+  </data>
+  <data name="first_computer_name" xml:space="preserve">
+    <value>First Computer</value>
+  </data>
+  <data name="play_against_option_computer_vs_computer" xml:space="preserve">
+    <value>1) Computer vs Computer</value>
+  </data>
+  <data name="second_computer_name" xml:space="preserve">
+    <value>Second Computer</value>
   </data>
 </root>

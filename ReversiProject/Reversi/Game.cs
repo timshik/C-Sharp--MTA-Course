@@ -1,6 +1,7 @@
 ﻿namespace n_Game
 {
     using System;
+    using System.Diagnostics;
     using n_Board;
     using n_Player;
     using n_Square;
@@ -10,6 +11,8 @@
     public class Game
     {
         private static Player[] m_Players = new Player[2];
+        private static readonly int sr_FirstAiPlayerCornerValue = 200, sr_FirstAiPlayerSideValue = 20, sr_FirstAiPlayerRestValue = 5, sr_FirstDepth = 6;
+        private static readonly int sr_SecondAiPlayerCornerValue = 100, sr_SecondAiPlayerSideValue = 20, sr_SecondAiPlayerRestValue = 5, sr_SecondDepth = 6;
         private ePlayAgainst WhoWillThePlayerPlayWith;
         private Board m_GameBoard;
         public static int m_MatrixSize;
@@ -21,8 +24,9 @@
 
         private enum ePlayAgainst
         {
-            Player = 2,
-            Computer = 1
+            PlayerVsPlayer = 2,
+            PlayerVsComputer = 1,
+            ComputerVsComputer = 0
         }
 
         public enum eWhichPlayer
@@ -39,37 +43,58 @@
 
         public void PlayGame()
         {
-            InitializeGame();
-            if (WhoWillThePlayerPlayWith == ePlayAgainst.Computer)
+            WhoWillThePlayerPlayWith = (ePlayAgainst)UI.GetChoicePlayAgainst();
+            Square.eSquareColor firstColor, secondColor;
+            AskPlayerToChooseColor(out firstColor, out secondColor);
+            switch (WhoWillThePlayerPlayWith)
             {
-                m_Players[1] = new Player(Strings.computer_name, Square.eSquareColor.Black);
-                m_Players[1].Computer = true;
-                AskPlayerToChooseColor(m_Players);
+                case ePlayAgainst.PlayerVsPlayer:
+                    m_Players[0] = new Player(UI.GetPlayerName(), firstColor);
+                    m_Players[1] = new Player(UI.GetPlayerName(), secondColor);
+                    break;
+                case ePlayAgainst.PlayerVsComputer:
+                    if (firstColor == Square.eSquareColor.Black)
+                    {
+                        m_Players[0] = new Player(UI.GetPlayerName(), firstColor);
+                        m_Players[1] = new AiPlayer(Strings.computer_name, secondColor,
+                                                sr_FirstAiPlayerCornerValue, sr_FirstAiPlayerSideValue, sr_FirstAiPlayerRestValue, sr_FirstDepth);
+                    }
+                    else
+                    {
+                        m_Players[1] = new Player(UI.GetPlayerName(), firstColor);
+                        m_Players[0] = new AiPlayer(Strings.computer_name, secondColor,
+                                                sr_FirstAiPlayerCornerValue, sr_FirstAiPlayerSideValue, sr_FirstAiPlayerRestValue, sr_FirstDepth);
+                    }
+                    break;
+                case ePlayAgainst.ComputerVsComputer:
+                    m_Players[0] = new AiPlayer(Strings.first_computer_name, firstColor,
+                        sr_FirstAiPlayerCornerValue, sr_FirstAiPlayerSideValue, sr_FirstAiPlayerRestValue, sr_FirstDepth);
+                    m_Players[1] = new AiPlayer(Strings.second_computer_name, secondColor,
+                        sr_SecondAiPlayerCornerValue, sr_SecondAiPlayerSideValue, sr_SecondAiPlayerRestValue, sr_SecondDepth);
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                m_Players[1] = new Player(UI.GetPlayerName(), Square.eSquareColor.Black);
-            }
-
+            SetBoard();
+            Stopwatch sw;
+            sw = Stopwatch.StartNew();
             StartPlaying();
+            Console.WriteLine(sw.ElapsedMilliseconds);
             EndGame();
         }
 
-        private void AskPlayerToChooseColor(Player[] m_Players)
+        private void AskPlayerToChooseColor(out Square.eSquareColor i_First, out Square.eSquareColor i_Second)
         {
             if (UI.ChooseColor() == Square.eSquareColor.Black)
             {
-                m_Players[0].Computer = true;
-                m_Players[1].NameOfUser = m_Players[0].NameOfUser;
-                m_Players[1].Computer = !true;
-                m_Players[0].NameOfUser = Strings.computer_name;
+                i_First = Square.eSquareColor.Black;
+                i_Second = Square.eSquareColor.White;
             }
-        }
-
-        private void InitializeGame()
-        {
-            m_Players[0] = new Player(UI.GetPlayerName(), Square.eSquareColor.White);
-            WhoWillThePlayerPlayWith = (ePlayAgainst)UI.GetChoicePlayAgainst();
+            else
+            {
+                i_First = Square.eSquareColor.White;
+                i_Second = Square.eSquareColor.Black;
+            }
         }
 
         private void SetBoard()
@@ -81,9 +106,7 @@
 
         public void StartPlaying()
         {
-            SetBoard();
             bool isAvailableMoves, disableNoMoveErrorTwice = !true;
-
 
             do
             {
@@ -99,7 +122,7 @@
                     }
                     else
                     {
-                        if(!disableNoMoveErrorTwice)
+                        if (!disableNoMoveErrorTwice)
                         {
                             UI.ShowError(string.Format(Strings.player_dont_have_available_moves, m_Players[i].NameOfUser));
                             disableNoMoveErrorTwice = true;
@@ -143,11 +166,11 @@
                 playerNumber = m_Players[0].PlayerColor == Square.eSquareColor.Black ? 1 : 0;
             }
             else
-            { 
+            {
                 playerNumber = -1;
             }
 
-            if(playerNumber != -1)
+            if (playerNumber != -1)
             {
                 winnerName = m_Players[playerNumber].NameOfUser;
             }
@@ -168,9 +191,11 @@
 
         public void EndGame()
         {
-            if (UI.RestartGame())
+            while (UI.RestartGame())
             {
                 StartPlaying();
+                m_GameBoard = new Board(m_MatrixSize);
+                m_GameBoard.PrintBoard();
             }
         }
     }

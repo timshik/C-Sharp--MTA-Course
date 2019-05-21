@@ -25,15 +25,16 @@
             int value = 0;
 
             Screen.Clear();
+            PrintLine(Strings.play_against_option_computer_vs_computer);
             PrintLine(Strings.play_against_option_computer);
             PrintLine(Strings.play_against_option_player);
 
-            while (!int.TryParse(Console.ReadLine(), out value) || (value != 1 && value != 2))
+            while (!int.TryParse(Console.ReadLine(), out value) || (value < 1 || value > 4))
             {
                 ShowError(Strings.error_enter_valid_integer);
             }
 
-            return value;
+            return value - 1;
         }
 
         public static int GetBoardSize()
@@ -43,7 +44,7 @@
 
             int playerChoose = GetInteger();
 
-            while (playerChoose != 8 && playerChoose != 6)
+            while (playerChoose != 8 && playerChoose != 4)
             {
                 ShowError(Strings.board_size_invalid);
                 playerChoose = GetInteger();

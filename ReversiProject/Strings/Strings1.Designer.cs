@@ -19,7 +19,7 @@ namespace Reversi {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
@@ -70,7 +70,7 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please choose your color:
+        ///   Looks up a localized string similar to Please choose color for first player:
         ///1) White
         ///2) Black.
         /// </summary>
@@ -198,6 +198,15 @@ namespace Reversi {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Computer.
+        /// </summary>
+        public static string first_computer_name {
+            get {
+                return ResourceManager.GetString("first_computer_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You choose invalid square, please choose other one..
         /// </summary>
         public static string not_valid_square {
@@ -216,7 +225,7 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1) Play vs computer.
+        ///   Looks up a localized string similar to 2) Play vs computer.
         /// </summary>
         public static string play_against_option_computer {
             get {
@@ -225,7 +234,16 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2)  Play vs another player.
+        ///   Looks up a localized string similar to 1) Computer vs Computer.
+        /// </summary>
+        public static string play_against_option_computer_vs_computer {
+            get {
+                return ResourceManager.GetString("play_against_option_computer_vs_computer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3) Play vs another player.
         /// </summary>
         public static string play_against_option_player {
             get {
@@ -266,6 +284,15 @@ namespace Reversi {
         public static string player_score {
             get {
                 return ResourceManager.GetString("player_score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second Computer.
+        /// </summary>
+        public static string second_computer_name {
+            get {
+                return ResourceManager.GetString("second_computer_name", resourceCulture);
             }
         }
         

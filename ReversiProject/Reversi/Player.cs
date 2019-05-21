@@ -6,15 +6,12 @@
     using n_Game;
     using n_Board;
     using Reversi;
-    using n_AI;
 
     public class Player
     {
         private static readonly bool sr_MakeMove = true;
         private string m_NameOfUser;
-        private bool m_isComputer;
-        private Square.eSquareColor m_PlayerColor;
-        private AI m_Computer;
+        protected Square.eSquareColor m_PlayerColor;
 
         public Square.eSquareColor PlayerColor
         {
@@ -25,19 +22,7 @@
         public Player(string i_NameOfUser, Square.eSquareColor i_PlayerColor)
         {
             m_NameOfUser = i_NameOfUser;
-            m_isComputer = !true;
             m_PlayerColor = i_PlayerColor;
-            m_Computer = null;
-        }
-
-        public bool Computer
-        {
-            get { return m_isComputer; }
-            set
-            {
-                m_isComputer = value;
-                m_Computer = new AI();
-            }
         }
 
         public string NameOfUser
@@ -100,17 +85,9 @@
             while (!userChoice.CheckIfSquareIsValidAndMakeMove(i_WhichPlayer, sr_MakeMove, i_Board));
         }
 
-        public Square[,] Play(Square[,] i_Board)
+        public virtual Square[,] Play(Square[,] i_Board)
         {
-            if (m_isComputer)
-            {
-                i_Board = m_Computer.AlphaBetaPruning(i_Board, this);
-            }
-            else
-            {
-                PlayerTurn((Game.eWhichPlayer)m_PlayerColor, i_Board);
-            }
-
+            PlayerTurn((Game.eWhichPlayer)m_PlayerColor, i_Board);
             return i_Board;
         }
 
