@@ -50,6 +50,14 @@ namespace Garage
             set { m_PlateNumber = value; }
         }
 
+        public void FillTires(float i_Amount)
+        {
+            foreach (Wheel wheel in m_Wheels)
+            {
+                wheel.FillTire(i_Amount);
+            }
+        }
+
         public override string ToString()
         {
             StringBuilder vehicleDetails = new StringBuilder();

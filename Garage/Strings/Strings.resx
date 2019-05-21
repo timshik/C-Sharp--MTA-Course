@@ -153,7 +153,7 @@
     <value>Choose vehicle type:</value>
   </data>
   <data name="enter_plate_number" xml:space="preserve">
-    <value>For adding new vehicle to the garage please enter plate number:</value>
+    <value>Please enter plate number:</value>
   </data>
   <data name="false_option" xml:space="preserve">
     <value>No</value>
@@ -189,7 +189,7 @@
     <value>Exit</value>
   </data>
   <data name="plate_didnt_found" xml:space="preserve">
-    <value>Sorry but the plate {0} didn't find in our system! Create new vehicle:</value>
+    <value>Sorry but the plate {0} didn't find in our system!</value>
   </data>
   <data name="plate_found" xml:space="preserve">
     <value>The vehicle with plate number {0} is already found in system, Move vehicle to status repair</value>
@@ -380,5 +380,29 @@
   </data>
   <data name="will_delivery_materials" xml:space="preserve">
     <value>Will transporting hazardous materials?</value>
+  </data>
+  <data name="choose_type_of_fuel" xml:space="preserve">
+    <value>Please choose type of fuel you want to fuel</value>
+  </data>
+  <data name="create_new_vehicle" xml:space="preserve">
+    <value>Please enter the details of new vehicle you want to add to the garage:</value>
+  </data>
+  <data name="out_of_range" xml:space="preserve">
+    <value>Sorry, but you entered invalid value.</value>
+  </data>
+  <data name="out_of_range_max" xml:space="preserve">
+    <value>The value {0} is more than maximum.</value>
+  </data>
+  <data name="out_of_range_min" xml:space="preserve">
+    <value>The value {0} is less than minimum.</value>
+  </data>
+  <data name="try_to_charge_fuel_vehicle" xml:space="preserve">
+    <value>You tried to charge fuel based vehicle, that cannot be excute!</value>
+  </data>
+  <data name="try_to_fuel_electric_vehicle" xml:space="preserve">
+    <value>You tried to fuel electric vehicle, that cannot be excute!</value>
+  </data>
+  <data name="try_to_fuel_other_type_of_fuel" xml:space="preserve">
+    <value>Sorry but you tried to fuel with the wrong type of fuel, we cannot do that!</value>
   </data>
 </root>

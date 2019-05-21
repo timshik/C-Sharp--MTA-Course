@@ -17,7 +17,7 @@
         {
             m_Type = i_Type;
             r_MaxFuelLevel = i_MaxFuelLevel;
-            m_FuelLevel = i_MaxFuelLevel;
+            m_FuelLevel = Garage.GarageManager.sr_BasicStartFloatLevel;
         }
 
         public static void SetEnergeyTypeList()
@@ -47,14 +47,14 @@
             set { m_Type = value; }
         }
 
-        public float FuelLevel
+        public float Fuel
         {
             get { return m_FuelLevel; }
             set
             {
-                if (m_FuelLevel + value > r_MaxFuelLevel)
+                if (m_FuelLevel + value > r_MaxFuelLevel || m_FuelLevel + value < 0)
                 {
-                    //// throw exception
+                    throw new ValueOutOfRangeException(r_MaxFuelLevel - m_FuelLevel, 0, Strings.out_of_range);
                 }
 
                 m_FuelLevel += value;

@@ -153,6 +153,15 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please choose type of fuel you want to fuel.
+        /// </summary>
+        public static string choose_type_of_fuel {
+            get {
+                return ResourceManager.GetString("choose_type_of_fuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose vehicle type:.
         /// </summary>
         public static string choose_type_of_vehicle {
@@ -169,6 +178,15 @@ namespace n_Strings {
         public static string continue_massage {
             get {
                 return ResourceManager.GetString("continue_massage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the details of new vehicle you want to add to the garage:.
+        /// </summary>
+        public static string create_new_vehicle {
+            get {
+                return ResourceManager.GetString("create_new_vehicle", resourceCulture);
             }
         }
         
@@ -238,7 +256,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For adding new vehicle to the garage please enter plate number:.
+        ///   Looks up a localized string similar to Please enter plate number:.
         /// </summary>
         public static string enter_plate_number {
             get {
@@ -538,6 +556,33 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry, but you entered invalid value..
+        /// </summary>
+        public static string out_of_range {
+            get {
+                return ResourceManager.GetString("out_of_range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value {0} is more than maximum..
+        /// </summary>
+        public static string out_of_range_max {
+            get {
+                return ResourceManager.GetString("out_of_range_max", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value {0} is less than minimum..
+        /// </summary>
+        public static string out_of_range_min {
+            get {
+                return ResourceManager.GetString("out_of_range_min", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Owner name: {0}
         ///.
         /// </summary>
@@ -567,7 +612,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry but the plate {0} didn&apos;t find in our system! Create new vehicle:.
+        ///   Looks up a localized string similar to Sorry but the plate {0} didn&apos;t find in our system!.
         /// </summary>
         public static string plate_didnt_found {
             get {
@@ -747,6 +792,33 @@ namespace n_Strings {
         public static string trunk_capacity {
             get {
                 return ResourceManager.GetString("trunk_capacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You tried to charge fuel based vehicle, that cannot be excute!.
+        /// </summary>
+        public static string try_to_charge_fuel_vehicle {
+            get {
+                return ResourceManager.GetString("try_to_charge_fuel_vehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You tried to fuel electric vehicle, that cannot be excute!.
+        /// </summary>
+        public static string try_to_fuel_electric_vehicle {
+            get {
+                return ResourceManager.GetString("try_to_fuel_electric_vehicle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry but you tried to fuel with the wrong type of fuel, we cannot do that!.
+        /// </summary>
+        public static string try_to_fuel_other_type_of_fuel {
+            get {
+                return ResourceManager.GetString("try_to_fuel_other_type_of_fuel", resourceCulture);
             }
         }
         

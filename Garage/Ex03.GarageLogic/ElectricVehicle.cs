@@ -12,12 +12,12 @@
             : base(i_NumberOfWheels, i_ModelName, i_PlateNumber, i_MaxWheelPressure, i_WheelManufacturer)
         {
             m_MaxBatteryTime = i_MaxBatteryTime;
-            m_RemainingBatteryTime = 100;
+            m_RemainingBatteryTime = GarageManager.sr_BasicStartFloatLevel;
         }
 
         private void calculatePercentOfRemainingEnergy()
         {
-            m_PercentOfRemainingEnergy = (m_MaxBatteryTime / m_RemainingBatteryTime) * 100;
+            m_PercentOfRemainingEnergy = (m_RemainingBatteryTime / m_MaxBatteryTime) * 100;
         }
 
         public float RemainingBatteryTime
@@ -34,9 +34,9 @@
 
         public void ChargeBattery(float i_AmmountofElectricToCharge)
         {
-            if (m_RemainingBatteryTime + i_AmmountofElectricToCharge > m_MaxBatteryTime)
+            if (m_RemainingBatteryTime + i_AmmountofElectricToCharge > m_MaxBatteryTime || m_RemainingBatteryTime + i_AmmountofElectricToCharge < 0)
             {
-                //// TODO : Throw exception
+                throw new ValueOutOfRangeException(m_RemainingBatteryTime, 0, Strings.out_of_range);
             }
 
             m_RemainingBatteryTime += i_AmmountofElectricToCharge;

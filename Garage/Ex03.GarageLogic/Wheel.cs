@@ -2,6 +2,7 @@
 {
     using System.Text;
     using n_Strings;
+    using Garage;
 
     public class Wheel
     {
@@ -16,16 +17,14 @@
             m_CurrentPressure = i_MaxPressure;
         }
 
-        public void FillTyre(float i_UnitToFill)
+        public void FillTire(float i_UnitToFill)
         {
-            if(m_CurrentPressure + i_UnitToFill > r_MaxPressure)
+            if (m_CurrentPressure + i_UnitToFill > r_MaxPressure || m_CurrentPressure + i_UnitToFill < 0)
             {
-                //// throw exception
+                throw new ValueOutOfRangeException(r_MaxPressure - m_CurrentPressure, 0, Strings.out_of_range);
             }
-            else
-            {
-                m_CurrentPressure += r_MaxPressure;
-            }
+
+            m_CurrentPressure += r_MaxPressure;
         }
 
         public float CurrentPressure

@@ -24,9 +24,9 @@
             printMessage(Strings.welcome_massage);
             do
             {
-                DoAction(getOptionFromUser<int>("", sr_FirstMenuStringArray, 0));
+                DoAction();
             }
-            while (AnotherAction());
+            while (askForAnotherAction());
         }
 
         private void initializationEnums()
@@ -61,17 +61,11 @@
 
         private int getUserChoice(int i_MinValue, int i_MaxValue)
         {
-            int userChoice;
-
-            while (!int.TryParse(Console.ReadLine(), out userChoice))
-            {
-                showError(Strings.invalid_integer);
-            }
+            int userChoice = getIntegerFromUser();
 
             if (userChoice < i_MinValue || userChoice > i_MaxValue)
             {
-                showError(Strings.invalid_menu_choice);
-                userChoice = getUserChoice(i_MinValue, i_MaxValue);
+                throw new ValueOutOfRangeException(i_MaxValue, i_MinValue, Strings.invalid_menu_choice);
             }
 
             return userChoice;
@@ -85,36 +79,52 @@
             }
         }
 
-        public void DoAction(int i_Choice)
+        public void DoAction()
         {
-            switch (i_Choice)
+            try
             {
-                case 1:
-                    addNewVehicleUI();
-                    break;
-                case 2:
-                    ShowPlatesOfAllVehiclesUI();
-                    break;
-                case 3:
-                    ChangePropertiesUI();
-                    break;
-                case 4:
-                    InflatingWheelUI();
-                    break;
-                case 5:
-                    FuelVehicleUI();
-                    break;
-                case 6:
-                    ChargeElectricVehicleUI();
-                    break;
-                case 7:
-                    ShowVehiclesByPlateUI();
-                    break;
-                case 8:
-                    exitProgram();
-                    break;
-                default:
-                    break;
+                int choice = getOptionFromUser<int>(string.Empty, sr_FirstMenuStringArray, 0);
+                switch (choice)
+                {
+                    case 1:
+                        addNewVehicleUI();
+                        break;
+                    case 2:
+                        ShowPlatesOfAllVehiclesUI();
+                        break;
+                    case 3:
+                        ChangePropertiesUI();
+                        break;
+                    case 4:
+                        InflatingWheelUI();
+                        break;
+                    case 5:
+                        FuelVehicleUI();
+                        break;
+                    case 6:
+                        ChargeElectricVehicleUI();
+                        break;
+                    case 7:
+                        ShowVehiclesByPlateUI();
+                        break;
+                    case 8:
+                        exitProgram();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (ValueOutOfRangeException i_ValueOutOfRange)
+            {
+                showError(i_ValueOutOfRange.Message);
+            }
+            catch (FormatException i_FormatException)
+            {
+                showError(i_FormatException.Message);
+            }
+            catch (Exception i_Exception)
+            {
+                showError(i_Exception.Message);
             }
         }
 
@@ -124,7 +134,7 @@
             Environment.Exit(1);
         }
 
-        public bool AnotherAction()
+        private bool askForAnotherAction()
         {
             printMessage(Strings.continue_massage);
             return getUserChoice(1, 2) == 1;
@@ -145,7 +155,7 @@
         {
             VehicleProperties.eStateOfService newStatus;
             string plateNumber = getStringFromUser(Strings.enter_plate_number);
-            
+
             try
             {
                 VehicleProperties vehicle = m_Garage.GetVehicleByPlateNumber(plateNumber);
@@ -154,9 +164,10 @@
                 newStatus = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
                 vehicle.Status = newStatus;
             }
-            catch (ArgumentException i_PlateError)
+            catch (Exception i_PlateError)
             {
                 showError(i_PlateError.Message);
+                printMessage(Strings.create_new_vehicle);
                 VehicleManager.eVehicleTypes type = getOptionFromUser<VehicleManager.eVehicleTypes>(Strings.choose_type_of_vehicle, VehicleManager.VehicleList, -1);
                 string modelName = getStringFromUser(Strings.enter_model_name);
                 string wheelManufacturer = getStringFromUser(Strings.enter_wheel_manufacturer);
@@ -214,9 +225,9 @@
         {
             float userChoice;
 
-            while (!float.TryParse(Console.ReadLine(), out userChoice))
+            if (!float.TryParse(Console.ReadLine(), out userChoice))
             {
-                showError(Strings.invalid_integer);
+                throw new FormatException(Strings.invalid_integer);
             }
 
             return userChoice;
@@ -238,9 +249,9 @@
         {
             int userChoice;
 
-            while (!int.TryParse(Console.ReadLine(), out userChoice))
+            if (!int.TryParse(Console.ReadLine(), out userChoice))
             {
-                showError(Strings.invalid_integer);
+                throw new FormatException(Strings.invalid_integer);
             }
 
             return userChoice;
@@ -255,32 +266,54 @@
 
             printMessage(Strings.enter_plate_number);
             plateNumber = getStringFromUser();
+            energyType = getOptionFromUser<FuelVehicle.eEnergyType>(Strings.choose_type_of_fuel, FuelVehicle.sr_EnergyTypeList, -1);
+            amountOfFuelToAdd = getFloatFromUser(Strings.amount_fuel_massage);
             try
             {
                 VehicleToFuel = m_Garage.GetVehicleByPlateNumber(plateNumber).Vehicle;
-                ShowOptions(FuelVehicle.sr_EnergyTypeList);
-                energyType = (FuelVehicle.eEnergyType)(getUserChoice(1, FuelVehicle.sr_EnergyTypeList.Count) - 1);
-                Console.WriteLine(Strings.amount_fuel_massage);
-                amountOfFuelToAdd = getFloatFromUser();
                 m_Garage.FuelVehicle(VehicleToFuel, energyType, amountOfFuelToAdd);
             }
-            catch (ArgumentException i_PlateError)
+            catch (ValueOutOfRangeException i_ValueOutOfRange)
             {
-                showError(i_PlateError.Message);
+                showError(i_ValueOutOfRange.Message);
+                if (amountOfFuelToAdd > i_ValueOutOfRange.MaxValue)
+                {
+                    showError(string.Format(Strings.out_of_range_max, amountOfFuelToAdd));
+                }
+                else
+                {
+                    showError(string.Format(Strings.out_of_range_min, amountOfFuelToAdd));
+                }
+            }
+            catch (Exception i_Exception)
+            {
+                showError(i_Exception.Message);
             }
         }
 
         public void ChargeElectricVehicleUI()
         {
             string plateNumber = getStringFromUser(Strings.enter_plate_number);
+            float amountOfElectricInMinutesToAdd = getFloatFromUser(Strings.amount_fuel_massage);
 
             try
             {
                 BaseVehicle VehicleToCharge = m_Garage.GetVehicleByPlateNumber(plateNumber).Vehicle;
-                float amountOfElectricInMinutesToAdd = getFloatFromUser(Strings.amount_fuel_massage);
                 m_Garage.ChargeElectricVehicle(VehicleToCharge, amountOfElectricInMinutesToAdd);
             }
-            catch (ArgumentException i_PlateError)
+            catch (ValueOutOfRangeException i_ValueOutOfRange)
+            {
+                showError(i_ValueOutOfRange.Message);
+                if (amountOfElectricInMinutesToAdd > i_ValueOutOfRange.MaxValue)
+                {
+                    showError(string.Format(Strings.out_of_range_max, amountOfElectricInMinutesToAdd));
+                }
+                else
+                {
+                    showError(string.Format(Strings.out_of_range_min, amountOfElectricInMinutesToAdd));
+                }
+            }
+            catch (Exception i_PlateError)
             {
                 showError(i_PlateError.Message);
             }
@@ -290,7 +323,7 @@
         {
             foreach (VehicleProperties vehicle in m_Garage.Vehicles)
             {
-                printMessage(string.Format("{0}\n{1}\n",vehicle.ToString(),Strings.line_brake));
+                printMessage(string.Format("{0}\n{1}\n", vehicle.ToString(), Strings.line_brake));
             }
         }
 
