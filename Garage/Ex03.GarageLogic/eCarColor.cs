@@ -11,9 +11,6 @@ namespace Garage
     {
         public static readonly List<string> sr_CarColorNames = new List<string>();
 
-        /// <summary>
-        /// Type of car colors
-        /// </summary>
         public enum eCarColor
         {
             Red,

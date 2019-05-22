@@ -13,16 +13,20 @@ namespace Garage
         private string m_ModelName, m_PlateNumber;
         protected float m_PercentOfRemainingEnergy;
         private Wheel[] m_Wheels;
-        
-        public BaseVehicle(int i_NumberOfWheels, string i_ModelName, string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer)
-        {
-            m_Wheels = new Wheel[i_NumberOfWheels];
-            m_ModelName = i_ModelName;
-            m_PlateNumber = i_PlateNumber;
 
-            for (int i = 0; i < i_NumberOfWheels; i++)
+        public BaseVehicle(Dictionary<string, object> i_Arguments)
+        {
+            int numberOfWheels = (int)i_Arguments[VehicleManager.sr_KeyNumberOfWheels];
+            m_Wheels = new Wheel[numberOfWheels];
+            m_ModelName = (string)i_Arguments[VehicleManager.sr_KeyModelName];
+            m_PlateNumber = (string)i_Arguments[VehicleManager.sr_KeyPlateNumber];
+
+            string wheelManufacturer = (string)i_Arguments[VehicleManager.sr_KeyWheelManufacturer];
+            float wheelMaxPressure = (float)i_Arguments[VehicleManager.sr_KeyMaxWheelPressure];
+
+            for (int i = 0; i < numberOfWheels; i++)
             {
-                m_Wheels[i] = new Wheel(i_WheelManufacturer, i_MaxWheelPressure);
+                m_Wheels[i] = new Wheel(wheelManufacturer, wheelMaxPressure);
             }
         }
 
@@ -50,17 +54,18 @@ namespace Garage
             set { m_PlateNumber = value; }
         }
 
-        public void FillTires(float i_Amount)
+        public void FillTires()
         {
             foreach (Wheel wheel in m_Wheels)
             {
-                wheel.FillTire(i_Amount);
+                wheel.FillTire(wheel.MaxPressure - wheel.CurrentPressure);
             }
         }
 
         public override string ToString()
         {
             StringBuilder vehicleDetails = new StringBuilder();
+            vehicleDetails.AppendFormat(Strings.show_type_of_vehicle, GetType().Name);
             vehicleDetails.AppendFormat(Strings.plate_number, m_PlateNumber);
             vehicleDetails.AppendFormat(Strings.model_name, m_ModelName);
             vehicleDetails.AppendFormat(Strings.remaning_energy, m_PercentOfRemainingEnergy);

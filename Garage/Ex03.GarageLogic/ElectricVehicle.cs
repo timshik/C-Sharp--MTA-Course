@@ -1,5 +1,6 @@
 ﻿namespace Garage
 {
+    using System.Collections.Generic;
     using System.Text;
     using n_Strings;
 
@@ -8,10 +9,10 @@
         private float m_RemainingBatteryTime = 0;
         private float m_MaxBatteryTime;
 
-        public ElectricVehicle(int i_NumberOfWheels, string i_ModelName, string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer, float i_MaxBatteryTime)
-            : base(i_NumberOfWheels, i_ModelName, i_PlateNumber, i_MaxWheelPressure, i_WheelManufacturer)
+        public ElectricVehicle(Dictionary<string, object> i_Arguments)
+            : base(i_Arguments)
         {
-            m_MaxBatteryTime = i_MaxBatteryTime;
+            m_MaxBatteryTime = (float)i_Arguments[VehicleManager.sr_KeyMaxBatteryTime];
             m_RemainingBatteryTime = GarageManager.sr_BasicStartFloatLevel;
         }
 
@@ -50,6 +51,7 @@
             vehicleDetails.Append(base.ToString());
             vehicleDetails.AppendLine(Strings.electric_vehicle_battery);
             vehicleDetails.AppendFormat(Strings.battery_level, m_RemainingBatteryTime);
+            vehicleDetails.AppendFormat(Strings.maximum_battery_level, m_MaxBatteryTime);
 
             return vehicleDetails.ToString();
         }

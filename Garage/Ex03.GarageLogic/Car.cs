@@ -1,5 +1,6 @@
 namespace n_Car
 {
+    using System.Collections.Generic;
     using System.Text;
     using n_Vehicle;
     using Garage;
@@ -7,15 +8,17 @@ namespace n_Car
 
     public class Car : FuelVehicle
     {
-        public static readonly int sr_NumberOfWheels = 4, sr_FullTunkLevel = 55, sr_MaxPressure = 31;
+        public static readonly int sr_NumberOfWheels = 4;
+        public static readonly float sr_MaxPressure = 31, sr_FullTunkLevel = 55;
+        public static readonly eEnergyType sr_EnergyType = eEnergyType.Octan96;
         private CarColor.eCarColor m_CarColor;
         private DoorNumber.eNumberOfDoors m_NumberOfDoors;
 
-        public Car(string i_PlateNumber, DoorNumber.eNumberOfDoors i_NumberOfDoors, CarColor.eCarColor i_CarColor, string i_ModelName, string i_WheelManufacturer)
-            : base(sr_NumberOfWheels, sr_FullTunkLevel, i_ModelName, i_PlateNumber, sr_MaxPressure, i_WheelManufacturer, eEnergyType.Octan95)
+        public Car(Dictionary<string, object> i_Arguments)
+            : base(i_Arguments)
         {
-            m_NumberOfDoors = i_NumberOfDoors;
-            m_CarColor = i_CarColor;
+            m_NumberOfDoors = (DoorNumber.eNumberOfDoors)i_Arguments[VehicleManager.sr_KeyNumberOfDoors];
+            m_CarColor = (CarColor.eCarColor)i_Arguments[VehicleManager.sr_KeyCarColor];
         }
 
         public DoorNumber.eNumberOfDoors NumberOfDoors
@@ -36,7 +39,7 @@ namespace n_Car
 
             vehicleDetails.Append(base.ToString());
             vehicleDetails.AppendFormat(Strings.car_color, Garage.CarColor.sr_CarColorNames[(int)m_CarColor]);
-            vehicleDetails.AppendFormat(Strings.door_number, m_NumberOfDoors);
+            vehicleDetails.AppendFormat(Strings.door_number, Garage.DoorNumber.sr_DoorsOptions[(int)m_NumberOfDoors - 2]);
 
             return vehicleDetails.ToString();
         }
