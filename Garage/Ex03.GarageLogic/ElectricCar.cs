@@ -1,20 +1,21 @@
 ﻿namespace Garage
 {
+    using System.Collections.Generic;
     using System.Text;
     using n_Strings;
 
     public class ElectricCar : ElectricVehicle
     {
-        private static readonly int sr_NumberOfWheels = 4, sr_MaxPressure = 33;
-        private static readonly float sr_FullBatteryLevel = 1.8f;
+        public static readonly int sr_NumberOfWheels = 4;
+        public static readonly float sr_FullBatteryLevel = 1.8f, sr_MaxPressure = 33;
         private CarColor.eCarColor m_CarColor;
         private DoorNumber.eNumberOfDoors m_NumberOfDoors;
 
-        public ElectricCar(string i_ModelName, string i_PlateNumber, string i_WheelManufacturer, CarColor.eCarColor i_CarColor, DoorNumber.eNumberOfDoors i_NumberOfDoors)
-            : base(sr_NumberOfWheels, i_ModelName, i_PlateNumber, sr_MaxPressure, i_WheelManufacturer, sr_FullBatteryLevel)
+        public ElectricCar(Dictionary<string, object> i_Arguments)
+            : base(i_Arguments)
         {
-            m_CarColor = i_CarColor;
-            m_NumberOfDoors = i_NumberOfDoors;
+            m_NumberOfDoors = (DoorNumber.eNumberOfDoors)i_Arguments[VehicleManager.sr_KeyNumberOfDoors];
+            m_CarColor = (CarColor.eCarColor)i_Arguments[VehicleManager.sr_KeyCarColor];
         }
 
         public CarColor.eCarColor CarColor

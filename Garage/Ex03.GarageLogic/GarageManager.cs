@@ -12,27 +12,19 @@ namespace Garage
     public class GarageManager
     {
         public static readonly int sr_BasicStartIntLevel = 0, sr_BasicStartFloatLevel = 0;
-        private List<VehicleProperties> m_Vehicles = new List<VehicleProperties>();
+        private Dictionary<string,VehicleProperties> m_Vehicles = new Dictionary<string,VehicleProperties>();
 
         public void AddNewVehicle(BaseVehicle i_Vehicle, string i_OwnerName, string i_PhoneNumber, VehicleProperties.eStateOfService i_Status)
         {
-            m_Vehicles.Add(new VehicleProperties(i_Vehicle, i_OwnerName, i_PhoneNumber, i_Status));
+            m_Vehicles.Add(i_Vehicle.PlateNumber,new VehicleProperties(i_Vehicle, i_OwnerName, i_PhoneNumber, i_Status));
         }
 
         public VehicleProperties GetVehicleByPlateNumber(string i_PlateNumber)
         {
-            foreach (VehicleProperties vehicle in m_Vehicles)
-            {
-                if (vehicle.Vehicle.PlateNumber.Equals(i_PlateNumber))
-                {
-                    return vehicle;
-                }
-            }
-
-            throw new Exception(string.Format(Strings.plate_didnt_found, i_PlateNumber));
+            return m_Vehicles[i_PlateNumber];
         }
 
-        public List<VehicleProperties> Vehicles
+        public Dictionary<string, VehicleProperties> Vehicles
         {
             get { return m_Vehicles; }
         }
@@ -72,9 +64,9 @@ namespace Garage
             }
         }
 
-        public void InflatingWheel(BaseVehicle i_Vehicle, float i_Amount)
+        public void InflatingWheel(BaseVehicle i_Vehicle)
         {
-            i_Vehicle.FillTires(i_Amount);
+            i_Vehicle.FillTires();
         }
     }
 }
