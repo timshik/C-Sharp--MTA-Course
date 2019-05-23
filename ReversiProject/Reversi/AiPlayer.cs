@@ -17,6 +17,12 @@ namespace Reversi
         private static readonly bool v_MakeMove = true;
         private int m_CornerValue, m_SideValue, m_SimpleSquareValue, m_FullBoardValue = 100000;
         private Square[,] m_FinalBoard;
+        private bool evalFlag = false;
+
+        public bool EvalFunction
+        {
+            set { evalFlag = value; }
+        }
 
         public AiPlayer(string i_NameOfUser, Square.eSquareColor i_PlayerColor, int i_CornerValue, int i_SideValue, int i_RestValue, int i_MaxDepth)
             : base(i_NameOfUser, i_PlayerColor)
@@ -41,22 +47,14 @@ namespace Reversi
 
             Square.eSquareColor color = (m_PlayerColor == Square.eSquareColor.Black) ? Square.eSquareColor.White : Square.eSquareColor.Black;
             foreach (Square square in possibleMoves)
-           {
+            {
                 value = MinValue(createNewBoard(i_CurrentBoard, square, m_PlayerColor), alpha, beta, 1, color);
                 if (value > alpha)
                 {
-                    //possibleBoard = new LinkedList<Square[,]>();
                     m_FinalBoard = createNewBoard(i_CurrentBoard, square, m_PlayerColor);
                     alpha = value;
                 }
-                //else if (value == alpha)
-                //{
-                //    possibleBoard.AddLast(createNewBoard(i_CurrentBoard, square, m_PlayerColor));
-                //}
             }
-
-            //Random random = new Random();
-            //int boardIndex = random.Next(possibleBoard.Count);   // choose one from possibles boards with same value
 
             return m_FinalBoard;
         }
@@ -77,7 +75,10 @@ namespace Reversi
 
             if (cutOffTest(i_Board, i_Depth, possibleMoves))
             {
-                value = evalBoard(i_Board, possibleMoves.Count);
+                if (evalFlag)
+                    value = evalBoard(ref i_Board, possibleMoves.Count);
+                else
+                    value = newEvalBoard(ref i_Board);
             }
             else
             {
@@ -106,7 +107,10 @@ namespace Reversi
 
             if (cutOffTest(i_Board, i_Depth, possibleMoves))
             {
-                value = evalBoard(i_Board, possibleMoves.Count);
+                if (evalFlag)
+                    value = evalBoard(ref i_Board, possibleMoves.Count);
+                else
+                    value = newEvalBoard(ref i_Board);
             }
             else
             {
@@ -124,8 +128,6 @@ namespace Reversi
                 }
             }
 
-
-
             return value;
         }
 
@@ -139,7 +141,7 @@ namespace Reversi
             return i_ValueA >= i_ValueB ? i_ValueA : i_ValueB;
         }
 
-        private int evalBoard(Square[,] i_Board, int i_PossibleMovesCounter)
+        private int evalBoard(ref Square[,] i_Board, int i_PossibleMovesCounter)
         {
             int value = 0;
             foreach (Square square in i_Board)
@@ -164,21 +166,9 @@ namespace Reversi
             if (i_PossibleMovesCounter == 0)
             {
                 int counterWhite = 0, counterBlack = 0;
-                foreach (Square square in i_Board)
-                {
-                    switch (square.Color)
-                    {
-                        case Square.eSquareColor.White:
-                            counterWhite++;
-                            break;
-                        case Square.eSquareColor.Black:
-                            counterBlack++;
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                if(counterBlack > counterWhite)
+                int cornerWhite = 0, cornerBlack = 0;
+                countCoins(ref counterBlack, ref counterWhite, ref cornerBlack, ref cornerWhite, ref i_Board);
+                if (counterBlack > counterWhite)
                 {
                     if (PlayerColor == Square.eSquareColor.Black)
                         value = m_FullBoardValue;
@@ -199,6 +189,86 @@ namespace Reversi
             }
 
             return value;
+        }
+
+        private int newEvalBoard(ref Square[,] i_Board)
+        {
+            int blackCoins = 0, whiteCoins = 0, myPossibleMoves = 0, opponentPossibleMoves = 0
+                    , blackCornerCoins = 0, whiteCornerCoins = 0;
+            int coinParityHeuristicValue, mobilityHeuristicValue, cornerHeuristicValue;
+            countCoins(ref blackCoins, ref whiteCoins, ref blackCornerCoins, ref whiteCornerCoins, ref i_Board);
+            if (PlayerColor == Square.eSquareColor.Black)
+            {
+                coinParityHeuristicValue = 100 * (blackCoins - whiteCoins) / (blackCoins + whiteCoins);
+            }
+            else
+            {
+                coinParityHeuristicValue = 100 * (whiteCoins - blackCoins) / (blackCoins + whiteCoins);
+            }
+
+            countMoves(ref myPossibleMoves, ref opponentPossibleMoves, ref i_Board);
+
+            if (myPossibleMoves + opponentPossibleMoves != 0)
+                mobilityHeuristicValue = 100 * (myPossibleMoves - opponentPossibleMoves) / (myPossibleMoves + opponentPossibleMoves);
+            else
+                mobilityHeuristicValue = 0;
+
+
+            if (blackCornerCoins + whiteCornerCoins != 0)
+            {
+                if (PlayerColor == Square.eSquareColor.Black)
+                {
+                    cornerHeuristicValue = 100 * (blackCornerCoins - whiteCornerCoins) / (blackCornerCoins + whiteCornerCoins);
+                }
+                else
+                {
+                    cornerHeuristicValue = 100 * (whiteCornerCoins - blackCornerCoins) / (blackCornerCoins + whiteCornerCoins);
+                }
+            }
+            else
+                cornerHeuristicValue = 0;
+
+            return cornerHeuristicValue + mobilityHeuristicValue + coinParityHeuristicValue;
+
+        }
+
+        private void countMoves(ref int myPossibleMoves, ref int opponentPossibleMoves, ref Square[,] i_Board)
+        {
+            Player one = Game.GetPlayer(0);
+            Player two = Game.GetPlayer(1);
+
+            if (one == this)
+            {
+                myPossibleMoves = one.ListOfPossibleMoves(i_Board, PlayerColor).Count;
+                opponentPossibleMoves = two.ListOfPossibleMoves(i_Board, two.PlayerColor).Count;
+            }
+            else
+            {
+                opponentPossibleMoves = one.ListOfPossibleMoves(i_Board, PlayerColor).Count;
+                myPossibleMoves = two.ListOfPossibleMoves(i_Board, two.PlayerColor).Count;
+            }
+        }
+
+        private void countCoins(ref int i_BlackCoins, ref int i_WhiteCoins, ref int blackCornerCoins, ref int whiteCornerCoins, ref Square[,] i_Board)
+        {
+            foreach (Square square in i_Board)
+            {
+                switch (square.Color)
+                {
+                    case Square.eSquareColor.White:
+                        i_WhiteCoins++;
+                        if (inCorner(square))
+                            whiteCornerCoins++;
+                        break;
+                    case Square.eSquareColor.Black:
+                        i_BlackCoins++;
+                        if (inCorner(square))
+                            blackCornerCoins++;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private bool inCorner(Square i_Square)

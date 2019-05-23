@@ -12,7 +12,7 @@
     {
         private static Player[] m_Players = new Player[2];
         private static readonly int sr_FirstAiPlayerCornerValue = 200, sr_FirstAiPlayerSideValue = 20, sr_FirstAiPlayerRestValue = 5, sr_FirstDepth = 6;
-        private static readonly int sr_SecondAiPlayerCornerValue = 100, sr_SecondAiPlayerSideValue = 20, sr_SecondAiPlayerRestValue = 5, sr_SecondDepth = 6;
+        private static readonly int sr_SecondAiPlayerCornerValue = 200, sr_SecondAiPlayerSideValue = 20, sr_SecondAiPlayerRestValue = 5, sr_SecondDepth = 6;
         private ePlayAgainst WhoWillThePlayerPlayWith;
         private Board m_GameBoard;
         public static int m_MatrixSize;
@@ -71,6 +71,7 @@
                         sr_FirstAiPlayerCornerValue, sr_FirstAiPlayerSideValue, sr_FirstAiPlayerRestValue, sr_FirstDepth);
                     m_Players[1] = new AiPlayer(Strings.second_computer_name, secondColor,
                         sr_SecondAiPlayerCornerValue, sr_SecondAiPlayerSideValue, sr_SecondAiPlayerRestValue, sr_SecondDepth);
+                    ((AiPlayer)m_Players[1]).EvalFunction = true;
                     break;
                 default:
                     break;
