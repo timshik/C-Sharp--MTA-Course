@@ -14,9 +14,13 @@ namespace Garage
         public static readonly int sr_BasicStartIntLevel = 0, sr_BasicStartFloatLevel = 0;
         private Dictionary<string,VehicleProperties> m_Vehicles = new Dictionary<string,VehicleProperties>();
 
-        public void AddNewVehicle(BaseVehicle i_Vehicle, string i_OwnerName, string i_PhoneNumber, VehicleProperties.eStateOfService i_Status)
+        public void AddNewVehicle(BaseVehicle i_Vehicle, ref Dictionary<string,object> i_ArgumentsList)
         {
-            m_Vehicles.Add(i_Vehicle.PlateNumber,new VehicleProperties(i_Vehicle, i_OwnerName, i_PhoneNumber, i_Status));
+            m_Vehicles.Add(i_Vehicle.PlateNumber,
+                new VehicleProperties(i_Vehicle, 
+                (string)i_ArgumentsList[VehicleManager.sr_KeyOwnerName],
+                (string)i_ArgumentsList[VehicleManager.sr_KeyPhoneNumber],
+                (VehicleProperties.eStateOfService)i_ArgumentsList[VehicleManager.sr_KeyRepairStatus]));
         }
 
         public VehicleProperties GetVehicleByPlateNumber(string i_PlateNumber)

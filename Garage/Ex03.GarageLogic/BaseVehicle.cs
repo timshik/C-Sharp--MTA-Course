@@ -14,7 +14,7 @@ namespace Garage
         protected float m_PercentOfRemainingEnergy;
         private Wheel[] m_Wheels;
 
-        public BaseVehicle(Dictionary<string, object> i_Arguments)
+        public BaseVehicle(Dictionary<string, object> i_Arguments) 
         {
             int numberOfWheels = (int)i_Arguments[VehicleManager.sr_KeyNumberOfWheels];
             m_Wheels = new Wheel[numberOfWheels];

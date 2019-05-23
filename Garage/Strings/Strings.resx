@@ -429,4 +429,7 @@
   <data name="trunk_capacity_less_than_zero" xml:space="preserve">
     <value>You entered invalid trunk capacity</value>
   </data>
+  <data name="unknown_error" xml:space="preserve">
+    <value>Fatal Error! something wrong with type of new vehicle, please contact with garage stuff.</value>
+  </data>
 </root>

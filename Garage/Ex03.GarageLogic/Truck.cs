@@ -21,8 +21,8 @@
         public Truck(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_HazardousMaterials = (bool)i_Arguments[VehicleManager.sr_KeyDeliveryMaterials];
-            r_TrunkLevel = (float)i_Arguments[VehicleManager.sr_KeyTruckCapacity];
+            m_HazardousMaterials = (int)i_Arguments[VehicleManager.sr_KeyDeliveryMaterials] == 1;
+            r_TrunkLevel = float.Parse((string)i_Arguments[VehicleManager.sr_KeyTruckCapacity]);
             if(r_TrunkLevel < 0)
             {
                 throw new ValueOutOfRangeException(float.MaxValue, 0, Strings.trunk_capacity_less_than_zero);

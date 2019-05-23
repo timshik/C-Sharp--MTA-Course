@@ -9,7 +9,6 @@
     public class ConsoleUI
     {
         private static readonly List<string> sr_FirstMenuStringArray = new List<string>();
-        private static readonly List<string> sr_BooleanOptions = new List<string>();
         private GarageManager m_Garage = new GarageManager();
 
         public static void Main()
@@ -37,6 +36,8 @@
             VehicleProperties.SetListOfOptions();
             DoorNumber.SetListOfOptions();
             FuelVehicle.SetEnergeyTypeList();
+            VehicleManager.SetBooleanList();
+            VehicleManager.ArrangementExtandedOptionList();
             sr_FirstMenuStringArray.Add(Strings.menu_options_1);
             sr_FirstMenuStringArray.Add(Strings.menu_options_2);
             sr_FirstMenuStringArray.Add(Strings.menu_options_3);
@@ -45,8 +46,6 @@
             sr_FirstMenuStringArray.Add(Strings.menu_options_6);
             sr_FirstMenuStringArray.Add(Strings.menu_options_7);
             sr_FirstMenuStringArray.Add(Strings.menu_options_8);
-            sr_BooleanOptions.Add(Strings.true_option);
-            sr_BooleanOptions.Add(Strings.false_option);
         }
 
         private static void printMessage(string i_Message)
@@ -167,49 +166,48 @@
             }
             catch (Exception i_PlateError)
             {
-                showError(i_PlateError.Message);
+                if(i_PlateError is KeyNotFoundException)
+                {
+                    showError(string.Format(Strings.plate_didnt_found, plateNumber));
+                }
+                else
+                {
+                    showError(Strings.unknown_error);
+                }
                 printMessage(Strings.create_new_vehicle);
-                basicArgumentsMap.Add(VehicleManager.sr_KeyTypeOfVehicle, getOptionFromUser<VehicleManager.eVehicleTypes>(Strings.choose_type_of_vehicle, VehicleManager.VehicleList, -1));
-                string ownerName = getStringFromUser(Strings.enter_owner_name);
-                string phoneNumber = getStringFromUser(Strings.enter_phone_number);
+                VehicleManager.eVehicleTypes vehicleType = getOptionFromUser<VehicleManager.eVehicleTypes>(Strings.choose_type_of_vehicle, VehicleManager.VehicleList, -1);
+                basicArgumentsMap.Add(VehicleManager.sr_KeyTypeOfVehicle, vehicleType);
+                basicArgumentsMap.Add(VehicleManager.sr_KeyOwnerName,getStringFromUser(Strings.enter_owner_name));
+                basicArgumentsMap.Add(VehicleManager.sr_KeyPhoneNumber, getStringFromUser(Strings.enter_phone_number));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyModelName, getStringFromUser(Strings.enter_model_name));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyWheelManufacturer, getStringFromUser(Strings.enter_wheel_manufacturer));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyPlateNumber, plateNumber);
-                VehicleProperties.eStateOfService repairStatus = getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1);
-                switch ((VehicleManager.eVehicleTypes)basicArgumentsMap[VehicleManager.sr_KeyTypeOfVehicle])
+                basicArgumentsMap.Add(VehicleManager.sr_KeyRepairStatus, getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1));
+                getMoreInformationBasedOnType(VehicleManager.s_OptionsToAskUserByTypes[vehicleType], ref basicArgumentsMap);
+                m_Garage.AddNewVehicle(VehicleManager.CreateNewVehicle(ref basicArgumentsMap),ref basicArgumentsMap);
+            }
+        }
+
+        private void getMoreInformationBasedOnType(VehicleManager.VehicleTypesOptions i_VehicleTypesOptions, ref Dictionary<string, object> i_BasicArgumentsMap)
+        {
+            for (int i = 0; i < i_VehicleTypesOptions.OptionList.Count; i++)
+            {
+                if(i_VehicleTypesOptions.OptionList[i] == null)
                 {
-                    case VehicleManager.eVehicleTypes.Truck:
-
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyDeliveryMaterials, getOptionFromUser<int>(Strings.will_delivery_materials,sr_BooleanOptions,-1) == 0);
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyTruckCapacity, getFloatFromUser(Strings.set_truck_capacity_level));
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewTruck(basicArgumentsMap), ownerName, phoneNumber, repairStatus);
-                        break;
-                    case VehicleManager.eVehicleTypes.Car:
-                    case VehicleManager.eVehicleTypes.ElectricCar:
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyCarColor, getOptionFromUser<CarColor.eCarColor>(Strings.choose_car_color, CarColor.sr_CarColorNames, -1));
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyNumberOfDoors, getOptionFromUser<DoorNumber.eNumberOfDoors>(Strings.choose_door_number, DoorNumber.sr_DoorsOptions, 1));
-                        if ((VehicleManager.eVehicleTypes)basicArgumentsMap[VehicleManager.sr_KeyRepairStatus] == VehicleManager.eVehicleTypes.Car)
-                        {
-                            m_Garage.AddNewVehicle(VehicleManager.CreateNewCar(basicArgumentsMap), ownerName, phoneNumber, repairStatus);
-                            break;
-                        }
-
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricCar(basicArgumentsMap), ownerName, phoneNumber, repairStatus);
-                        break;
-                    case VehicleManager.eVehicleTypes.Motorcycle:
-                    case VehicleManager.eVehicleTypes.ElectricMotorcycle:
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyEngineCapacity, getIntegerFromUser(Strings.set_engine_capacity));
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyLicenseType, getOptionFromUser<LicenseType.eLicenseType>(Strings.get_license_massage, LicenseType.sr_LicenseType, -1));
-                        if ((VehicleManager.eVehicleTypes)basicArgumentsMap[VehicleManager.sr_KeyRepairStatus] == VehicleManager.eVehicleTypes.Motorcycle)
-                        {
-                            m_Garage.AddNewVehicle(VehicleManager.CreateNewMotorcycle(basicArgumentsMap), ownerName, phoneNumber, repairStatus);
-                            break;
-                        }
-
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricMotorcycle(basicArgumentsMap), ownerName, phoneNumber, repairStatus);
-                        break;
-                    default:
-                        break;
+                    i_BasicArgumentsMap.Add(
+                        i_VehicleTypesOptions.OptionKeys[i],
+                        getStringFromUser(i_VehicleTypesOptions.OptionListMessages[i])
+                    );
+                }
+                else
+                {
+                    i_BasicArgumentsMap.Add(
+                        i_VehicleTypesOptions.OptionKeys[i],
+                        getOptionFromUser<object>(
+                                        i_VehicleTypesOptions.OptionListMessages[i],
+                                        i_VehicleTypesOptions.OptionList[i],
+                                        i_VehicleTypesOptions.OptionListOffsets[i])
+                    ); // ends of adding to dictionary
                 }
             }
         }

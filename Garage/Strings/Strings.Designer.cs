@@ -898,6 +898,15 @@ namespace n_Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fatal Error! something wrong with type of new vehicle, please contact with garage stuff..
+        /// </summary>
+        public static string unknown_error {
+            get {
+                return ResourceManager.GetString("unknown_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vehicle status: {0}
         ///.
         /// </summary>
