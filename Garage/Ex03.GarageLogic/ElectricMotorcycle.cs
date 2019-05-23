@@ -18,7 +18,7 @@
         public ElectricMotorcycle(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_EngineCapacity = (int)i_Arguments[VehicleManager.sr_KeyEngineCapacity];
+            m_EngineCapacity = int.Parse((string)i_Arguments[VehicleManager.sr_KeyEngineCapacity]);
             m_LicenseType = (LicenseType.eLicenseType)i_Arguments[VehicleManager.sr_KeyLicenseType];
             if (m_EngineCapacity < 0)
             {

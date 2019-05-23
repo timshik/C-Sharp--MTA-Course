@@ -12,7 +12,7 @@
         public ElectricVehicle(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_MaxBatteryTime = (float)i_Arguments[VehicleManager.sr_KeyMaxBatteryTime];
+            m_MaxBatteryTime = float.Parse((string)i_Arguments[VehicleManager.sr_KeyMaxBatteryTime]);
             m_RemainingBatteryTime = GarageManager.sr_BasicStartFloatLevel;
         }
 
