@@ -11,10 +11,67 @@
         private static readonly List<string> sr_FirstMenuStringArray = new List<string>();
         private GarageManager m_Garage = new GarageManager();
 
+        private static void printMessage(string i_Message)
+        {
+            Console.WriteLine(i_Message);
+        }
+
         public static void Main()
         {
             ConsoleUI UI = new ConsoleUI();
             UI.WelcomeToTheGarage();
+        }
+
+        private static int getUserChoice(int i_MinValue, int i_MaxValue)
+        {
+            int userChoice = getIntegerFromUser();
+
+            if (userChoice < i_MinValue || userChoice > i_MaxValue)
+            {
+                throw new ValueOutOfRangeException(i_MaxValue, i_MinValue, Strings.invalid_menu_choice);
+            }
+
+            return userChoice;
+        }
+
+        private static void showOptions(List<string> i_OptionsArray)
+        {
+            for (int i = 0; i < i_OptionsArray.Count; i++)
+            {
+                printMessage(string.Format(Strings.menu_format, i + 1, i_OptionsArray[i]));
+            }
+        }
+
+        public static string AskForBasicDetail(string i_MessageToPrint)
+        {
+            printMessage(i_MessageToPrint);
+            return Console.ReadLine();
+        }
+
+        public static int AskForArgumentWithOptions(string i_MessageToPrint, List<string> i_OptionList, int i_OffsetFromChoices)
+        {
+            return getOptionFromUser<int>(i_MessageToPrint, i_OptionList, i_OffsetFromChoices);
+        }
+
+        private static int getIntegerFromUser()
+        {
+            int userChoice;
+
+            if (!int.TryParse(Console.ReadLine(), out userChoice))
+            {
+                throw new FormatException(Strings.invalid_integer);
+            }
+
+            return userChoice;
+        }
+
+        public static T getOptionFromUser<T>(string i_Message, List<string> i_OptionList, int i_OffsetFromChoices)
+        {
+            T parameterToReturn;
+            printMessage(i_Message);
+            showOptions(i_OptionList);
+            parameterToReturn = (T)(object)(getUserChoice(1, i_OptionList.Count) + i_OffsetFromChoices);
+            return parameterToReturn;
         }
 
         public void WelcomeToTheGarage()
@@ -48,34 +105,9 @@
             sr_FirstMenuStringArray.Add(Strings.menu_options_8);
         }
 
-        private static void printMessage(string i_Message)
-        {
-            Console.WriteLine(i_Message);
-        }
-
         private void showError(string i_Message)
         {
             Console.WriteLine(i_Message);
-        }
-
-        private static int getUserChoice(int i_MinValue, int i_MaxValue)
-        {
-            int userChoice = getIntegerFromUser();
-
-            if (userChoice < i_MinValue || userChoice > i_MaxValue)
-            {
-                throw new ValueOutOfRangeException(i_MaxValue, i_MinValue, Strings.invalid_menu_choice);
-            }
-
-            return userChoice;
-        }
-
-        private static void showOptions(List<string> i_OptionsArray)
-        {
-            for (int i = 0; i < i_OptionsArray.Count; i++)
-            {
-                printMessage(string.Format(Strings.menu_format, i + 1, i_OptionsArray[i]));
-            }
         }
 
         public void DoAction()
@@ -166,7 +198,7 @@
             }
             catch (Exception i_PlateError)
             {
-                if(i_PlateError is KeyNotFoundException)
+                if (i_PlateError is KeyNotFoundException)
                 {
                     showError(string.Format(Strings.plate_didnt_found, plateNumber));
                 }
@@ -174,17 +206,18 @@
                 {
                     showError(Strings.unknown_error);
                 }
+
                 printMessage(Strings.create_new_vehicle);
                 VehicleManager.eVehicleTypes vehicleType = getOptionFromUser<VehicleManager.eVehicleTypes>(Strings.choose_type_of_vehicle, VehicleManager.VehicleList, -1);
                 basicArgumentsMap.Add(VehicleManager.sr_KeyTypeOfVehicle, vehicleType);
-                basicArgumentsMap.Add(VehicleManager.sr_KeyOwnerName,getStringFromUser(Strings.enter_owner_name));
+                basicArgumentsMap.Add(VehicleManager.sr_KeyOwnerName, getStringFromUser(Strings.enter_owner_name));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyPhoneNumber, getStringFromUser(Strings.enter_phone_number));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyModelName, getStringFromUser(Strings.enter_model_name));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyWheelManufacturer, getStringFromUser(Strings.enter_wheel_manufacturer));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyPlateNumber, plateNumber);
                 basicArgumentsMap.Add(VehicleManager.sr_KeyRepairStatus, getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1));
                 getMoreInformationBasedOnType(VehicleManager.s_OptionsToAskUserByTypes[vehicleType], ref basicArgumentsMap);
-                m_Garage.AddNewVehicle(VehicleManager.CreateNewVehicle(ref basicArgumentsMap),ref basicArgumentsMap);
+                m_Garage.AddNewVehicle(VehicleManager.CreateNewVehicle(ref basicArgumentsMap), ref basicArgumentsMap);
             }
         }
 
@@ -192,44 +225,19 @@
         {
             for (int i = 0; i < i_VehicleTypesOptions.OptionList.Count; i++)
             {
-                if(i_VehicleTypesOptions.OptionList[i] == null)
+                if (i_VehicleTypesOptions.OptionList[i] == null)
                 {
                     i_BasicArgumentsMap.Add(
                         i_VehicleTypesOptions.OptionKeys[i],
-                        getStringFromUser(i_VehicleTypesOptions.OptionListMessages[i])
-                    );
+                        getStringFromUser(i_VehicleTypesOptions.OptionListMessages[i]));
                 }
                 else
                 {
                     i_BasicArgumentsMap.Add(
                         i_VehicleTypesOptions.OptionKeys[i],
-                        getOptionFromUser<object>(
-                                        i_VehicleTypesOptions.OptionListMessages[i],
-                                        i_VehicleTypesOptions.OptionList[i],
-                                        i_VehicleTypesOptions.OptionListOffsets[i])
-                    ); // ends of adding to dictionary
+                        getOptionFromUser<object>(i_VehicleTypesOptions.OptionListMessages[i], i_VehicleTypesOptions.OptionList[i], i_VehicleTypesOptions.OptionListOffsets[i]));
                 }
             }
-        }
-
-        public static string AskForBasicDetail(string i_MessageToPrint)
-        {
-            printMessage(i_MessageToPrint);
-            return Console.ReadLine();
-        }
-
-        public static int AskForArgumentWithOptions(string i_MessageToPrint, List<string> i_OptionList, int i_OffsetFromChoices)
-        {
-            return getOptionFromUser<int>(i_MessageToPrint, i_OptionList, i_OffsetFromChoices);
-        }
-
-        public static T getOptionFromUser<T>(string i_Message, List<string> i_OptionList, int i_OffsetFromChoices)
-        {
-            T parameterToReturn;
-            printMessage(i_Message);
-            showOptions(i_OptionList);
-            parameterToReturn = (T)(object)(getUserChoice(1, i_OptionList.Count) + i_OffsetFromChoices);
-            return parameterToReturn;
         }
 
         private float getFloatFromUser()
@@ -254,18 +262,6 @@
         {
             printMessage(i_Message);
             return getIntegerFromUser();
-        }
-
-        private static int getIntegerFromUser()
-        {
-            int userChoice;
-
-            if (!int.TryParse(Console.ReadLine(), out userChoice))
-            {
-                throw new FormatException(Strings.invalid_integer);
-            }
-
-            return userChoice;
         }
 
         public void FuelVehicleUI()
@@ -334,7 +330,7 @@
         {
             if (m_Garage.Vehicles.Count != 0)
             {
-                foreach (KeyValuePair<string,VehicleProperties> vehicle in m_Garage.Vehicles)
+                foreach (KeyValuePair<string, VehicleProperties> vehicle in m_Garage.Vehicles)
                 {
                     printMessage(string.Format("{0}\n{1}\n", vehicle.ToString(), Strings.line_brake));
                 }

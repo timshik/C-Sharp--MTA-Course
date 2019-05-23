@@ -12,15 +12,17 @@ namespace Garage
     public class GarageManager
     {
         public static readonly int sr_BasicStartIntLevel = 0, sr_BasicStartFloatLevel = 0;
-        private Dictionary<string,VehicleProperties> m_Vehicles = new Dictionary<string,VehicleProperties>();
+        private Dictionary<string, VehicleProperties> m_Vehicles = new Dictionary<string, VehicleProperties>();
 
-        public void AddNewVehicle(BaseVehicle i_Vehicle, ref Dictionary<string,object> i_ArgumentsList)
+        public void AddNewVehicle(BaseVehicle i_Vehicle, ref Dictionary<string, object> i_ArgumentsList)
         {
-            m_Vehicles.Add(i_Vehicle.PlateNumber,
-                new VehicleProperties(i_Vehicle, 
-                (string)i_ArgumentsList[VehicleManager.sr_KeyOwnerName],
-                (string)i_ArgumentsList[VehicleManager.sr_KeyPhoneNumber],
-                (VehicleProperties.eStateOfService)i_ArgumentsList[VehicleManager.sr_KeyRepairStatus]));
+            m_Vehicles.Add(
+                i_Vehicle.PlateNumber,
+                new VehicleProperties(
+                    i_Vehicle,
+                    (string)i_ArgumentsList[VehicleManager.sr_KeyOwnerName],
+                    (string)i_ArgumentsList[VehicleManager.sr_KeyPhoneNumber],
+                    (VehicleProperties.eStateOfService)i_ArgumentsList[VehicleManager.sr_KeyRepairStatus]));
         }
 
         public VehicleProperties GetVehicleByPlateNumber(string i_PlateNumber)
@@ -37,7 +39,7 @@ namespace Garage
         {
             FuelVehicle vehicle = i_Vehicle as FuelVehicle;
 
-            if(vehicle != null)
+            if (vehicle != null)
             {
                 if (vehicle.EnergyType == i_FuelType)
                 {
