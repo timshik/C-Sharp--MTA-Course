@@ -8,25 +8,19 @@
     using n_Vehicle;
     using n_Wheel;
     using n_Strings;
-    using Garage;
 
     public class Truck : FuelVehicle
     {
-        public static readonly int sr_NumberOfWheels = 12;
-        public static readonly float sr_FullTunkLevel = 110, sr_MaxPressure = 26;
-        public static readonly eEnergyType sr_EnergyType = eEnergyType.Soler;
+        private static readonly int sr_NumberOfWheels = 12, sr_FullTunkLevel = 110, sr_MaxPressure = 26;
+        private static readonly eEnergyType sr_EnergyType = eEnergyType.Soler;
         private readonly float r_TrunkLevel;
         private bool m_HazardousMaterials;
 
-        public Truck(Dictionary<string, object> i_Arguments)
-            : base(i_Arguments)
+        public Truck(string i_ModelName, string i_PlateNumber, bool v_isDeliveryHazardousMaterials, float i_TrunkLevel, string i_WheelManufacturer)
+            : base(sr_NumberOfWheels, sr_FullTunkLevel, i_ModelName, i_PlateNumber, sr_MaxPressure, i_WheelManufacturer, sr_EnergyType)
         {
-            m_HazardousMaterials = (bool)i_Arguments[VehicleManager.sr_KeyDeliveryMaterials];
-            r_TrunkLevel = (float)i_Arguments[VehicleManager.sr_KeyTruckCapacity];
-            if(r_TrunkLevel < 0)
-            {
-                throw new ValueOutOfRangeException(float.MaxValue, 0, Strings.trunk_capacity_less_than_zero);
-            }
+            m_HazardousMaterials = v_isDeliveryHazardousMaterials;
+            r_TrunkLevel = i_TrunkLevel;
         }
 
         public bool HazardousMaterials

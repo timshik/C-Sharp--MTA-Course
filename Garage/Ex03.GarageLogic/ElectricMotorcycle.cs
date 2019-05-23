@@ -10,20 +10,16 @@
 
     public class ElectricMotorcycle : ElectricVehicle
     {
-        public static readonly int sr_NumberOfWheels = 2;
-        public static readonly float sr_FullBatteryLevel = 1.4f, sr_MaxPressure = 33;
+        private static readonly int sr_NumberOfWheels = 2, sr_MaxPressure = 33;
+        private static readonly float sr_FullBatteryLevel = 1.4f;
         private LicenseType.eLicenseType m_LicenseType;
         private int m_EngineCapacity;
 
-        public ElectricMotorcycle(Dictionary<string, object> i_Arguments)
-            : base(i_Arguments)
+        public ElectricMotorcycle(string i_ModelName, string i_PlateNumber, string i_WheelManufacturer, LicenseType.eLicenseType i_LicenseType, int i_EngineCapacity)
+            : base(sr_NumberOfWheels, i_ModelName, i_PlateNumber, sr_MaxPressure, i_WheelManufacturer, sr_FullBatteryLevel)
         {
-            m_EngineCapacity = (int)i_Arguments[VehicleManager.sr_KeyEngineCapacity];
-            m_LicenseType = (LicenseType.eLicenseType)i_Arguments[VehicleManager.sr_KeyLicenseType];
-            if (m_EngineCapacity < 0)
-            {
-                throw new ValueOutOfRangeException(float.MaxValue, 0, Strings.engine_capacity_less_than_zero);
-            }
+            m_EngineCapacity = i_EngineCapacity;
+            m_LicenseType = i_LicenseType;
         }
 
         public int EngineCapacity

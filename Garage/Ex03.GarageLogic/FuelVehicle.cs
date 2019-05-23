@@ -12,11 +12,11 @@
         private eEnergyType m_Type;
         private float m_FuelLevel;
 
-        public FuelVehicle(Dictionary<string, object> i_Arguments)
-            : base(i_Arguments)
+        public FuelVehicle(int i_NumberOfWheels, float i_MaxFuelLevel, string i_ModelName, string i_PlateNumber, float i_MaxWheelPressure, string i_WheelManufacturer, eEnergyType i_Type)
+            : base(i_NumberOfWheels, i_ModelName, i_PlateNumber, i_MaxWheelPressure, i_WheelManufacturer)
         {
-            m_Type = (eEnergyType)i_Arguments[VehicleManager.sr_KeyTypeOfEnergy];
-            r_MaxFuelLevel = (float)i_Arguments[VehicleManager.sr_KeyMaxFuelLevel];
+            m_Type = i_Type;
+            r_MaxFuelLevel = i_MaxFuelLevel;
             m_FuelLevel = Garage.GarageManager.sr_BasicStartFloatLevel;
         }
 
@@ -74,7 +74,6 @@
             vehicleDetails.Append(base.ToString());
             vehicleDetails.AppendFormat(Strings.fuel_type, sr_EnergyTypeList[(int)m_Type]);
             vehicleDetails.AppendFormat(Strings.current_fuel_level, m_FuelLevel);
-            vehicleDetails.AppendFormat(Strings.maximum_fuel_level, r_MaxFuelLevel);
 
             return vehicleDetails.ToString();
         }

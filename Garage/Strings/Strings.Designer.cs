@@ -70,15 +70,6 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How much time you want to charge?.
-        /// </summary>
-        public static string amount_to_charge {
-            get {
-                return ResourceManager.GetString("amount_to_charge", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please enter the amount you want to fill the tires:.
         /// </summary>
         public static string amount_to_fill_tire {
@@ -229,15 +220,6 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You entered invalid engine capacity.
-        /// </summary>
-        public static string engine_capacity_less_than_zero {
-            get {
-                return ResourceManager.GetString("engine_capacity_less_than_zero", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter engine capacity.
         /// </summary>
         public static string engine_capacity_massage {
@@ -366,7 +348,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to In rapair.
+        ///   Looks up a localized string similar to InRapair.
         /// </summary>
         public static string inrepair_title {
             get {
@@ -443,26 +425,6 @@ namespace n_Strings {
         public static string line_brake {
             get {
                 return ResourceManager.GetString("line_brake", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Maximum battery capacity: {0}
-        ///.
-        /// </summary>
-        public static string maximum_battery_level {
-            get {
-                return ResourceManager.GetString("maximum_battery_level", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Maximum fuel tank capacity: {0}
-        ///.
-        /// </summary>
-        public static string maximum_fuel_level {
-            get {
-                return ResourceManager.GetString("maximum_fuel_level", resourceCulture);
             }
         }
         
@@ -567,15 +529,6 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We out of work! there is no vehicle available..
-        /// </summary>
-        public static string no_available_vehicle_in_garage {
-            get {
-                return ResourceManager.GetString("no_available_vehicle_in_garage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Octan 95.
         /// </summary>
         public static string octan_95 {
@@ -659,7 +612,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The plate number {0} doesn&apos;t exist in the system.
+        ///   Looks up a localized string similar to Sorry but the plate {0} didn&apos;t find in our system!.
         /// </summary>
         public static string plate_didnt_found {
             get {
@@ -721,16 +674,6 @@ namespace n_Strings {
         public static string show_engine_capacity {
             get {
                 return ResourceManager.GetString("show_engine_capacity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Show properties of {0}:
-        ///.
-        /// </summary>
-        public static string show_type_of_vehicle {
-            get {
-                return ResourceManager.GetString("show_type_of_vehicle", resourceCulture);
             }
         }
         
@@ -849,15 +792,6 @@ namespace n_Strings {
         public static string trunk_capacity {
             get {
                 return ResourceManager.GetString("trunk_capacity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You entered invalid trunk capacity.
-        /// </summary>
-        public static string trunk_capacity_less_than_zero {
-            get {
-                return ResourceManager.GetString("trunk_capacity_less_than_zero", resourceCulture);
             }
         }
         

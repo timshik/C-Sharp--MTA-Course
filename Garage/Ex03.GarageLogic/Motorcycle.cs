@@ -12,21 +12,16 @@ namespace n_Motorcycle
 
     public class Motorcycle : FuelVehicle
     {
-        public static readonly int sr_NumberOfWheels = 2;
-        public static readonly float sr_FullTunkLevel = 8, sr_MaxPressure = 33;
-        public static readonly eEnergyType sr_EnergyType = eEnergyType.Octan95;
+        private static readonly int sr_NumberOfWheels = 2, sr_FullTunkLevel = 8, sr_MaxPressure = 33;
+        private static readonly eEnergyType sr_EnergyType = eEnergyType.Octan95;
         private LicenseType.eLicenseType m_LicenseType;
         private int m_EngineCapacity;
 
-        public Motorcycle(Dictionary<string, object> i_Arguments)
-            : base(i_Arguments)
+        public Motorcycle(string i_ModelName, string i_PlateNumber, int i_EngineCapacity, LicenseType.eLicenseType i_LicenseType, string i_WheelManufacturer)
+            : base(sr_NumberOfWheels, sr_FullTunkLevel, i_ModelName, i_PlateNumber, sr_MaxPressure, i_WheelManufacturer, sr_EnergyType)
         {
-            m_EngineCapacity = (int)i_Arguments[VehicleManager.sr_KeyEngineCapacity];
-            m_LicenseType = (LicenseType.eLicenseType)i_Arguments[VehicleManager.sr_KeyLicenseType];
-            if (m_EngineCapacity < 0)
-            {
-                throw new ValueOutOfRangeException(float.MaxValue, 0, Strings.engine_capacity_less_than_zero);
-            }
+            m_EngineCapacity = i_EngineCapacity;
+            m_LicenseType = i_LicenseType;
         }
 
         public LicenseType.eLicenseType LicenseType

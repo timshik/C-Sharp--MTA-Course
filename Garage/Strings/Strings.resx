@@ -189,7 +189,7 @@
     <value>Exit</value>
   </data>
   <data name="plate_didnt_found" xml:space="preserve">
-    <value>The plate number {0} doesn't exist in the system</value>
+    <value>Sorry but the plate {0} didn't find in our system!</value>
   </data>
   <data name="plate_found" xml:space="preserve">
     <value>The vehicle with plate number {0} is already found in system, Move vehicle to status repair</value>
@@ -270,7 +270,7 @@
     <value>Fixed</value>
   </data>
   <data name="inrepair_title" xml:space="preserve">
-    <value>In rapair</value>
+    <value>InRapair</value>
   </data>
   <data name="paid_title" xml:space="preserve">
     <value>Paid</value>
@@ -404,29 +404,5 @@
   </data>
   <data name="try_to_fuel_other_type_of_fuel" xml:space="preserve">
     <value>Sorry but you tried to fuel with the wrong type of fuel, we cannot do that!</value>
-  </data>
-  <data name="amount_to_charge" xml:space="preserve">
-    <value>How much time you want to charge?</value>
-  </data>
-  <data name="engine_capacity_less_than_zero" xml:space="preserve">
-    <value>You entered invalid engine capacity</value>
-  </data>
-  <data name="maximum_battery_level" xml:space="preserve">
-    <value>Maximum battery capacity: {0}
-</value>
-  </data>
-  <data name="maximum_fuel_level" xml:space="preserve">
-    <value>Maximum fuel tank capacity: {0}
-</value>
-  </data>
-  <data name="no_available_vehicle_in_garage" xml:space="preserve">
-    <value>We out of work! there is no vehicle available.</value>
-  </data>
-  <data name="show_type_of_vehicle" xml:space="preserve">
-    <value>Show properties of {0}:
-</value>
-  </data>
-  <data name="trunk_capacity_less_than_zero" xml:space="preserve">
-    <value>You entered invalid trunk capacity</value>
   </data>
 </root>

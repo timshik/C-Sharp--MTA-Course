@@ -72,9 +72,9 @@ namespace Garage
             }
         }
 
-        public void InflatingWheel(BaseVehicle i_Vehicle)
+        public void InflatingWheel(BaseVehicle i_Vehicle, float i_Amount)
         {
-            i_Vehicle.FillTires();
+            i_Vehicle.FillTires(i_Amount);
         }
     }
 }

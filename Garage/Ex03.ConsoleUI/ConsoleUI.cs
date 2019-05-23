@@ -153,8 +153,7 @@
 
         private void addNewVehicleUI()
         {
-            VehicleProperties.eStateOfService statusOfNewVehicle;
-            Dictionary<string, object> basicArgumentsMap = new Dictionary<string, object>();
+            VehicleProperties.eStateOfService newStatus;
             string plateNumber = getStringFromUser(Strings.enter_plate_number);
 
             try
@@ -162,50 +161,50 @@
                 VehicleProperties vehicle = m_Garage.GetVehicleByPlateNumber(plateNumber);
                 printMessage(string.Format(Strings.change_status_options, VehicleProperties.sr_StateListOptions[(int)vehicle.Status]));
                 ShowOptions(VehicleProperties.sr_StateListOptions);
-                statusOfNewVehicle = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
-                vehicle.Status = statusOfNewVehicle;
+                newStatus = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
+                vehicle.Status = newStatus;
             }
             catch (Exception i_PlateError)
             {
                 showError(i_PlateError.Message);
                 printMessage(Strings.create_new_vehicle);
-                VehicleManager.eVehicleTypes typeOfNewVehicle = getOptionFromUser<VehicleManager.eVehicleTypes>(Strings.choose_type_of_vehicle, VehicleManager.VehicleList, -1);
+                VehicleManager.eVehicleTypes type = getOptionFromUser<VehicleManager.eVehicleTypes>(Strings.choose_type_of_vehicle, VehicleManager.VehicleList, -1);
+                string modelName = getStringFromUser(Strings.enter_model_name);
+                string wheelManufacturer = getStringFromUser(Strings.enter_wheel_manufacturer);
                 string ownerName = getStringFromUser(Strings.enter_owner_name);
                 string phoneNumber = getStringFromUser(Strings.enter_phone_number);
-                basicArgumentsMap.Add(VehicleManager.sr_KeyModelName, getStringFromUser(Strings.enter_model_name));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyWheelManufacturer, getStringFromUser(Strings.enter_wheel_manufacturer));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyPlateNumber, plateNumber);
-                statusOfNewVehicle = getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1);
-                switch (typeOfNewVehicle)
+                newStatus = getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1);
+
+                switch (type)
                 {
                     case VehicleManager.eVehicleTypes.Truck:
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyDeliveryMaterials, getOptionFromUser<int>(Strings.will_delivery_materials, sr_BooleanOptions, -1) == 1);
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyTruckCapacity, getFloatFromUser(Strings.set_truck_capacity_level));
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewTruck(basicArgumentsMap), ownerName, phoneNumber, statusOfNewVehicle);
+                        bool is_DeliveryMaterials = getOptionFromUser<int>(Strings.will_delivery_materials, sr_BooleanOptions, -1) == 1;
+                        float truckCapacity = getFloatFromUser(Strings.set_truck_capacity_level);
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewTruck(modelName, plateNumber, is_DeliveryMaterials, truckCapacity, wheelManufacturer), ownerName, phoneNumber, newStatus);
                         break;
                     case VehicleManager.eVehicleTypes.Car:
                     case VehicleManager.eVehicleTypes.ElectricCar:
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyCarColor, getOptionFromUser<CarColor.eCarColor>(Strings.choose_car_color, CarColor.sr_CarColorNames, -1));
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyNumberOfDoors, getOptionFromUser<DoorNumber.eNumberOfDoors>(Strings.choose_door_number, DoorNumber.sr_DoorsOptions, 1));
-                        if (typeOfNewVehicle == VehicleManager.eVehicleTypes.Car)
+                        CarColor.eCarColor carColor = getOptionFromUser<CarColor.eCarColor>(Strings.choose_car_color, CarColor.sr_CarColorNames, -1);
+                        DoorNumber.eNumberOfDoors doorNumber = getOptionFromUser<DoorNumber.eNumberOfDoors>(Strings.choose_door_number, DoorNumber.sr_DoorsOptions, 1);
+                        if (type == VehicleManager.eVehicleTypes.Car)
                         {
-                            m_Garage.AddNewVehicle(VehicleManager.CreateNewCar(basicArgumentsMap), ownerName, phoneNumber, statusOfNewVehicle);
+                            m_Garage.AddNewVehicle(VehicleManager.CreateNewCar(plateNumber, doorNumber, carColor, modelName, wheelManufacturer), ownerName, phoneNumber, newStatus);
                             break;
                         }
 
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricCar(basicArgumentsMap), ownerName, phoneNumber, statusOfNewVehicle);
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricCar(modelName, plateNumber, wheelManufacturer, carColor, doorNumber), ownerName, phoneNumber, newStatus);
                         break;
                     case VehicleManager.eVehicleTypes.Motorcycle:
                     case VehicleManager.eVehicleTypes.ElectricMotorcycle:
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyEngineCapacity, getIntegerFromUser(Strings.set_engine_capacity));
-                        basicArgumentsMap.Add(VehicleManager.sr_KeyLicenseType, getOptionFromUser<LicenseType.eLicenseType>(Strings.get_license_massage, LicenseType.sr_LicenseType, -1));
-                        if (typeOfNewVehicle == VehicleManager.eVehicleTypes.Motorcycle)
+                        int engineCapacity = getIntegerFromUser(Strings.set_engine_capacity);
+                        LicenseType.eLicenseType licenseType = getOptionFromUser<LicenseType.eLicenseType>(Strings.get_license_massage, LicenseType.sr_LicenseType, -1);
+                        if (type == VehicleManager.eVehicleTypes.Motorcycle)
                         {
-                            m_Garage.AddNewVehicle(VehicleManager.CreateNewMotorcycle(basicArgumentsMap), ownerName, phoneNumber, statusOfNewVehicle);
+                            m_Garage.AddNewVehicle(VehicleManager.CreateNewMotorcycle(modelName, plateNumber, engineCapacity, licenseType, wheelManufacturer), ownerName, phoneNumber, newStatus);
                             break;
                         }
 
-                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricMotorcycle(basicArgumentsMap), ownerName, phoneNumber, statusOfNewVehicle);
+                        m_Garage.AddNewVehicle(VehicleManager.CreateNewElectricMotorcycle(modelName, plateNumber, wheelManufacturer, licenseType, engineCapacity), ownerName, phoneNumber, newStatus);
                         break;
                     default:
                         break;
@@ -295,7 +294,7 @@
         public void ChargeElectricVehicleUI()
         {
             string plateNumber = getStringFromUser(Strings.enter_plate_number);
-            float amountOfElectricInMinutesToAdd = getFloatFromUser(Strings.amount_to_charge);
+            float amountOfElectricInMinutesToAdd = getFloatFromUser(Strings.amount_fuel_massage);
 
             try
             {
@@ -322,16 +321,9 @@
 
         public void ShowVehiclesByPlateUI()
         {
-            if (m_Garage.Vehicles.Count != 0)
+            foreach (VehicleProperties vehicle in m_Garage.Vehicles)
             {
-                foreach (VehicleProperties vehicle in m_Garage.Vehicles)
-                {
-                    printMessage(string.Format("{0}\n{1}\n", vehicle.ToString(), Strings.line_brake));
-                }
-            }
-            else
-            {
-                showError(Strings.no_available_vehicle_in_garage);
+                printMessage(string.Format("{0}\n{1}\n", vehicle.ToString(), Strings.line_brake));
             }
         }
 
@@ -357,7 +349,8 @@
             try
             {
                 BaseVehicle vehicle = m_Garage.GetVehicleByPlateNumber(plateNumber).Vehicle;
-                m_Garage.InflatingWheel(vehicle);
+                float amount = getFloatFromUser(Strings.amount_to_fill_tire);
+                m_Garage.InflatingWheel(vehicle, amount);
             }
             catch (ArgumentException i_PlateError)
             {
@@ -368,16 +361,10 @@
         public void ShowPlatesOfAllVehiclesUI()
         {
             int vehicleInGarage = m_Garage.Vehicles.Count;
-            if (vehicleInGarage != 0)
+
+            for (int i = 0; i < vehicleInGarage; i++)
             {
-                for (int i = 0; i < vehicleInGarage; i++)
-                {
-                    printMessage(string.Format("{0}: {1}", i + 1, m_Garage.Vehicles[i].Vehicle.PlateNumber));
-                }
-            }
-            else
-            {
-                showError(Strings.no_available_vehicle_in_garage);
+                printMessage(string.Format("{0}: {1}", i + 1, m_Garage.Vehicles[i].Vehicle.PlateNumber));
             }
         }
     }

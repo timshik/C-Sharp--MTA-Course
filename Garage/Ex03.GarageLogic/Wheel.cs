@@ -6,7 +6,6 @@
 
     public class Wheel
     {
-        private static readonly float sr_NewPressure = 0.8f;
         private readonly float r_MaxPressure;
         private string m_Manufacturer;
         private float m_CurrentPressure;
@@ -15,7 +14,7 @@
         {
             r_MaxPressure = i_MaxPressure;
             m_Manufacturer = i_ManufacturerName;
-            m_CurrentPressure = i_MaxPressure * sr_NewPressure;
+            m_CurrentPressure = i_MaxPressure;
         }
 
         public void FillTire(float i_UnitToFill)
@@ -25,7 +24,7 @@
                 throw new ValueOutOfRangeException(r_MaxPressure - m_CurrentPressure, 0, Strings.out_of_range);
             }
 
-            m_CurrentPressure += i_UnitToFill;
+            m_CurrentPressure += r_MaxPressure;
         }
 
         public float CurrentPressure
