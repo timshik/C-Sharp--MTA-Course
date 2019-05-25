@@ -23,10 +23,11 @@ namespace Garage
 
             string wheelManufacturer = (string)i_Arguments[VehicleManager.sr_KeyWheelManufacturer];
             float wheelMaxPressure = (float)i_Arguments[VehicleManager.sr_KeyMaxWheelPressure];
+            float wheelCurrentPressuer = (float)i_Arguments[VehicleManager.sr_KeyCurrentWheelPressure];
 
             for (int i = 0; i < numberOfWheels; i++)
             {
-                m_Wheels[i] = new Wheel(wheelManufacturer, wheelMaxPressure);
+                m_Wheels[i] = new Wheel(wheelManufacturer, wheelMaxPressure, wheelCurrentPressuer);
             }
         }
 
@@ -65,11 +66,11 @@ namespace Garage
         public override string ToString()
         {
             StringBuilder vehicleDetails = new StringBuilder();
-            vehicleDetails.AppendFormat(Strings.show_type_of_vehicle, GetType().Name);
-            vehicleDetails.AppendFormat(Strings.plate_number, m_PlateNumber);
-            vehicleDetails.AppendFormat(Strings.model_name, m_ModelName);
-            vehicleDetails.AppendFormat(Strings.remaning_energy, m_PercentOfRemainingEnergy);
-            vehicleDetails.AppendFormat(m_Wheels[0].ToString());
+            vehicleDetails.AppendLine(string.Format(Strings.show_type_of_vehicle, GetType().Name));
+            vehicleDetails.AppendLine(string.Format(Strings.plate_number, m_PlateNumber));
+            vehicleDetails.AppendLine(string.Format(Strings.model_name, m_ModelName));
+            vehicleDetails.AppendLine(string.Format(Strings.remaning_energy, m_PercentOfRemainingEnergy));
+            vehicleDetails.AppendLine(string.Format(m_Wheels[0].ToString()));
 
             return vehicleDetails.ToString();
         }

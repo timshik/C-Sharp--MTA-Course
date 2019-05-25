@@ -64,9 +64,9 @@ namespace Garage
         {
             StringBuilder vehicleDetails = new StringBuilder();
             vehicleDetails.AppendLine(m_Vehicle.ToString());
-            vehicleDetails.AppendFormat(Strings.owner_name, m_OwnerName);
-            vehicleDetails.AppendFormat(Strings.owner_phone_number, m_PhoneNumber);
-            vehicleDetails.AppendFormat(Strings.vehicle_status, sr_StateListOptions[(int)m_Status]);
+            vehicleDetails.AppendLine(string.Format(Strings.owner_name, m_OwnerName));
+            vehicleDetails.AppendLine(string.Format(Strings.owner_phone_number, m_PhoneNumber));
+            vehicleDetails.AppendLine(string.Format(Strings.vehicle_status, sr_StateListOptions[(int)m_Status]));
 
             return vehicleDetails.ToString();
         }

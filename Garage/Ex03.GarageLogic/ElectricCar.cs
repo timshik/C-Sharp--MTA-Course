@@ -35,8 +35,8 @@
             StringBuilder vehicleDetails = new StringBuilder();
 
             vehicleDetails.Append(base.ToString());
-            vehicleDetails.AppendFormat(Strings.car_color, Garage.CarColor.sr_CarColorNames[(int)m_CarColor]);
-            vehicleDetails.AppendFormat(Strings.door_number, m_NumberOfDoors);
+            vehicleDetails.AppendLine(string.Format(Strings.car_color, Garage.CarColor.sr_CarColorNames[(int)m_CarColor]));
+            vehicleDetails.AppendLine(string.Format(Strings.door_number, m_NumberOfDoors));
 
             return vehicleDetails.ToString();
         }

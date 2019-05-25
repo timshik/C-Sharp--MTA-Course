@@ -45,8 +45,8 @@
             StringBuilder vehicleDetails = new StringBuilder();
 
             vehicleDetails.Append(base.ToString());
-            vehicleDetails.AppendFormat(Strings.hazardous_materials, m_HazardousMaterials ? Strings.yes : Strings.no);
-            vehicleDetails.AppendFormat(Strings.trunk_capacity, r_TrunkLevel);
+            vehicleDetails.AppendLine(string.Format(Strings.hazardous_materials, m_HazardousMaterials ? Strings.yes : Strings.no));
+            vehicleDetails.AppendLine(string.Format(Strings.trunk_capacity, r_TrunkLevel));
 
             return vehicleDetails.ToString();
         }

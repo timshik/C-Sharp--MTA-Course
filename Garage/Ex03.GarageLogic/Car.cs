@@ -38,8 +38,8 @@ namespace n_Car
             StringBuilder vehicleDetails = new StringBuilder();
 
             vehicleDetails.Append(base.ToString());
-            vehicleDetails.AppendFormat(Strings.car_color, Garage.CarColor.sr_CarColorNames[(int)m_CarColor]);
-            vehicleDetails.AppendFormat(Strings.door_number, Garage.DoorNumber.sr_DoorsOptions[(int)m_NumberOfDoors - 2]);
+            vehicleDetails.AppendLine(string.Format(Strings.car_color, Garage.CarColor.sr_CarColorNames[(int)m_CarColor]));
+            vehicleDetails.AppendLine(string.Format(Strings.door_number, Garage.DoorNumber.sr_DoorsOptions[(int)m_NumberOfDoors - 2]));
 
             return vehicleDetails.ToString();
         }

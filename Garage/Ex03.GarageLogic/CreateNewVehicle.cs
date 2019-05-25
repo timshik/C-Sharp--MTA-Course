@@ -50,7 +50,8 @@
             sr_KeyNumberOfWheels = "num_of_wheels", sr_KeyTypeOfEnergy = "energy_type", sr_KeyNumberOfDoors = "num_of_door", sr_KeyCarColor = "car_color",
             sr_KeyMaxFuelLevel = "max_fuel_level", sr_KeyMaxBatteryTime = "max_battery_time", sr_KeyEngineCapacity = "engine_capacity",
             sr_KeyLicenseType = "license_type", sr_KeyNumOfWheels = "num_of_wheels", sr_KeyPhoneNumber = "phone_number", sr_KeyOwnerName = "owner_name",
-            sr_KeyRepairStatus = "vehicle_status", sr_KeyTypeOfVehicle = "type_of_vehicle";
+            sr_KeyRepairStatus = "vehicle_status", sr_KeyTypeOfVehicle = "type_of_vehicle",
+            sr_KeyCurrentEnergyLevel = "current_energy", sr_KeyCurrentWheelPressure = "current_wheel_pressure";
 
         public static Dictionary<eVehicleTypes, VehicleTypesOptions> s_OptionsToAskUserByTypes = new Dictionary<eVehicleTypes, VehicleTypesOptions>();
         private static readonly List<string> sr_VehicleList = new List<string>();

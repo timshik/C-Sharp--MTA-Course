@@ -216,6 +216,8 @@
                 basicArgumentsMap.Add(VehicleManager.sr_KeyWheelManufacturer, getStringFromUser(Strings.enter_wheel_manufacturer));
                 basicArgumentsMap.Add(VehicleManager.sr_KeyPlateNumber, plateNumber);
                 basicArgumentsMap.Add(VehicleManager.sr_KeyRepairStatus, getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1));
+                basicArgumentsMap.Add(VehicleManager.sr_KeyCurrentEnergyLevel, getFloatFromUser(Strings.enter_current_energy_level));
+                basicArgumentsMap.Add(VehicleManager.sr_KeyCurrentWheelPressure, getFloatFromUser(Strings.enter_current_wheel_pressure_level));
                 getMoreInformationBasedOnType(VehicleManager.s_OptionsToAskUserByTypes[vehicleType], ref basicArgumentsMap);
                 m_Garage.AddNewVehicle(VehicleManager.CreateNewVehicle(ref basicArgumentsMap), ref basicArgumentsMap);
             }
@@ -332,7 +334,7 @@
             {
                 foreach (KeyValuePair<string, VehicleProperties> vehicle in m_Garage.Vehicles)
                 {
-                    printMessage(string.Format("{0}\n{1}\n", vehicle.ToString(), Strings.line_brake));
+                    printMessage(string.Format("{0}{2}{1}{2}", vehicle.ToString(), Strings.line_brake, Environment.NewLine));
                 }
             }
             else

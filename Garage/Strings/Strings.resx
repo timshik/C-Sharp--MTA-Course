@@ -276,68 +276,55 @@
     <value>Paid</value>
   </data>
   <data name="battery_level" xml:space="preserve">
-    <value>Battery level: {0}
-</value>
+    <value>Battery level: {0}</value>
   </data>
   <data name="car_color" xml:space="preserve">
-    <value>Car color: {0}
-</value>
+    <value>Car color: {0}</value>
   </data>
   <data name="current_fuel_level" xml:space="preserve">
-    <value>Fuel level: {0}
-</value>
+    <value>Fuel level: {0}</value>
   </data>
   <data name="door_number" xml:space="preserve">
-    <value>Door number: {0}
-</value>
+    <value>Door number: {0}</value>
   </data>
   <data name="electric_vehicle_battery" xml:space="preserve">
     <value>Electric vehicle</value>
   </data>
   <data name="show_engine_capacity" xml:space="preserve">
-    <value>Engine capacity: {0} cc
-</value>
+    <value>Engine capacity: {0} cc</value>
   </data>
   <data name="exit_program_message" xml:space="preserve">
     <value>Thank you for using out application, hope to see you soon!</value>
   </data>
   <data name="fuel_type" xml:space="preserve">
-    <value>Fuel type: {0}
-</value>
+    <value>Fuel type: {0}</value>
   </data>
   <data name="hazardous_materials" xml:space="preserve">
-    <value>Transporting hazardous materials? {0}
-</value>
+    <value>Transporting hazardous materials? {0}</value>
   </data>
   <data name="license_type" xml:space="preserve">
-    <value>License type: {0}\n</value>
+    <value>License type: {0}</value>
   </data>
   <data name="model_name" xml:space="preserve">
-    <value>Model name: {0}
-</value>
+    <value>Model name: {0}</value>
   </data>
   <data name="no" xml:space="preserve">
     <value>No</value>
   </data>
   <data name="plate_number" xml:space="preserve">
-    <value>Plate number: {0}
-</value>
+    <value>Plate number: {0}</value>
   </data>
   <data name="remaning_energy" xml:space="preserve">
-    <value>Percentage of remaining energy: {0}
-</value>
+    <value>Percentage of remaining energy: {0}</value>
   </data>
   <data name="trunk_capacity" xml:space="preserve">
-    <value>Trunk capacity: {0}
-</value>
+    <value>Trunk capacity: {0}</value>
   </data>
   <data name="wheel_current_pressure" xml:space="preserve">
-    <value>Wheel current pressure: {0}
-</value>
+    <value>Wheel current pressure: {0}</value>
   </data>
   <data name="wheel_manufacturer" xml:space="preserve">
-    <value>Wheel manufacturer: {0}
-</value>
+    <value>Wheel manufacturer: {0}</value>
   </data>
   <data name="yes" xml:space="preserve">
     <value>Yes</value>
@@ -361,12 +348,10 @@
     <value>===============================</value>
   </data>
   <data name="owner_name" xml:space="preserve">
-    <value>Owner name: {0}
-</value>
+    <value>Owner name: {0}</value>
   </data>
   <data name="owner_phone_number" xml:space="preserve">
-    <value>Owner phone number: {0}
-</value>
+    <value>Owner phone number: {0}</value>
   </data>
   <data name="set_engine_capacity" xml:space="preserve">
     <value>Set the capacity level of engine (cc)</value>
@@ -375,8 +360,7 @@
     <value>Set the capacity level of turck's trunk</value>
   </data>
   <data name="vehicle_status" xml:space="preserve">
-    <value>Vehicle status: {0}
-</value>
+    <value>Vehicle status: {0}</value>
   </data>
   <data name="will_delivery_materials" xml:space="preserve">
     <value>Will transporting hazardous materials?</value>
@@ -412,24 +396,27 @@
     <value>You entered invalid engine capacity</value>
   </data>
   <data name="maximum_battery_level" xml:space="preserve">
-    <value>Maximum battery capacity: {0}
-</value>
+    <value>Maximum battery capacity: {0}</value>
   </data>
   <data name="maximum_fuel_level" xml:space="preserve">
-    <value>Maximum fuel tank capacity: {0}
-</value>
+    <value>Maximum fuel tank capacity: {0}</value>
   </data>
   <data name="no_available_vehicle_in_garage" xml:space="preserve">
     <value>We out of work! there is no vehicle available.</value>
   </data>
   <data name="show_type_of_vehicle" xml:space="preserve">
-    <value>Show properties of {0}:
-</value>
+    <value>Show properties of {0}:</value>
   </data>
   <data name="trunk_capacity_less_than_zero" xml:space="preserve">
     <value>You entered invalid trunk capacity</value>
   </data>
   <data name="unknown_error" xml:space="preserve">
     <value>Fatal Error! something wrong with type of new vehicle, please contact with garage stuff.</value>
+  </data>
+  <data name="enter_current_energy_level" xml:space="preserve">
+    <value>Enter current energy level:</value>
+  </data>
+  <data name="enter_current_wheel_pressure_level" xml:space="preserve">
+    <value>Enter current wheel's pressure level:</value>
   </data>
 </root>

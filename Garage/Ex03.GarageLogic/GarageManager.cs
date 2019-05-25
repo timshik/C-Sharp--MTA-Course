@@ -11,7 +11,7 @@ namespace Garage
 {
     public class GarageManager
     {
-        public static readonly int sr_BasicStartIntLevel = 0, sr_BasicStartFloatLevel = 0;
+        public static readonly int sr_BasicStartIntLevel = 0;
         private Dictionary<string, VehicleProperties> m_Vehicles = new Dictionary<string, VehicleProperties>();
 
         public void AddNewVehicle(BaseVehicle i_Vehicle, ref Dictionary<string, object> i_ArgumentsList)

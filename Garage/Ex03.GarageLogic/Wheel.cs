@@ -6,16 +6,16 @@
 
     public class Wheel
     {
-        private static readonly float sr_NewPressure = 0.8f;
         private readonly float r_MaxPressure;
         private string m_Manufacturer;
         private float m_CurrentPressure;
 
-        public Wheel(string i_ManufacturerName, float i_MaxPressure)
+        public Wheel(string i_ManufacturerName, float i_MaxPressure, float i_CurrentPressure)
         {
             r_MaxPressure = i_MaxPressure;
             m_Manufacturer = i_ManufacturerName;
-            m_CurrentPressure = i_MaxPressure * sr_NewPressure;
+            m_CurrentPressure = 0;
+            FillTire(i_CurrentPressure);
         }
 
         public void FillTire(float i_UnitToFill)
@@ -49,8 +49,8 @@
         {
             StringBuilder vehicleDetails = new StringBuilder();
 
-            vehicleDetails.AppendFormat(Strings.wheel_manufacturer, ManufacturerName);
-            vehicleDetails.AppendFormat(Strings.wheel_current_pressure, CurrentPressure);
+            vehicleDetails.AppendLine(string.Format(Strings.wheel_manufacturer, ManufacturerName));
+            vehicleDetails.AppendLine(string.Format(Strings.wheel_current_pressure, CurrentPressure));
             return vehicleDetails.ToString();
         }
     }

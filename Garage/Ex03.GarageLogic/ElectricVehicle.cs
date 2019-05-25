@@ -13,7 +13,8 @@
             : base(i_Arguments)
         {
             m_MaxBatteryTime = float.Parse((string)i_Arguments[VehicleManager.sr_KeyMaxBatteryTime]);
-            m_RemainingBatteryTime = GarageManager.sr_BasicStartFloatLevel;
+            m_RemainingBatteryTime = 0;
+            ChargeBattery((float)i_Arguments[VehicleManager.sr_KeyCurrentEnergyLevel]);
         }
 
         private void calculatePercentOfRemainingEnergy()
@@ -50,8 +51,8 @@
 
             vehicleDetails.Append(base.ToString());
             vehicleDetails.AppendLine(Strings.electric_vehicle_battery);
-            vehicleDetails.AppendFormat(Strings.battery_level, m_RemainingBatteryTime);
-            vehicleDetails.AppendFormat(Strings.maximum_battery_level, m_MaxBatteryTime);
+            vehicleDetails.AppendLine(string.Format(Strings.battery_level, m_RemainingBatteryTime));
+            vehicleDetails.AppendLine(string.Format(Strings.maximum_battery_level, m_MaxBatteryTime));
 
             return vehicleDetails.ToString();
         }

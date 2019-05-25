@@ -88,8 +88,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Battery level: {0}
-        ///.
+        ///   Looks up a localized string similar to Battery level: {0}.
         /// </summary>
         public static string battery_level {
             get {
@@ -107,8 +106,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Car color: {0}
-        ///.
+        ///   Looks up a localized string similar to Car color: {0}.
         /// </summary>
         public static string car_color {
             get {
@@ -200,8 +198,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fuel level: {0}
-        ///.
+        ///   Looks up a localized string similar to Fuel level: {0}.
         /// </summary>
         public static string current_fuel_level {
             get {
@@ -210,8 +207,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Door number: {0}
-        ///.
+        ///   Looks up a localized string similar to Door number: {0}.
         /// </summary>
         public static string door_number {
             get {
@@ -243,6 +239,24 @@ namespace n_Strings {
         public static string engine_capacity_massage {
             get {
                 return ResourceManager.GetString("engine_capacity_massage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter current energy level:.
+        /// </summary>
+        public static string enter_current_energy_level {
+            get {
+                return ResourceManager.GetString("enter_current_energy_level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter current wheel&apos;s pressure level:.
+        /// </summary>
+        public static string enter_current_wheel_pressure_level {
+            get {
+                return ResourceManager.GetString("enter_current_wheel_pressure_level", resourceCulture);
             }
         }
         
@@ -337,8 +351,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fuel type: {0}
-        ///.
+        ///   Looks up a localized string similar to Fuel type: {0}.
         /// </summary>
         public static string fuel_type {
             get {
@@ -356,8 +369,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transporting hazardous materials? {0}
-        ///.
+        ///   Looks up a localized string similar to Transporting hazardous materials? {0}.
         /// </summary>
         public static string hazardous_materials {
             get {
@@ -429,7 +441,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License type: {0}\n.
+        ///   Looks up a localized string similar to License type: {0}.
         /// </summary>
         public static string license_type {
             get {
@@ -447,8 +459,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum battery capacity: {0}
-        ///.
+        ///   Looks up a localized string similar to Maximum battery capacity: {0}.
         /// </summary>
         public static string maximum_battery_level {
             get {
@@ -457,8 +468,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum fuel tank capacity: {0}
-        ///.
+        ///   Looks up a localized string similar to Maximum fuel tank capacity: {0}.
         /// </summary>
         public static string maximum_fuel_level {
             get {
@@ -548,8 +558,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Model name: {0}
-        ///.
+        ///   Looks up a localized string similar to Model name: {0}.
         /// </summary>
         public static string model_name {
             get {
@@ -630,8 +639,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Owner name: {0}
-        ///.
+        ///   Looks up a localized string similar to Owner name: {0}.
         /// </summary>
         public static string owner_name {
             get {
@@ -640,8 +648,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Owner phone number: {0}
-        ///.
+        ///   Looks up a localized string similar to Owner phone number: {0}.
         /// </summary>
         public static string owner_phone_number {
             get {
@@ -677,8 +684,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Plate number: {0}
-        ///.
+        ///   Looks up a localized string similar to Plate number: {0}.
         /// </summary>
         public static string plate_number {
             get {
@@ -687,8 +693,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Percentage of remaining energy: {0}
-        ///.
+        ///   Looks up a localized string similar to Percentage of remaining energy: {0}.
         /// </summary>
         public static string remaning_energy {
             get {
@@ -715,8 +720,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Engine capacity: {0} cc
-        ///.
+        ///   Looks up a localized string similar to Engine capacity: {0} cc.
         /// </summary>
         public static string show_engine_capacity {
             get {
@@ -725,8 +729,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show properties of {0}:
-        ///.
+        ///   Looks up a localized string similar to Show properties of {0}:.
         /// </summary>
         public static string show_type_of_vehicle {
             get {
@@ -843,8 +846,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trunk capacity: {0}
-        ///.
+        ///   Looks up a localized string similar to Trunk capacity: {0}.
         /// </summary>
         public static string trunk_capacity {
             get {
@@ -907,8 +909,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vehicle status: {0}
-        ///.
+        ///   Looks up a localized string similar to Vehicle status: {0}.
         /// </summary>
         public static string vehicle_status {
             get {
@@ -926,8 +927,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wheel current pressure: {0}
-        ///.
+        ///   Looks up a localized string similar to Wheel current pressure: {0}.
         /// </summary>
         public static string wheel_current_pressure {
             get {
@@ -936,8 +936,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Wheel manufacturer: {0}
-        ///.
+        ///   Looks up a localized string similar to Wheel manufacturer: {0}.
         /// </summary>
         public static string wheel_manufacturer {
             get {

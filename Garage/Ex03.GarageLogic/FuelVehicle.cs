@@ -17,7 +17,8 @@
         {
             m_Type = (eEnergyType)i_Arguments[VehicleManager.sr_KeyTypeOfEnergy];
             r_MaxFuelLevel = (float)i_Arguments[VehicleManager.sr_KeyMaxFuelLevel];
-            m_FuelLevel = Garage.GarageManager.sr_BasicStartFloatLevel;
+            m_FuelLevel = 0;
+            Fuel = (float)i_Arguments[VehicleManager.sr_KeyCurrentEnergyLevel];
         }
 
         public static void SetEnergeyTypeList()
@@ -72,9 +73,9 @@
             StringBuilder vehicleDetails = new StringBuilder();
 
             vehicleDetails.Append(base.ToString());
-            vehicleDetails.AppendFormat(Strings.fuel_type, sr_EnergyTypeList[(int)m_Type]);
-            vehicleDetails.AppendFormat(Strings.current_fuel_level, m_FuelLevel);
-            vehicleDetails.AppendFormat(Strings.maximum_fuel_level, r_MaxFuelLevel);
+            vehicleDetails.AppendLine(string.Format(Strings.fuel_type, sr_EnergyTypeList[(int)m_Type]));
+            vehicleDetails.AppendLine(string.Format(Strings.current_fuel_level, m_FuelLevel));
+            vehicleDetails.AppendLine(string.Format(Strings.maximum_fuel_level, r_MaxFuelLevel));
 
             return vehicleDetails.ToString();
         }
