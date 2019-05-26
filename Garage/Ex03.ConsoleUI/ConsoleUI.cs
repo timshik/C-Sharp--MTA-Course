@@ -8,13 +8,8 @@
 
     public class ConsoleUI
     {
-        private static readonly List<string> sr_FirstMenuStringArray = new List<string>();
+        private static List<string> s_FirstMenuStringArray = new List<string>();
         private GarageManager m_Garage = new GarageManager();
-
-        private static void printMessage(string i_Message)
-        {
-            Console.WriteLine(i_Message);
-        }
 
         public static void Main()
         {
@@ -22,7 +17,31 @@
             UI.WelcomeToTheGarage();
         }
 
-        private static int getUserChoice(int i_MinValue, int i_MaxValue)
+        public void WelcomeToTheGarage()
+        {
+            initializationEnums();
+            printMessage(Strings.welcome_massage);
+            try
+            {
+                do
+                {
+                    doAction();
+                }
+                while (askForAnotherAction());
+            }
+            catch (FormatException i_Exception)
+            {
+                showError(i_Exception.Message);
+                showError(Strings.breakup_massage);
+            }
+        }
+
+        private void printMessage(string i_Message)
+        {
+            Console.WriteLine(i_Message);
+        }
+
+        private int getUserChoice(int i_MinValue, int i_MaxValue)
         {
             int userChoice = getIntegerFromUser();
 
@@ -34,7 +53,7 @@
             return userChoice;
         }
 
-        private static void showOptions(List<string> i_OptionsArray)
+        private void showOptions(List<string> i_OptionsArray)
         {
             for (int i = 0; i < i_OptionsArray.Count; i++)
             {
@@ -42,18 +61,7 @@
             }
         }
 
-        public static string AskForBasicDetail(string i_MessageToPrint)
-        {
-            printMessage(i_MessageToPrint);
-            return Console.ReadLine();
-        }
-
-        public static int AskForArgumentWithOptions(string i_MessageToPrint, List<string> i_OptionList, int i_OffsetFromChoices)
-        {
-            return getOptionFromUser<int>(i_MessageToPrint, i_OptionList, i_OffsetFromChoices);
-        }
-
-        private static int getIntegerFromUser()
+        private int getIntegerFromUser()
         {
             int userChoice;
 
@@ -65,24 +73,13 @@
             return userChoice;
         }
 
-        public static T getOptionFromUser<T>(string i_Message, List<string> i_OptionList, int i_OffsetFromChoices)
+        private T getOptionFromUser<T>(string i_Message, List<string> i_OptionList, int i_OffsetFromChoices)
         {
             T parameterToReturn;
             printMessage(i_Message);
             showOptions(i_OptionList);
             parameterToReturn = (T)(object)(getUserChoice(1, i_OptionList.Count) + i_OffsetFromChoices);
             return parameterToReturn;
-        }
-
-        public void WelcomeToTheGarage()
-        {
-            initializationEnums();
-            printMessage(Strings.welcome_massage);
-            do
-            {
-                DoAction();
-            }
-            while (askForAnotherAction());
         }
 
         private void initializationEnums()
@@ -95,14 +92,14 @@
             FuelVehicle.SetEnergeyTypeList();
             VehicleManager.SetBooleanList();
             VehicleManager.ArrangementExtandedOptionList();
-            sr_FirstMenuStringArray.Add(Strings.menu_options_1);
-            sr_FirstMenuStringArray.Add(Strings.menu_options_2);
-            sr_FirstMenuStringArray.Add(Strings.menu_options_3);
-            sr_FirstMenuStringArray.Add(Strings.menu_options_4);
-            sr_FirstMenuStringArray.Add(Strings.menu_options_5);
-            sr_FirstMenuStringArray.Add(Strings.menu_options_6);
-            sr_FirstMenuStringArray.Add(Strings.menu_options_7);
-            sr_FirstMenuStringArray.Add(Strings.menu_options_8);
+            s_FirstMenuStringArray.Add(Strings.menu_options_1);
+            s_FirstMenuStringArray.Add(Strings.menu_options_2);
+            s_FirstMenuStringArray.Add(Strings.menu_options_3);
+            s_FirstMenuStringArray.Add(Strings.menu_options_4);
+            s_FirstMenuStringArray.Add(Strings.menu_options_5);
+            s_FirstMenuStringArray.Add(Strings.menu_options_6);
+            s_FirstMenuStringArray.Add(Strings.menu_options_7);
+            s_FirstMenuStringArray.Add(Strings.menu_options_8);
         }
 
         private void showError(string i_Message)
@@ -110,33 +107,33 @@
             Console.WriteLine(i_Message);
         }
 
-        public void DoAction()
+        private void doAction()
         {
             try
             {
-                int choice = getOptionFromUser<int>(string.Empty, sr_FirstMenuStringArray, 0);
+                int choice = getOptionFromUser<int>(string.Empty, s_FirstMenuStringArray, 0);
                 switch (choice)
                 {
                     case 1:
                         addNewVehicleUI();
                         break;
                     case 2:
-                        ShowPlatesOfAllVehiclesUI();
+                        showPlatesOfAllVehiclesUI();
                         break;
                     case 3:
-                        ChangePropertiesUI();
+                        changePropertiesUI();
                         break;
                     case 4:
-                        InflatingWheelUI();
+                        inflatingWheelUI();
                         break;
                     case 5:
-                        FuelVehicleUI();
+                        fuelVehicleUI();
                         break;
                     case 6:
-                        ChargeElectricVehicleUI();
+                        chargeElectricVehicleUI();
                         break;
                     case 7:
-                        ShowVehiclesByPlateUI();
+                        showVehiclesByPlateUI();
                         break;
                     case 8:
                         exitProgram();
@@ -173,7 +170,27 @@
 
         private string getStringFromUser()
         {
-            return Console.ReadLine();
+            string userAnswer = Console.ReadLine();
+            if(userAnswer.Length == 0 || containOnlySpaces(userAnswer))
+            {
+                throw new ArgumentException(Strings.user_enter_empty_string);
+            }
+
+            return userAnswer;
+        }
+
+        private bool containOnlySpaces(string i_UserAnswer)
+        {
+            int counterSpaces = 0;
+            for (int i = 0; i < i_UserAnswer.Length; i++)
+            {
+                if (i_UserAnswer[i].Equals(' '))
+                {
+                    counterSpaces++;
+                }
+            }
+
+            return counterSpaces == i_UserAnswer.Length;
         }
 
         private string getStringFromUser(string i_Message)
@@ -191,9 +208,9 @@
             try
             {
                 VehicleProperties vehicle = m_Garage.GetVehicleByPlateNumber(plateNumber);
-                printMessage(string.Format(Strings.change_status_options, VehicleProperties.sr_StateListOptions[(int)vehicle.Status]));
-                showOptions(VehicleProperties.sr_StateListOptions);
-                statusOfNewVehicle = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.sr_StateListOptions.Count) - 1;
+                printMessage(string.Format(Strings.change_status_options, VehicleProperties.s_StateListOptions[(int)vehicle.Status]));
+                showOptions(VehicleProperties.s_StateListOptions);
+                statusOfNewVehicle = (VehicleProperties.eStateOfService)getUserChoice(1, VehicleProperties.s_StateListOptions.Count) - 1;
                 vehicle.Status = statusOfNewVehicle;
             }
             catch (Exception i_PlateError)
@@ -215,7 +232,7 @@
                 basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyModelName, getStringFromUser(Strings.enter_model_name));
                 basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyWheelManufacturer, getStringFromUser(Strings.enter_wheel_manufacturer));
                 basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyPlateNumber, plateNumber);
-                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyRepairStatus, getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyRepairStatus, getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.s_StateListOptions, -1));
                 basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyCurrentEnergyLevel, getFloatFromUser(Strings.enter_current_energy_level));
                 basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyCurrentWheelPressure, getFloatFromUser(Strings.enter_current_wheel_pressure_level));
                 getMoreInformationBasedOnType(VehicleManager.s_OptionsToAskUserByTypes[vehicleType], ref basicArgumentsMap);
@@ -223,19 +240,19 @@
             }
         }
 
-        private void getMoreInformationBasedOnType(VehicleManager.VehicleTypesOptions i_VehicleTypesOptions, ref Dictionary<string, object> i_BasicArgumentsMap)
+        private void getMoreInformationBasedOnType(VehicleManager.VehicleTypesOptions i_VehicleTypesOptions, ref Dictionary<string, object> io_BasicArgumentsMap)
         {
             for (int i = 0; i < i_VehicleTypesOptions.OptionList.Count; i++)
             {
                 if (i_VehicleTypesOptions.OptionList[i] == null)
                 {
-                    i_BasicArgumentsMap.Add(
+                    io_BasicArgumentsMap.Add(
                         i_VehicleTypesOptions.OptionKeys[i],
                         getStringFromUser(i_VehicleTypesOptions.OptionListMessages[i]));
                 }
                 else
                 {
-                    i_BasicArgumentsMap.Add(
+                    io_BasicArgumentsMap.Add(
                         i_VehicleTypesOptions.OptionKeys[i],
                         getOptionFromUser<object>(i_VehicleTypesOptions.OptionListMessages[i], i_VehicleTypesOptions.OptionList[i], i_VehicleTypesOptions.OptionListOffsets[i]));
                 }
@@ -260,13 +277,7 @@
             return getFloatFromUser();
         }
 
-        private float getIntegerFromUser(string i_Message)
-        {
-            printMessage(i_Message);
-            return getIntegerFromUser();
-        }
-
-        public void FuelVehicleUI()
+        private void fuelVehicleUI()
         {
             string plateNumber;
             FuelVehicle.eEnergyType energyType;
@@ -275,7 +286,7 @@
 
             printMessage(Strings.enter_plate_number);
             plateNumber = getStringFromUser();
-            energyType = getOptionFromUser<FuelVehicle.eEnergyType>(Strings.choose_type_of_fuel, FuelVehicle.sr_EnergyTypeList, -1);
+            energyType = getOptionFromUser<FuelVehicle.eEnergyType>(Strings.choose_type_of_fuel, FuelVehicle.s_EnergyTypeList, -1);
             amountOfFuelToAdd = getFloatFromUser(Strings.amount_fuel_massage);
             try
             {
@@ -300,7 +311,7 @@
             }
         }
 
-        public void ChargeElectricVehicleUI()
+        private void chargeElectricVehicleUI()
         {
             string plateNumber = getStringFromUser(Strings.enter_plate_number);
             float amountOfElectricInMinutesToAdd = getFloatFromUser(Strings.amount_to_charge);
@@ -328,13 +339,13 @@
             }
         }
 
-        public void ShowVehiclesByPlateUI()
+        private void showVehiclesByPlateUI()
         {
             if (m_Garage.Vehicles.Count != 0)
             {
                 foreach (KeyValuePair<string, VehicleProperties> vehicle in m_Garage.Vehicles)
                 {
-                    printMessage(string.Format("{0}{2}{1}{2}", vehicle.ToString(), Strings.line_brake, Environment.NewLine));
+                    printMessage(string.Format("{0}{2}{1}{2}", vehicle, Strings.line_brake, Environment.NewLine));
                 }
             }
             else
@@ -343,13 +354,13 @@
             }
         }
 
-        public void ChangePropertiesUI()
+        private void changePropertiesUI()
         {
             string plateNumber = getStringFromUser(Strings.enter_plate_number);
             try
             {
                 VehicleProperties vehicle = m_Garage.GetVehicleByPlateNumber(plateNumber);
-                VehicleProperties.eStateOfService newType = getOptionFromUser<VehicleProperties.eStateOfService>(string.Format(Strings.change_status_options, VehicleProperties.sr_StateListOptions[(int)vehicle.Status]), VehicleProperties.sr_StateListOptions, -1);
+                VehicleProperties.eStateOfService newType = getOptionFromUser<VehicleProperties.eStateOfService>(string.Format(Strings.change_status_options, VehicleProperties.s_StateListOptions[(int)vehicle.Status]), VehicleProperties.s_StateListOptions, -1);
                 vehicle.Status = newType;
             }
             catch (ArgumentException i_PlateError)
@@ -358,7 +369,7 @@
             }
         }
 
-        public void InflatingWheelUI()
+        private void inflatingWheelUI()
         {
             string plateNumber = getStringFromUser(Strings.enter_plate_number);
 
@@ -373,7 +384,7 @@
             }
         }
 
-        public void ShowPlatesOfAllVehiclesUI()
+        private void showPlatesOfAllVehiclesUI()
         {
             int vehicleInGarage = m_Garage.Vehicles.Count, vehicleCounter = 1;
             if (vehicleInGarage != 0)

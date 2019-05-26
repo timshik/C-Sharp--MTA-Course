@@ -9,7 +9,7 @@ namespace Garage
 {
     public class VehicleProperties
     {
-        public static readonly List<string> sr_StateListOptions = new List<string>();
+        public static List<string> s_StateListOptions = new List<string>();
         private BaseVehicle m_Vehicle;
         private string m_OwnerName, m_PhoneNumber;
         private eStateOfService m_Status;
@@ -24,9 +24,9 @@ namespace Garage
 
         public static void SetListOfOptions()
         {
-            sr_StateListOptions.Add(Strings.inrepair_title);
-            sr_StateListOptions.Add(Strings.fixed_title);
-            sr_StateListOptions.Add(Strings.paid_title);
+            s_StateListOptions.Add(Strings.inrepair_title);
+            s_StateListOptions.Add(Strings.fixed_title);
+            s_StateListOptions.Add(Strings.paid_title);
         }
 
         public enum eStateOfService
@@ -66,7 +66,7 @@ namespace Garage
             vehicleDetails.AppendLine(m_Vehicle.ToString());
             vehicleDetails.AppendLine(string.Format(Strings.owner_name, m_OwnerName));
             vehicleDetails.AppendLine(string.Format(Strings.owner_phone_number, m_PhoneNumber));
-            vehicleDetails.AppendLine(string.Format(Strings.vehicle_status, sr_StateListOptions[(int)m_Status]));
+            vehicleDetails.AppendLine(string.Format(Strings.vehicle_status, s_StateListOptions[(int)m_Status]));
 
             return vehicleDetails.ToString();
         }

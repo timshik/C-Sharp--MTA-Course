@@ -21,7 +21,7 @@
         public Truck(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_HazardousMaterials = (int)i_Arguments[ArgumentsKeysets.sr_KeyDeliveryMaterials] == 1;
+            m_HazardousMaterials = (int)i_Arguments[ArgumentsKeysets.sr_KeyDeliveryMaterials] == 0;
             r_TrunkLevel = float.Parse((string)i_Arguments[ArgumentsKeysets.sr_KeyTruckCapacity]);
             if(r_TrunkLevel < 0)
             {

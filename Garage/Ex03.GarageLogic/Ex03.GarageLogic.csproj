@@ -43,13 +43,13 @@
     </Compile>
     <Compile Include="BaseVehicle.cs" />
     <Compile Include="Car.cs" />
-    <Compile Include="CreateNewVehicle.cs" />
-    <Compile Include="eCarColor.cs" />
+    <Compile Include="VehicleManager.cs" />
+    <Compile Include="CarColor.cs" />
     <Compile Include="ElectricCar.cs" />
     <Compile Include="ElectricMotorcycle.cs" />
     <Compile Include="ElectricVehicle.cs" />
-    <Compile Include="eLicenseType.cs" />
-    <Compile Include="eNumberOfDoors.cs" />
+    <Compile Include="LicenseType.cs" />
+    <Compile Include="DoorNumber.cs" />
     <Compile Include="GarageManager.cs" />
     <Compile Include="Motorcycle.cs" />
     <Compile Include="Truck.cs" />
@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App1.config" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strings\Strings.csproj">

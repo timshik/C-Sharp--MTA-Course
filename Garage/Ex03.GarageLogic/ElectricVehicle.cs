@@ -1,5 +1,6 @@
 ﻿namespace Garage
 {
+    using System;
     using System.Collections.Generic;
     using System.Text;
     using n_Strings;
@@ -19,7 +20,7 @@
 
         private void calculatePercentOfRemainingEnergy()
         {
-            m_PercentOfRemainingEnergy = (m_MaxBatteryTime / m_RemainingBatteryTime) * 100;
+            m_PercentOfRemainingEnergy = (m_RemainingBatteryTime  / m_MaxBatteryTime) * 100;
         }
 
         public float RemainingBatteryTime
@@ -36,13 +37,19 @@
 
         public void ChargeBattery(float i_AmmountofElectricToCharge)
         {
-            if (m_RemainingBatteryTime + i_AmmountofElectricToCharge > m_MaxBatteryTime || m_RemainingBatteryTime + i_AmmountofElectricToCharge < 0)
+            float hourAmount = convertMinToHour(i_AmmountofElectricToCharge);
+            if (m_RemainingBatteryTime + hourAmount > m_MaxBatteryTime || m_RemainingBatteryTime + hourAmount < 0)
             {
                 throw new ValueOutOfRangeException(m_RemainingBatteryTime, 0, Strings.out_of_range);
             }
 
-            m_RemainingBatteryTime += i_AmmountofElectricToCharge;
+            m_RemainingBatteryTime += hourAmount;
             calculatePercentOfRemainingEnergy();
+        }
+
+        private float convertMinToHour(float i_AmmountofElectricToCharge)
+        {
+            return i_AmmountofElectricToCharge / 60;
         }
 
         public override string ToString()

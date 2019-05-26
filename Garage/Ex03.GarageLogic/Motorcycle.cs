@@ -46,7 +46,7 @@ namespace n_Motorcycle
             StringBuilder vehicleDetails = new StringBuilder();
 
             vehicleDetails.Append(base.ToString());
-            vehicleDetails.AppendLine(string.Format(Strings.license_type, Garage.LicenseType.sr_LicenseType[(int)m_LicenseType]));
+            vehicleDetails.AppendLine(string.Format(Strings.license_type, Garage.LicenseType.s_LicenseType[(int)m_LicenseType]));
             vehicleDetails.AppendLine(string.Format(Strings.show_engine_capacity, m_EngineCapacity));
 
             return vehicleDetails.ToString();

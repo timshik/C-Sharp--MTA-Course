@@ -147,7 +147,7 @@
     <value>Welcome to the best Garage in the city</value>
   </data>
   <data name="invalid_integer" xml:space="preserve">
-    <value>You enter invalid number, please enter again.</value>
+    <value>You enter invalid number, please try again.</value>
   </data>
   <data name="choose_type_of_vehicle" xml:space="preserve">
     <value>Choose vehicle type:</value>
@@ -418,5 +418,8 @@
   </data>
   <data name="enter_current_wheel_pressure_level" xml:space="preserve">
     <value>Enter current wheel's pressure level:</value>
+  </data>
+  <data name="user_enter_empty_string" xml:space="preserve">
+    <value>You entered empty string, we cannot accept that, please try again.</value>
   </data>
 </root>

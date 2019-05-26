@@ -8,7 +8,7 @@
     public abstract class FuelVehicle : BaseVehicle
     {
         private readonly float r_MaxFuelLevel;
-        public static readonly List<string> sr_EnergyTypeList = new List<string>();
+        public static List<string> s_EnergyTypeList = new List<string>();
         private eEnergyType m_Type;
         private float m_FuelLevel;
 
@@ -23,10 +23,10 @@
 
         public static void SetEnergeyTypeList()
         {
-            sr_EnergyTypeList.Add(Strings.soler);
-            sr_EnergyTypeList.Add(Strings.octan_95);
-            sr_EnergyTypeList.Add(Strings.octan_96);
-            sr_EnergyTypeList.Add(Strings.octan_98);
+            s_EnergyTypeList.Add(Strings.soler);
+            s_EnergyTypeList.Add(Strings.octan_95);
+            s_EnergyTypeList.Add(Strings.octan_96);
+            s_EnergyTypeList.Add(Strings.octan_98);
         }
 
         public enum eEnergyType
@@ -39,7 +39,7 @@
 
         private void calculatePercentOfRemainingEnergy()
         {
-            m_PercentOfRemainingEnergy = (r_MaxFuelLevel / m_FuelLevel) * 100;
+            m_PercentOfRemainingEnergy = (m_FuelLevel / r_MaxFuelLevel) * 100;
         }
 
         public eEnergyType EnergyType
@@ -73,7 +73,7 @@
             StringBuilder vehicleDetails = new StringBuilder();
 
             vehicleDetails.Append(base.ToString());
-            vehicleDetails.AppendLine(string.Format(Strings.fuel_type, sr_EnergyTypeList[(int)m_Type]));
+            vehicleDetails.AppendLine(string.Format(Strings.fuel_type, s_EnergyTypeList[(int)m_Type]));
             vehicleDetails.AppendLine(string.Format(Strings.current_fuel_level, m_FuelLevel));
             vehicleDetails.AppendLine(string.Format(Strings.maximum_fuel_level, r_MaxFuelLevel));
 

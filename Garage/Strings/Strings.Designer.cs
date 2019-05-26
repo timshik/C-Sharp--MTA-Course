@@ -387,7 +387,7 @@ namespace n_Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You enter invalid number, please enter again..
+        ///   Looks up a localized string similar to You enter invalid number, please try again..
         /// </summary>
         public static string invalid_integer {
             get {
@@ -905,6 +905,15 @@ namespace n_Strings {
         public static string unknown_error {
             get {
                 return ResourceManager.GetString("unknown_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You entered empty string, we cannot accept that, please try again..
+        /// </summary>
+        public static string user_enter_empty_string {
+            get {
+                return ResourceManager.GetString("user_enter_empty_string", resourceCulture);
             }
         }
         
