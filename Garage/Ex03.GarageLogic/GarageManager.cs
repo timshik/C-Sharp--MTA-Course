@@ -20,9 +20,9 @@ namespace Garage
                 i_Vehicle.PlateNumber,
                 new VehicleProperties(
                     i_Vehicle,
-                    (string)i_ArgumentsList[VehicleManager.sr_KeyOwnerName],
-                    (string)i_ArgumentsList[VehicleManager.sr_KeyPhoneNumber],
-                    (VehicleProperties.eStateOfService)i_ArgumentsList[VehicleManager.sr_KeyRepairStatus]));
+                    (string)i_ArgumentsList[ArgumentsKeysets.sr_KeyOwnerName],
+                    (string)i_ArgumentsList[ArgumentsKeysets.sr_KeyPhoneNumber],
+                    (VehicleProperties.eStateOfService)i_ArgumentsList[ArgumentsKeysets.sr_KeyRepairStatus]));
         }
 
         public VehicleProperties GetVehicleByPlateNumber(string i_PlateNumber)

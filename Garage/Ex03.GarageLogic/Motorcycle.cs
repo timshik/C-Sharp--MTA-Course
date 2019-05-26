@@ -21,8 +21,8 @@ namespace n_Motorcycle
         public Motorcycle(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_EngineCapacity = int.Parse((string)i_Arguments[VehicleManager.sr_KeyEngineCapacity]);
-            m_LicenseType = (LicenseType.eLicenseType)i_Arguments[VehicleManager.sr_KeyLicenseType];
+            m_EngineCapacity = int.Parse((string)i_Arguments[ArgumentsKeysets.sr_KeyEngineCapacity]);
+            m_LicenseType = (LicenseType.eLicenseType)i_Arguments[ArgumentsKeysets.sr_KeyLicenseType];
             if (m_EngineCapacity < 0)
             {
                 throw new ValueOutOfRangeException(float.MaxValue, 0, Strings.engine_capacity_less_than_zero);

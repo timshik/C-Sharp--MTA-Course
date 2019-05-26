@@ -209,15 +209,15 @@
 
                 printMessage(Strings.create_new_vehicle);
                 VehicleManager.eVehicleTypes vehicleType = getOptionFromUser<VehicleManager.eVehicleTypes>(Strings.choose_type_of_vehicle, VehicleManager.VehicleList, -1);
-                basicArgumentsMap.Add(VehicleManager.sr_KeyTypeOfVehicle, vehicleType);
-                basicArgumentsMap.Add(VehicleManager.sr_KeyOwnerName, getStringFromUser(Strings.enter_owner_name));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyPhoneNumber, getStringFromUser(Strings.enter_phone_number));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyModelName, getStringFromUser(Strings.enter_model_name));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyWheelManufacturer, getStringFromUser(Strings.enter_wheel_manufacturer));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyPlateNumber, plateNumber);
-                basicArgumentsMap.Add(VehicleManager.sr_KeyRepairStatus, getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyCurrentEnergyLevel, getFloatFromUser(Strings.enter_current_energy_level));
-                basicArgumentsMap.Add(VehicleManager.sr_KeyCurrentWheelPressure, getFloatFromUser(Strings.enter_current_wheel_pressure_level));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyTypeOfVehicle, vehicleType);
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyOwnerName, getStringFromUser(Strings.enter_owner_name));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyPhoneNumber, getStringFromUser(Strings.enter_phone_number));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyModelName, getStringFromUser(Strings.enter_model_name));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyWheelManufacturer, getStringFromUser(Strings.enter_wheel_manufacturer));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyPlateNumber, plateNumber);
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyRepairStatus, getOptionFromUser<VehicleProperties.eStateOfService>(Strings.choose_status_of_vehicle, VehicleProperties.sr_StateListOptions, -1));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyCurrentEnergyLevel, getFloatFromUser(Strings.enter_current_energy_level));
+                basicArgumentsMap.Add(ArgumentsKeysets.sr_KeyCurrentWheelPressure, getFloatFromUser(Strings.enter_current_wheel_pressure_level));
                 getMoreInformationBasedOnType(VehicleManager.s_OptionsToAskUserByTypes[vehicleType], ref basicArgumentsMap);
                 m_Garage.AddNewVehicle(VehicleManager.CreateNewVehicle(ref basicArgumentsMap), ref basicArgumentsMap);
             }

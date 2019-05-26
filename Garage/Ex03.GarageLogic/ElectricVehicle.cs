@@ -12,14 +12,14 @@
         public ElectricVehicle(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_MaxBatteryTime = float.Parse((string)i_Arguments[VehicleManager.sr_KeyMaxBatteryTime]);
+            m_MaxBatteryTime = (float)i_Arguments[ArgumentsKeysets.sr_KeyMaxBatteryTime];
             m_RemainingBatteryTime = 0;
-            ChargeBattery((float)i_Arguments[VehicleManager.sr_KeyCurrentEnergyLevel]);
+            ChargeBattery((float)i_Arguments[ArgumentsKeysets.sr_KeyCurrentEnergyLevel]);
         }
 
         private void calculatePercentOfRemainingEnergy()
         {
-            m_PercentOfRemainingEnergy = (m_RemainingBatteryTime / m_MaxBatteryTime) * 100;
+            m_PercentOfRemainingEnergy = (m_MaxBatteryTime / m_RemainingBatteryTime) * 100;
         }
 
         public float RemainingBatteryTime

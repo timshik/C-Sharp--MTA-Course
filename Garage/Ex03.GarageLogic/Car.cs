@@ -17,8 +17,8 @@ namespace n_Car
         public Car(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_NumberOfDoors = (DoorNumber.eNumberOfDoors)i_Arguments[VehicleManager.sr_KeyNumberOfDoors];
-            m_CarColor = (CarColor.eCarColor)i_Arguments[VehicleManager.sr_KeyCarColor];
+            m_NumberOfDoors = (DoorNumber.eNumberOfDoors)i_Arguments[ArgumentsKeysets.sr_KeyNumberOfDoors];
+            m_CarColor = (CarColor.eCarColor)i_Arguments[ArgumentsKeysets.sr_KeyCarColor];
         }
 
         public DoorNumber.eNumberOfDoors NumberOfDoors

@@ -36,6 +36,11 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ArgumentsKeysets.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArgumentsKeysets.resx</DependentUpon>
+    </Compile>
     <Compile Include="BaseVehicle.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="CreateNewVehicle.cs" />
@@ -55,12 +60,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App1.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Strings\Strings.csproj">
       <Project>{dcb6efea-3951-402e-a6f1-62a94c2a1445}</Project>
       <Name>Strings</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ArgumentsKeysets.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ArgumentsKeysets.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,3 +7,5 @@ C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.GarageLogic\bin\Debug\Strin
 C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.GarageLogic\obj\Debug\Ex03.GarageLogic.csproj.CopyComplete
 C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.GarageLogic\obj\Debug\Garage.dll
 C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.GarageLogic\obj\Debug\Garage.pdb
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.GarageLogic\obj\Debug\Garage.ArgumentsKeysets.resources
+C:\Users\Ido PC\source\repos\GitProjects\Garage\Ex03.GarageLogic\obj\Debug\Ex03.GarageLogic.csproj.GenerateResource.cache

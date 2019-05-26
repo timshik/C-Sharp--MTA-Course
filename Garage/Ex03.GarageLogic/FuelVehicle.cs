@@ -15,10 +15,10 @@
         public FuelVehicle(Dictionary<string, object> i_Arguments)
             : base(i_Arguments)
         {
-            m_Type = (eEnergyType)i_Arguments[VehicleManager.sr_KeyTypeOfEnergy];
-            r_MaxFuelLevel = (float)i_Arguments[VehicleManager.sr_KeyMaxFuelLevel];
+            m_Type = (eEnergyType)i_Arguments[ArgumentsKeysets.sr_KeyTypeOfEnergy];
+            r_MaxFuelLevel = (float)i_Arguments[ArgumentsKeysets.sr_KeyMaxFuelLevel];
             m_FuelLevel = 0;
-            Fuel = (float)i_Arguments[VehicleManager.sr_KeyCurrentEnergyLevel];
+            Fuel = (float)i_Arguments[ArgumentsKeysets.sr_KeyCurrentEnergyLevel];
         }
 
         public static void SetEnergeyTypeList()

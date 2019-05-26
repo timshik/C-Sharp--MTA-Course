@@ -16,14 +16,14 @@ namespace Garage
 
         public BaseVehicle(Dictionary<string, object> i_Arguments) 
         {
-            int numberOfWheels = (int)i_Arguments[VehicleManager.sr_KeyNumberOfWheels];
+            int numberOfWheels = (int)i_Arguments[ArgumentsKeysets.sr_KeyNumberOfWheels];
             m_Wheels = new Wheel[numberOfWheels];
-            m_ModelName = (string)i_Arguments[VehicleManager.sr_KeyModelName];
-            m_PlateNumber = (string)i_Arguments[VehicleManager.sr_KeyPlateNumber];
+            m_ModelName = (string)i_Arguments[ArgumentsKeysets.sr_KeyModelName];
+            m_PlateNumber = (string)i_Arguments[ArgumentsKeysets.sr_KeyPlateNumber];
 
-            string wheelManufacturer = (string)i_Arguments[VehicleManager.sr_KeyWheelManufacturer];
-            float wheelMaxPressure = (float)i_Arguments[VehicleManager.sr_KeyMaxWheelPressure];
-            float wheelCurrentPressuer = (float)i_Arguments[VehicleManager.sr_KeyCurrentWheelPressure];
+            string wheelManufacturer = (string)i_Arguments[ArgumentsKeysets.sr_KeyWheelManufacturer];
+            float wheelMaxPressure = (float)i_Arguments[ArgumentsKeysets.sr_KeyMaxWheelPressure];
+            float wheelCurrentPressuer = (float)i_Arguments[ArgumentsKeysets.sr_KeyCurrentWheelPressure];
 
             for (int i = 0; i < numberOfWheels; i++)
             {

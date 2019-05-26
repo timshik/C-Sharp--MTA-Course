@@ -45,14 +45,6 @@
             }
         }
 
-        public static readonly string sr_KeyPlateNumber = "plate_number", sr_KeyWheelManufacturer = "wheel_manufacturer", sr_KeyModelName = "model_name",
-            sr_KeyDeliveryMaterials = "delivery_materials", sr_KeyTruckCapacity = "truck_capacity", sr_KeyMaxWheelPressure = "max_wheel_pressure",
-            sr_KeyNumberOfWheels = "num_of_wheels", sr_KeyTypeOfEnergy = "energy_type", sr_KeyNumberOfDoors = "num_of_door", sr_KeyCarColor = "car_color",
-            sr_KeyMaxFuelLevel = "max_fuel_level", sr_KeyMaxBatteryTime = "max_battery_time", sr_KeyEngineCapacity = "engine_capacity",
-            sr_KeyLicenseType = "license_type", sr_KeyNumOfWheels = "num_of_wheels", sr_KeyPhoneNumber = "phone_number", sr_KeyOwnerName = "owner_name",
-            sr_KeyRepairStatus = "vehicle_status", sr_KeyTypeOfVehicle = "type_of_vehicle",
-            sr_KeyCurrentEnergyLevel = "current_energy", sr_KeyCurrentWheelPressure = "current_wheel_pressure";
-
         public static Dictionary<eVehicleTypes, VehicleTypesOptions> s_OptionsToAskUserByTypes = new Dictionary<eVehicleTypes, VehicleTypesOptions>();
         private static readonly List<string> sr_VehicleList = new List<string>();
         private static readonly List<string> sr_BooleanOptions = new List<string>();
@@ -68,7 +60,7 @@
 
         public static BaseVehicle CreateNewVehicle(ref Dictionary<string, object> i_ArgumentList)
         {
-            eVehicleTypes type = (eVehicleTypes)i_ArgumentList[sr_KeyTypeOfVehicle];
+            eVehicleTypes type = (eVehicleTypes)i_ArgumentList[ArgumentsKeysets.sr_KeyTypeOfVehicle];
             BaseVehicle vehicle;
             switch (type)
             {
@@ -145,44 +137,44 @@
 
         public static Car CreateNewCar(Dictionary<string, object> i_Arguments)
         {
-            i_Arguments.Add(sr_KeyNumOfWheels, Car.sr_NumberOfWheels);
-            i_Arguments.Add(sr_KeyMaxFuelLevel, Car.sr_FullTunkLevel);
-            i_Arguments.Add(sr_KeyMaxWheelPressure, Car.sr_MaxPressure);
-            i_Arguments.Add(sr_KeyTypeOfEnergy, Car.sr_EnergyType);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyNumOfWheels, Car.sr_NumberOfWheels);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxFuelLevel, Car.sr_FullTunkLevel);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxWheelPressure, Car.sr_MaxPressure);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyTypeOfEnergy, Car.sr_EnergyType);
             return new Car(i_Arguments);
         }
 
         public static ElectricCar CreateNewElectricCar(Dictionary<string, object> i_Arguments)
         {
-            i_Arguments.Add(sr_KeyNumOfWheels, ElectricCar.sr_NumberOfWheels);
-            i_Arguments.Add(sr_KeyMaxBatteryTime, ElectricCar.sr_FullBatteryLevel);
-            i_Arguments.Add(sr_KeyMaxWheelPressure, ElectricCar.sr_MaxPressure);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyNumOfWheels, ElectricCar.sr_NumberOfWheels);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxBatteryTime, ElectricCar.sr_FullBatteryLevel);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxWheelPressure, ElectricCar.sr_MaxPressure);
             return new ElectricCar(i_Arguments);
         }
 
         public static Motorcycle CreateNewMotorcycle(Dictionary<string, object> i_Arguments)
         {
-            i_Arguments.Add(sr_KeyNumOfWheels, Motorcycle.sr_NumberOfWheels);
-            i_Arguments.Add(sr_KeyMaxFuelLevel, Motorcycle.sr_FullTunkLevel);
-            i_Arguments.Add(sr_KeyMaxWheelPressure, Motorcycle.sr_MaxPressure);
-            i_Arguments.Add(sr_KeyTypeOfEnergy, Motorcycle.sr_EnergyType);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyNumOfWheels, Motorcycle.sr_NumberOfWheels);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxFuelLevel, Motorcycle.sr_FullTunkLevel);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxWheelPressure, Motorcycle.sr_MaxPressure);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyTypeOfEnergy, Motorcycle.sr_EnergyType);
             return new Motorcycle(i_Arguments);
         }
 
         public static ElectricMotorcycle CreateNewElectricMotorcycle(Dictionary<string, object> i_Arguments)
         {
-            i_Arguments.Add(sr_KeyNumOfWheels, ElectricMotorcycle.sr_NumberOfWheels);
-            i_Arguments.Add(sr_KeyMaxBatteryTime, ElectricMotorcycle.sr_FullBatteryLevel);
-            i_Arguments.Add(sr_KeyMaxWheelPressure, ElectricMotorcycle.sr_MaxPressure);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyNumOfWheels, ElectricMotorcycle.sr_NumberOfWheels);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxBatteryTime, ElectricMotorcycle.sr_FullBatteryLevel);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxWheelPressure, ElectricMotorcycle.sr_MaxPressure);
             return new ElectricMotorcycle(i_Arguments);
         }
 
         public static Truck CreateNewTruck(Dictionary<string, object> i_Arguments)
         {
-            i_Arguments.Add(sr_KeyNumOfWheels, Truck.sr_NumberOfWheels);
-            i_Arguments.Add(sr_KeyMaxFuelLevel, Truck.sr_FullTunkLevel);
-            i_Arguments.Add(sr_KeyMaxWheelPressure, Truck.sr_MaxPressure);
-            i_Arguments.Add(sr_KeyTypeOfEnergy, Truck.sr_EnergyType);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyNumOfWheels, Truck.sr_NumberOfWheels);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxFuelLevel, Truck.sr_FullTunkLevel);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyMaxWheelPressure, Truck.sr_MaxPressure);
+            i_Arguments.Add(ArgumentsKeysets.sr_KeyTypeOfEnergy, Truck.sr_EnergyType);
             return new Truck(i_Arguments);
         }
 
@@ -194,8 +186,8 @@
             i_OptionMessages.Add(Strings.choose_car_color);
             i_OptionOffsets.Add(1);
             i_OptionOffsets.Add(-1);
-            i_OptionKeys.Add(sr_KeyNumberOfDoors);
-            i_OptionKeys.Add(sr_KeyCarColor);
+            i_OptionKeys.Add(ArgumentsKeysets.sr_KeyNumberOfDoors);
+            i_OptionKeys.Add(ArgumentsKeysets.sr_KeyCarColor);
         }
 
         private static void SetElectricCarAdditionalOptionList(ref List<List<string>> i_OptionList, ref List<int> i_OptionOffsets, ref List<string> i_OptionMessages, ref List<string> i_OptionKeys)
@@ -211,8 +203,8 @@
             i_OptionMessages.Add(Strings.set_engine_capacity);
             i_OptionOffsets.Add(-1);
             i_OptionOffsets.Add(0);
-            i_OptionKeys.Add(sr_KeyLicenseType);
-            i_OptionKeys.Add(sr_KeyEngineCapacity);
+            i_OptionKeys.Add(ArgumentsKeysets.sr_KeyLicenseType);
+            i_OptionKeys.Add(ArgumentsKeysets.sr_KeyEngineCapacity);
         }
 
         private static void SetElectricMotorcycleOptionList(ref List<List<string>> i_OptionList, ref List<int> i_OptionOffsets, ref List<string> i_OptionMessages, ref List<string> i_OptionKeys)
@@ -228,8 +220,8 @@
             i_OptionMessages.Add(Strings.set_truck_capacity_level);
             i_OptionOffsets.Add(-1);
             i_OptionOffsets.Add(0);
-            i_OptionKeys.Add(sr_KeyDeliveryMaterials);
-            i_OptionKeys.Add(sr_KeyTruckCapacity);
+            i_OptionKeys.Add(ArgumentsKeysets.sr_KeyDeliveryMaterials);
+            i_OptionKeys.Add(ArgumentsKeysets.sr_KeyTruckCapacity);
         }
     }
 }
