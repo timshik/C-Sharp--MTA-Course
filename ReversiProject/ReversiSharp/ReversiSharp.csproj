@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0C3D4AA-16D3-4743-8828-42514AB90D2E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ReversiSharp</RootNamespace>
+    <AssemblyName>ReversiSharp</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>whitePlayer.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WelcomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WelcomeForm.Designer.cs">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WelcomeForm.resx">
+      <DependentUpon>WelcomeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backgrounds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B2W.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BANDW.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game_Artboard 14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game_Artboard 15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game_Artboard 16 copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game_Artboard 16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-07.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-08.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-09.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\W2B.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game-04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\game.wmf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blackPlayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\whitePlayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\possibleMoveSquare.png" />
+    <None Include="Resources\emptySquare.png" />
+    <Content Include="whitePlayer.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Reversi\Reversi.csproj">
+      <Project>{7b43dbec-2bcc-49b1-9403-d65062d495f8}</Project>
+      <Name>Reversi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Strings\Strings.csproj">
+      <Project>{d0252569-48a1-4091-a902-3dfc64143b18}</Project>
+      <Name>Strings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

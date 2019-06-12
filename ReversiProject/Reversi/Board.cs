@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using n_UI;
 using n_Square;
 using n_Game;
 
 namespace n_Board
 {
-    public class Board
+    public class Board : ICloneable
     {
-        public Square[,] m_Board;
+        private Square[,] m_Board;
         private List<Square> m_EmptySquares = new List<Square>(), m_ValidSquares = new List<Square>();
 
         public Board(int i_SizeOfMatrix)
@@ -21,9 +17,14 @@ namespace n_Board
             {
                 for (int j = 0; j < i_SizeOfMatrix; j++)
                 {
-                    m_Board[i, j] = new Square((char)(UI.sr_FirstLetter + j), i);
+                    m_Board[i, j] = new Square(i, j);
                 }
             }
+
+            m_Board[(i_SizeOfMatrix / 2) - 1, (i_SizeOfMatrix / 2) - 1].Color = Square.eSquareColor.White;
+            m_Board[(i_SizeOfMatrix / 2), (i_SizeOfMatrix / 2) - 1].Color = Square.eSquareColor.Black;
+            m_Board[(i_SizeOfMatrix / 2) - 1, (i_SizeOfMatrix / 2)].Color = Square.eSquareColor.Black;
+            m_Board[(i_SizeOfMatrix / 2), (i_SizeOfMatrix / 2)].Color = Square.eSquareColor.White;
 
             BoardSize = i_SizeOfMatrix;
         }
@@ -47,10 +48,9 @@ namespace n_Board
             }
         }
 
-        public Square[,] SquareBoard
+        public ref Square[,] SquareBoard
         {
-            get { return m_Board; }
-            set { m_Board = value; }
+            get { return ref m_Board; }
         }
 
         public Board()
@@ -58,9 +58,12 @@ namespace n_Board
             m_Board = null;
         }
 
-        public void PrintBoard()
+        public object Clone()
         {
-            UI.PrintMatrix(m_Board);
+            Board board = new Board(m_Board.Length);
+            board.m_Board = (Square[,])m_Board.Clone();
+
+            return board;
         }
     }
 }

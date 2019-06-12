@@ -9,13 +9,13 @@ C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.csproj.CoreComp
 C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.csproj.CopyComplete
 C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.exe
 C:\Users\Ido PC\source\repos\Project31\Reversi\obj\Debug\Reversi.pdb
-C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Reversi.exe.config
-C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Reversi.exe
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Reversi.pdb
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Strings.dll
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Strings.pdb
+C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.csprojAssemblyReference.cache
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.csproj.CoreCompileInputs.cache
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.csproj.CopyComplete
-C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.exe
 C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.pdb
-C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.csprojAssemblyReference.cache
+C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Reversi.dll.config
+C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\bin\Debug\Reversi.dll
+C:\Users\Ido PC\source\repos\GitProjects\ReversiProject\Reversi\obj\Debug\Reversi.dll

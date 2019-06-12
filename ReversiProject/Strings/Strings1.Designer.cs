@@ -61,6 +61,15 @@ namespace Reversi {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Black.
+        /// </summary>
+        public static string black_color {
+            get {
+                return ResourceManager.GetString("black_color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You entered wrong board size, please try again.
         /// </summary>
         public static string board_size_invalid {
@@ -126,20 +135,38 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to computer&apos;s turn.
-        /// </summary>
-        public static string computer_turn {
-            get {
-                return ResourceManager.GetString("computer_turn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to draw.
         /// </summary>
         public static string draw {
             get {
                 return ResourceManager.GetString("draw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It&apos;s a draw!.
+        /// </summary>
+        public static string end_game_draw {
+            get {
+                return ResourceManager.GetString("end_game_draw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Won!! ({1},{2}) ({3}/{4}).
+        /// </summary>
+        public static string end_game_winner_string_1 {
+            get {
+                return ResourceManager.GetString("end_game_winner_string_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Would you like another round?.
+        /// </summary>
+        public static string end_game_winner_string_2 {
+            get {
+                return ResourceManager.GetString("end_game_winner_string_2", resourceCulture);
             }
         }
         
@@ -207,6 +234,24 @@ namespace Reversi {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Othello - {0}&apos;s Turn.
+        /// </summary>
+        public static string form_title_turn {
+            get {
+                return ResourceManager.GetString("form_title_turn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Othello.
+        /// </summary>
+        public static string game_basic_title {
+            get {
+                return ResourceManager.GetString("game_basic_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You choose invalid square, please choose other one..
         /// </summary>
         public static string not_valid_square {
@@ -221,33 +266,6 @@ namespace Reversi {
         public static string play_again {
             get {
                 return ResourceManager.GetString("play_again", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2) Play vs computer.
-        /// </summary>
-        public static string play_against_option_computer {
-            get {
-                return ResourceManager.GetString("play_against_option_computer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 1) Computer vs Computer.
-        /// </summary>
-        public static string play_against_option_computer_vs_computer {
-            get {
-                return ResourceManager.GetString("play_against_option_computer_vs_computer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 3) Play vs another player.
-        /// </summary>
-        public static string play_against_option_player {
-            get {
-                return ResourceManager.GetString("play_against_option_player", resourceCulture);
             }
         }
         
@@ -288,11 +306,11 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Second Computer.
+        ///   Looks up a localized string similar to White.
         /// </summary>
-        public static string second_computer_name {
+        public static string white_color {
             get {
-                return ResourceManager.GetString("second_computer_name", resourceCulture);
+                return ResourceManager.GetString("white_color", resourceCulture);
             }
         }
         
