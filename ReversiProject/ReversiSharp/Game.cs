@@ -37,14 +37,15 @@
         private void backgroundPicture_MouseClick(object i_Sender, MouseEventArgs i_Mouse)
         {
             PictureBox sender = i_Sender as PictureBox;
-            int coordinateX = sender.Location.X, coordinateY = sender.Location.Y;
-            int squareX = coordinateX - m_StartPositionX, squareY = coordinateY - m_StartPositionY;
+            int coordinateX = sender.Location.X, coordinateY = sender.Location.Y,
+                squareX = coordinateX - m_StartPositionX, squareY = coordinateY - m_StartPositionY;
             bool isValidSquare;
+
             if (squareX >= 0 && squareY >= 0)
             {
                 squareX = squareX / m_SquareSizeX;
                 squareY = squareY / m_SquareSizeY;
-                if ((squareX >= 0 && squareX < WelcomeForm.m_BoardSize) && (squareY >= 0 && squareY < WelcomeForm.m_BoardSize))
+                if (squareX < WelcomeForm.m_BoardSize && squareY < WelcomeForm.m_BoardSize)
                 {
                     OnCurrentTurn.Invoke(m_Board.SquareBoard[squareY, squareX], true, m_Board, out isValidSquare);
                     if (isValidSquare)
@@ -53,7 +54,7 @@
                         changePlayers();
                         if (m_Players[m_CurrentPlayerIndex] is AiPlayer)
                         {
-                            m_Board = ((AiPlayer)m_Players[1]).AlphaBetaPruning(m_Board);
+                            m_Board = ((AiPlayer)m_Players[1]).AlphaBetaPruning((Board)m_Board.Clone());
                             printChangedBoard(m_Board.SquareBoard);
                             changePlayers();
                         }
@@ -86,24 +87,24 @@
             switch (WelcomeForm.m_BoardSize)
             {
                 case 6:
-                    backgroundImage = Properties.Resources.game_01;
+                    backgroundImage = Properties.Resources.board6;
                     m_SquareSize = m_SquareSizeX = 70;
                     m_SquareSizeY = 77;
                     goto setBackgroundImage;
                 case 8:
-                    backgroundImage = Properties.Resources.game_02;
+                    backgroundImage = Properties.Resources.board8;
                     m_SquareSize = 55;
                     m_SquareSizeX = 52;
                     m_SquareSizeY = 58;
                     goto setBackgroundImage;
                 case 10:
-                    backgroundImage = Properties.Resources.game_03;
+                    backgroundImage = Properties.Resources.board10;
                     m_SquareSize = 44;
                     m_SquareSizeX = 42;
                     m_SquareSizeY = 46;
                     goto setBackgroundImage;
                 case 12:
-                    backgroundImage = Properties.Resources.game_04;
+                    backgroundImage = Properties.Resources.board12;
                     m_SquareSize = m_SquareSizeX = 35;
                     m_SquareSizeY = 39;
                 setBackgroundImage:
@@ -166,11 +167,31 @@
             m_Board = new Board(WelcomeForm.m_BoardSize);
             n_Game.Game.m_MatrixSize = WelcomeForm.m_BoardSize;
             setStartSquare();
-            m_CurrentPlayerIndex = 0;
+            setPlayerColorMark();
             OnCurrentTurn += m_Players[m_CurrentPlayerIndex].CheckIfSquareIsValidAndMakeMove;
             printChangedBoard(m_Board.SquareBoard);
             startPlaying(true);
             m_KeepPlaying = true;
+        }
+
+        private void setPlayerColorMark()
+        {
+            int whitePlayerX = 84, blackPlayerX = whitePlayerX + 286;
+            m_BlackPlayerMark.Image = Properties.Resources.blackPlayerMark;
+            m_BlackPlayerMark.Size = new Size(131, 131);
+            m_BlackPlayerMark.SizeMode = PictureBoxSizeMode.StretchImage;
+            m_BlackPlayerMark.Location = new Point(blackPlayerX, 0);
+            m_BlackPlayerMark.Visible = true;
+            m_BlackPlayerMark.Parent = m_BackgroundPicture;
+            m_BlackPlayerMark.BackColor = Color.Transparent;
+
+            m_WhitePlayerMark.Image = Properties.Resources.whitePlayerMark;
+            m_WhitePlayerMark.Size = new Size(131, 131);
+            m_WhitePlayerMark.SizeMode = PictureBoxSizeMode.StretchImage;
+            m_WhitePlayerMark.Location = new Point(whitePlayerX, 0);
+            m_WhitePlayerMark.Visible = true;
+            m_WhitePlayerMark.Parent = m_BackgroundPicture;
+            m_WhitePlayerMark.BackColor = Color.Transparent;
         }
 
         private bool endGame()
@@ -178,6 +199,7 @@
             StringBuilder message = new StringBuilder();
             int blackCounter, whiteCounter;
             bool anotherRound = !true;
+            string winnerName = null;
 
             switch (checkWhoWon(ref m_Board.SquareBoard, out blackCounter, out whiteCounter))
             {
@@ -186,23 +208,19 @@
                     break;
                 case Square.eSquareColor.White:
                     WelcomeForm.m_WhiteWins += 1;
+                    winnerName = Strings.white_color;
+                    goto winner;
+                case Square.eSquareColor.Black:
+                    WelcomeForm.m_BlackWins += 1;
+                    winnerName = Strings.black_color;
+                winner:
                     message.AppendFormat(
                         Strings.end_game_winner_string_1,
-                        Strings.white_color,
+                        winnerName,
                         whiteCounter,
                         blackCounter,
                         WelcomeForm.m_WhiteWins,
                         WelcomeForm.m_BlackWins);
-                    break;
-                case Square.eSquareColor.Black:
-                    WelcomeForm.m_BlackWins += 1;
-                    message.AppendFormat(
-                        Strings.end_game_winner_string_1,
-                        Strings.black_color,
-                        blackCounter,
-                        whiteCounter,
-                        WelcomeForm.m_BlackWins,
-                        WelcomeForm.m_WhiteWins);
                     break;
             }
 
@@ -232,8 +250,7 @@
 
         private Square.eSquareColor checkWhoWon(ref Square[,] i_SquareBoard, out int o_BlackCounter, out int o_WhiteCounter)
         {
-            o_WhiteCounter = 0;
-            o_BlackCounter = 0;
+            o_WhiteCounter = o_BlackCounter = 0;
             Square.eSquareColor color;
 
             foreach (Square square in i_SquareBoard)
@@ -246,22 +263,16 @@
                     case Square.eSquareColor.Black:
                         o_BlackCounter++;
                         break;
-                    default:
-                        break;
                 }
             }
 
-            if (o_BlackCounter > o_WhiteCounter)
+            if (o_BlackCounter == o_WhiteCounter)
             {
-                color = Square.eSquareColor.Black;
-            }
-            else if (o_BlackCounter < o_WhiteCounter)
-            {
-                color = Square.eSquareColor.White;
+                color = Square.eSquareColor.Empty;
             }
             else
             {
-                color = Square.eSquareColor.Empty;
+                color = o_BlackCounter > o_WhiteCounter ? Square.eSquareColor.Black : Square.eSquareColor.White;
             }
 
             return color;
@@ -293,7 +304,7 @@
             return image;
         }
 
-        private void Game_FormClosing(object sender, FormClosingEventArgs e)
+        private void game_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)
             {

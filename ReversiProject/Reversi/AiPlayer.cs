@@ -9,7 +9,7 @@ namespace Reversi
 {
     public class AiPlayer : Player
     {
-        private static readonly bool v_MakeMove = true;
+        private static readonly bool sr_MakeMove = true;
         private int m_MaxDepth = 15;     // Bigger value will make the computer stronger but slower (will think longer of every move)
                                         // Lower value will make the computer weaker but faster
         private int m_CornerValue = 200, m_SideValue = 20, m_SimpleSquareValue = 5, m_FullBoardValue = 100000;
@@ -44,7 +44,7 @@ namespace Reversi
         private Board createNewBoard(Board i_CurrentBoard, Square i_PossibleMove, Square.eSquareColor i_Color)
         {
             bool isValid;
-            CheckIfSquareIsValidAndMakeMove(i_PossibleMove, v_MakeMove, i_CurrentBoard, out isValid);
+            CheckIfSquareIsValidAndMakeMove(i_PossibleMove, sr_MakeMove, i_CurrentBoard, out isValid);
 
             return i_CurrentBoard;
         }

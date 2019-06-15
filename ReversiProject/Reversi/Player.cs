@@ -1,12 +1,12 @@
 ﻿namespace n_Player
 {
+    using System;
     using System.Collections.Generic;
     using System.Drawing;
     using n_Square;
     using n_Game;
     using n_Board;
     using Reversi;
-    using System;
 
     public class Player
     {
@@ -72,6 +72,7 @@
                     }
                 }
             }
+
             return possiblesMoves;
         }
 

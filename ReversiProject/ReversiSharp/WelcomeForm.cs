@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using static n_Game.Game;
-
-namespace ReversiSharp
+﻿namespace ReversiSharp
 {
+    using System;
+    using System.Windows.Forms;
+    using Reversi;
+    using static n_Game.Game;
+
     public partial class WelcomeForm : Form
     {
-        private static readonly string m_BoardSizeText = "Board Size: {0}x{0} (Click to increase)";
         public static ePlayAgainst m_GameMode;
         public static int m_RoundCounter = 0, m_BlackWins = 0, m_WhiteWins = 0;
 
@@ -54,7 +49,7 @@ namespace ReversiSharp
                 m_BoardSize += 2;
             }
 
-            buttonBoardSize.Text = string.Format(m_BoardSizeText, m_BoardSize);
+            buttonBoardSize.Text = string.Format(Strings.choose_board_size, m_BoardSize);
         }
     }
 }

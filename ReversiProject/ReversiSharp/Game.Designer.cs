@@ -1,5 +1,7 @@
 ﻿namespace ReversiSharp
 {
+    using Reversi;
+
     public partial class Game
     {
         /// <summary>
@@ -57,8 +59,8 @@
             this.MaximumSize = new System.Drawing.Size(800, 839);
             this.Name = "Game";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Game_FormClosing);
+            this.Text = Strings.game_basic_title;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.game_FormClosing);
             this.Load += new System.EventHandler(this.game_Load);
             ((System.ComponentModel.ISupportInitialize)(this.m_BackgroundPicture)).EndInit();
             this.ResumeLayout(false);
@@ -68,5 +70,8 @@
         #endregion
         private System.Windows.Forms.PictureBox m_BackgroundPicture;
         private System.Windows.Forms.PictureBox[,] m_Squares;
+        private System.Windows.Forms.PictureBox m_PlayerTurn = new System.Windows.Forms.PictureBox();
+        private System.Windows.Forms.PictureBox m_BlackPlayerMark = new System.Windows.Forms.PictureBox();
+        private System.Windows.Forms.PictureBox m_WhitePlayerMark = new System.Windows.Forms.PictureBox();
     }
 }

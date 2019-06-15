@@ -70,67 +70,11 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You entered wrong board size, please try again.
+        ///   Looks up a localized string similar to Board Size: {0}x{0} (Click to increase).
         /// </summary>
-        public static string board_size_invalid {
+        public static string choose_board_size {
             get {
-                return ResourceManager.GetString("board_size_invalid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please choose color for first player:
-        ///1) White
-        ///2) Black.
-        /// </summary>
-        public static string choose_color {
-            get {
-                return ResourceManager.GetString("choose_color", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter the column of your chosen square.
-        /// </summary>
-        public static string choose_column {
-            get {
-                return ResourceManager.GetString("choose_column", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter the cordinate you want.
-        /// </summary>
-        public static string choose_cord {
-            get {
-                return ResourceManager.GetString("choose_cord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter the row of your chosen square.
-        /// </summary>
-        public static string choose_row {
-            get {
-                return ResourceManager.GetString("choose_row", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to What is the size of the matrix that you want? (choose 6 or 8).
-        /// </summary>
-        public static string choose_size_of_board {
-            get {
-                return ResourceManager.GetString("choose_size_of_board", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Computer.
-        /// </summary>
-        public static string computer_name {
-            get {
-                return ResourceManager.GetString("computer_name", resourceCulture);
+                return ResourceManager.GetString("choose_board_size", resourceCulture);
             }
         }
         
@@ -171,69 +115,6 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter your name:.
-        /// </summary>
-        public static string enter_name {
-            get {
-                return ResourceManager.GetString("enter_name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter your opponent name:.
-        /// </summary>
-        public static string enter_name_of_player_two {
-            get {
-                return ResourceManager.GetString("enter_name_of_player_two", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You entered invalid column, please try again.
-        /// </summary>
-        public static string error_enter_invalid_column {
-            get {
-                return ResourceManager.GetString("error_enter_invalid_column", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You entered invalid cords, please try again.
-        /// </summary>
-        public static string error_enter_invalid_cord {
-            get {
-                return ResourceManager.GetString("error_enter_invalid_cord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You entered invalid row, please try again.
-        /// </summary>
-        public static string error_enter_invalid_row {
-            get {
-                return ResourceManager.GetString("error_enter_invalid_row", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You entered invalid number, please try again.
-        /// </summary>
-        public static string error_enter_valid_integer {
-            get {
-                return ResourceManager.GetString("error_enter_valid_integer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to First Computer.
-        /// </summary>
-        public static string first_computer_name {
-            get {
-                return ResourceManager.GetString("first_computer_name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Othello - {0}&apos;s Turn.
         /// </summary>
         public static string form_title_turn {
@@ -252,15 +133,6 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You choose invalid square, please choose other one..
-        /// </summary>
-        public static string not_valid_square {
-            get {
-                return ResourceManager.GetString("not_valid_square", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Do you want to play again? press Y/N.
         /// </summary>
         public static string play_again {
@@ -270,20 +142,20 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} doesn&apos;t have any available moves, the turn goes to the next player!.
+        ///   Looks up a localized string similar to Play against the computer.
         /// </summary>
-        public static string player_dont_have_available_moves {
+        public static string play_against_computer {
             get {
-                return ResourceManager.GetString("player_dont_have_available_moves", resourceCulture);
+                return ResourceManager.GetString("play_against_computer", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}&apos;s turn, please choose your cords.
+        ///   Looks up a localized string similar to Play against your friend.
         /// </summary>
-        public static string player_is_playing {
+        public static string play_against_player {
             get {
-                return ResourceManager.GetString("player_is_playing", resourceCulture);
+                return ResourceManager.GetString("play_against_player", resourceCulture);
             }
         }
         
@@ -297,11 +169,11 @@ namespace Reversi {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}&apos;s Score: {1}.
+        ///   Looks up a localized string similar to Othello - Game Settings.
         /// </summary>
-        public static string player_score {
+        public static string setting_title {
             get {
-                return ResourceManager.GetString("player_score", resourceCulture);
+                return ResourceManager.GetString("setting_title", resourceCulture);
             }
         }
         

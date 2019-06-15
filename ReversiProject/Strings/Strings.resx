@@ -117,47 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="board_size_invalid" xml:space="preserve">
-    <value>You entered wrong board size, please try again</value>
-  </data>
-  <data name="choose_column" xml:space="preserve">
-    <value>Enter the column of your chosen square</value>
-  </data>
-  <data name="choose_cord" xml:space="preserve">
-    <value>Enter the cordinate you want</value>
-  </data>
-  <data name="choose_row" xml:space="preserve">
-    <value>Enter the row of your chosen square</value>
-  </data>
-  <data name="choose_size_of_board" xml:space="preserve">
-    <value>What is the size of the matrix that you want? (choose 6 or 8)</value>
-  </data>
   <data name="draw" xml:space="preserve">
     <value>draw</value>
-  </data>
-  <data name="enter_name" xml:space="preserve">
-    <value>Please enter your name:</value>
-  </data>
-  <data name="enter_name_of_player_two" xml:space="preserve">
-    <value>Please enter your opponent name:</value>
-  </data>
-  <data name="error_enter_invalid_column" xml:space="preserve">
-    <value>You entered invalid column, please try again</value>
-  </data>
-  <data name="error_enter_invalid_cord" xml:space="preserve">
-    <value>You entered invalid cords, please try again</value>
-  </data>
-  <data name="error_enter_invalid_row" xml:space="preserve">
-    <value>You entered invalid row, please try again</value>
-  </data>
-  <data name="error_enter_valid_integer" xml:space="preserve">
-    <value>You entered invalid number, please try again</value>
-  </data>
-  <data name="not_valid_square" xml:space="preserve">
-    <value>You choose invalid square, please choose other one.</value>
-  </data>
-  <data name="player_is_playing" xml:space="preserve">
-    <value>{0}'s turn, please choose your cords</value>
   </data>
   <data name="play_again" xml:space="preserve">
     <value>Do you want to play again? press Y/N</value>
@@ -167,23 +128,6 @@
   </data>
   <data name="player_quit_game" xml:space="preserve">
     <value>Thank you for playing, Hope to see you soon!</value>
-  </data>
-  <data name="choose_color" xml:space="preserve">
-    <value>Please choose color for first player:
-1) White
-2) Black</value>
-  </data>
-  <data name="computer_name" xml:space="preserve">
-    <value>Computer</value>
-  </data>
-  <data name="player_dont_have_available_moves" xml:space="preserve">
-    <value>{0} doesn't have any available moves, the turn goes to the next player!</value>
-  </data>
-  <data name="player_score" xml:space="preserve">
-    <value>{0}'s Score: {1}</value>
-  </data>
-  <data name="first_computer_name" xml:space="preserve">
-    <value>First Computer</value>
   </data>
   <data name="form_title_turn" xml:space="preserve">
     <value>Othello - {0}'s Turn</value>
@@ -205,5 +149,17 @@
   </data>
   <data name="game_basic_title" xml:space="preserve">
     <value>Othello</value>
+  </data>
+  <data name="choose_board_size" xml:space="preserve">
+    <value>Board Size: {0}x{0} (Click to increase)</value>
+  </data>
+  <data name="play_against_computer" xml:space="preserve">
+    <value>Play against the computer</value>
+  </data>
+  <data name="play_against_player" xml:space="preserve">
+    <value>Play against your friend</value>
+  </data>
+  <data name="setting_title" xml:space="preserve">
+    <value>Othello - Game Settings</value>
   </data>
 </root>

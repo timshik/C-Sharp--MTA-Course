@@ -9,19 +9,12 @@
 
     public class Game
     {
-        private static Player[] m_Players = new Player[2];
         public static int m_MatrixSize;
-
-        public static Player GetPlayer(int i_Player)
-        {
-            return m_Players[i_Player];
-        }
 
         public enum ePlayAgainst
         {
             PlayerVsPlayer = 2,
-            PlayerVsComputer = 1,
-            ComputerVsComputer = 0
+            PlayerVsComputer = 1
         }
 
         public enum eWhichPlayer

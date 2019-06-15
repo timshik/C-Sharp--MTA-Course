@@ -53,11 +53,6 @@ namespace n_Board
             get { return ref m_Board; }
         }
 
-        public Board()
-        {
-            m_Board = null;
-        }
-
         public object Clone()
         {
             Board board = new Board(m_Board.Length);

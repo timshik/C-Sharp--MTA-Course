@@ -49,6 +49,11 @@
     <Compile Include="Game.Designer.cs">
       <DependentUpon>Game.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="WelcomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,14 +70,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -84,70 +84,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\backgrounds.png" />
+    <None Include="Resources\star.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\B2W.gif" />
+    <None Include="Resources\blackPlayerMark.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BANDW.gif" />
+    <None Include="Resources\whitePlayerMark.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\game_Artboard 14.png" />
+    <None Include="Resources\board6.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\game_Artboard 15.png" />
+    <None Include="Resources\board8.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\game_Artboard 16 copy.png" />
+    <None Include="Resources\board10.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\game_Artboard 16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-01.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-02.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-03.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-05.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-06.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-07.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-08.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-09.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\W2B.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game-04.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\game.wmf" />
+    <None Include="Resources\board12.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blackPlayer.png" />
@@ -158,6 +113,7 @@
   <ItemGroup>
     <None Include="Resources\possibleMoveSquare.png" />
     <None Include="Resources\emptySquare.png" />
+    <None Include="Resources\playerTurn.png" />
     <Content Include="whitePlayer.ico" />
   </ItemGroup>
   <ItemGroup>
