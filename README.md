@@ -2,11 +2,11 @@
 C# Projects
 
 <b>Reversi - Windows application with graphical interface!</b><br>
+![Screenshot](ReversiProject/screenshot.png)
 <ul>
           <li><b>Two game option:</b> Play against another player or against computer</li>
           <li><b>AI Computer:</b> Computer using Alpha-beta algorithm</li>
 </ul>
-![Screenshot](ReversiProject/screenshot.png)
 
 <b>Garage Manager - Simple console application</b></br>
 Helps to manage a garage:</br>
