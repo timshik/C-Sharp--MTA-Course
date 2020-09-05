@@ -5,7 +5,7 @@ C# Projects
 ![Screenshot](ReversiProject/screenshot.png)
 <ul>
           <li><b>Two game option:</b> Play against another player or against computer</li>
-          <li><b>AI Computer:</b> Computer using Alpha-beta algorithm</li>
+          <li><b>AI Computer:</b> Computer using Alpha-beta pruning algorithm</li>
 </ul>
 
 <b>Garage Manager - Simple console application</b></br>
